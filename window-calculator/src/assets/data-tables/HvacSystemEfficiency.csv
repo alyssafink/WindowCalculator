@@ -1,0 +1,7 @@
+System,Heating Efficiency,Cooling Efficiency
+HEAT_PUMP,6.8,10
+HF_HEAT_PUMP,7.2,15.2
+NATURAL_GAS,0.78,0
+PROPANE,0.841,0
+ELECTRIC,0.98,0
+CENTRAL_AC,0,10

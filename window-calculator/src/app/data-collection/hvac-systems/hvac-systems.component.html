@@ -1,0 +1,45 @@
+<div style="max-height:70vh; overflow-y: auto;">
+  <h3>What type of heating system is in your home? <fa-icon [icon]="faQuestion" placement="bottom" ngbTooltip="Select the heating system that best matches the system in your home. Select the high efficiency option if your heat pump has the ENERGY STAR label (7.2 HSPF2 or higher)."></fa-icon></h3>
+  <div class="container-fluid">
+    <div class="row mb-3">
+      <!-- Display each option as small card -->
+      <ng-container *ngFor="let option of heatingSystemEnum | keyvalue; index as i">
+        <div class="col-sm mt-2">
+          <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfHeatingCardIsClicked(i)}">
+            <img class="card-img-top" src="/assets/heating-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: 5rem;">
+            <div class="card-body w-100 option-text">
+              <a class="card-text option-text btn stretched-link" (click)="selectHeatingOption(option.value, i)" style="color: white">{{option.value}}</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <h3>What type of cooling system is in your home? <fa-icon [icon]="faQuestion" placement="bottom" ngbTooltip="Select the cooling system that best matches the system in your home. Select the high efficiency option if your heat pump has the ENERGY STAR label (15.2 SEER or higher)."></fa-icon></h3>
+  <div class="container-fluid">
+    <div class="row justify-content-around">
+      <!-- Display each option as small card -->
+      <ng-container *ngFor="let option of coolingSystemEnum | keyvalue; index as i">
+        <div class="col-sm mt-3">
+          <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfCoolingCardIsClicked(i)}">
+            <img class="card-img-top" src="/assets/cooling-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: 5rem;">
+            <div class="card-body w-100 option-text">
+              <a class="card-text option-text btn stretched-link" (click)="selectCoolingOption(option.value, i)" style="color: white">{{option.value}}</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row justify-content-between">
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-light" style="color: dodgerblue;" [routerLink]="['../', 2]">&lt; Previous</button>
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-secondary" [routerLink]="['../', 4]">Next &gt;</button>
+    </div>
+  </div>
+</div>
+

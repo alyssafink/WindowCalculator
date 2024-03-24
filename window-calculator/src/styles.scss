@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+$secondary: silver;
+
+.option-text {
+  background-color: rgb(78, 185, 252);
+  color: white;
+}
+
+.highlight {
+  box-shadow: 10px 5px 5px red;
+}
+
+.pointable {
+  cursor: pointer;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
