@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FrameTypeEnum, GlassTypeEnum, OperabilityTypeEnum, OrientationTypeEnum } from '../../data-collection/user-data/window-properties-model';
-import { RetrofitWindowType } from '../retrofit-window';
+import { NewFrameType, RetrofitWindowType } from '../retrofit-window';
 import { CoolingSystemEnum, HeatingSystemEnum, WindShieldingEnum } from '../../data-collection/user-data/window-data-model';
 import { readFileSync } from "fs-web";
 import * as d3 from 'd3';
@@ -46,6 +46,7 @@ export class CalculationService {
   // HVAC System Data Tables
   hvacSystemEfficiencyData: any[];
   hvacFuelConversionData: any[];
+  operationalCarbonConversionData: any[];
 
   // Solar Radiation Data Tables
   heatingSeasonSolarRadiationData: any[];
@@ -59,7 +60,14 @@ export class CalculationService {
   energyStarWindowLifespanData: any[];
   filmWindowLifespanData: any[];
 
+  // Embodied Carbon Data Tables
+  retrofitFrameGWPData: any[];
+  retrofitGlazeGWPData: any[];
 
+  // Upfront Cost Data Tables
+  energyStarUpfrontCostData: any[];
+  stormUpfrontCostData: any[];
+  filmUpfrontCostData: any[];
 
   constructor(private httpClient: HttpClient) {}
 
@@ -90,6 +98,12 @@ export class CalculationService {
       this.httpClient.get('assets/data-tables/StormWindowLifespan.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/EnergyStarWindowLifespan.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/FilmWindowLifespan.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/FrameMaterialEmbodiedCarbon.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/GlazingMaterialEmbodiedCarbon.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/OperationalCarbonConversionFactor.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/EnergyStarUpfrontCost.csv', { responseType: 'text' }),
+      //this.httpClient.get('assets/data-tables/StormUpfrontCost.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/FilmUpfrontCost.csv', { responseType: 'text' }),
     ]).subscribe(([
       existingWindowUValueDataString,
       stormWindowUValueDataString,
@@ -115,7 +129,13 @@ export class CalculationService {
       windowOrientationDistributionDataString,
       stormWindowLifespanDataString,
       energyStarWindowLifespanDataString,
-      filmWindowLifespanDataString
+      filmWindowLifespanDataString,
+      frameMaterialGWPDataString,
+      glazeMaterialGWPDataString,
+      operationalCarbonConversionDataString,
+      energyStarUpfrontCostDataString,
+      //stormUpfrontCostDataString,
+      filmUpfrontCostDataString,
     ]) => {
       this.existingWindowUValueData = d3.csvParse(existingWindowUValueDataString);
       this.stormWindowUValueData = d3.csvParse(stormWindowUValueDataString);
@@ -142,14 +162,20 @@ export class CalculationService {
       this.energyStarWindowLifespanData = d3.csvParse(energyStarWindowLifespanDataString);
       this.stormWindowLifespanData = d3.csvParse(stormWindowLifespanDataString);
       this.filmWindowLifespanData = d3.csvParse(filmWindowLifespanDataString);
+      this.retrofitFrameGWPData = d3.csvParse(frameMaterialGWPDataString);
+      this.retrofitGlazeGWPData = d3.csvParse(glazeMaterialGWPDataString);
+      this.operationalCarbonConversionData = d3.csvParse(operationalCarbonConversionDataString);
+      this.energyStarUpfrontCostData = d3.csvParse(energyStarUpfrontCostDataString);
+      //this.stormUpfrontData = d3.csvParse(stormUpfrontCostDataString);
+      this.filmUpfrontCostData = d3.csvParse(filmUpfrontCostDataString);
       this.lock.next('Data Tables Loaded');
     });
    }
 
   getExistingWindowUValue(glaze: GlassTypeEnum, frame: FrameTypeEnum): number {
     var result = this.existingWindowUValueData.filter(function(item) {
-      return item["Glazing Type"] == GlassTypeEnum[glaze];
-    }).find(function(item) { return item["Frame Material"] == FrameTypeEnum[frame]; } );
+      return item["Glazing Type"] == glaze;
+    }).find(function(item) { return item["Frame Material"] == frame; } );
     return +result["U-value"];
   }
 
@@ -158,15 +184,15 @@ export class CalculationService {
 
     if (retrofitType == RetrofitWindowType.ENERGY_STAR) {
       result = this.energyStarUValueData.find(function(item) {
-        return item["Frame Material"] == FrameTypeEnum[frame];
+        return item["Frame Material"] == frame;
       });
     } else if (retrofitType == RetrofitWindowType.STORM) {
       result = this.stormWindowUValueData.find(function(item) {
-        return item["Frame Material"] == FrameTypeEnum[frame];
+        return item["Frame Material"] == frame;
       });
     } else {
       result = this.filmUValueData.find(function(item) {
-        return item["Frame Material"] == FrameTypeEnum[frame];
+        return item["Frame Material"] == frame;
       });
     }
 
@@ -191,7 +217,7 @@ export class CalculationService {
 
   getExistingWindowFlowCoefficient(operability: OperabilityTypeEnum): number {
     var result = this.existingWindowFlowData.find(function(item) {
-      return item["Operability"] == OperabilityTypeEnum[operability];
+      return item["Operability"] == operability;
     });
 
     return +result["Flow coefficient"];
@@ -202,16 +228,16 @@ export class CalculationService {
 
     if (retrofitType == RetrofitWindowType.ENERGY_STAR) {
       result = this.energyStarFlowData.find(function(item) {
-        return item["Operability"] == OperabilityTypeEnum[operability];
+        return item["Operability"] == operability;
       });
     } else if (retrofitType == RetrofitWindowType.STORM) {
       result = this.stormWindowFlowData.find(function(item) {
-        return item["Operability"] == OperabilityTypeEnum[operability];
+        return item["Operability"] == operability;
       });
     } else {
       result = this.filmFlowData.find(function(item) {
-        // TODO: Grab data when done
-        return item["Operability"] == OperabilityTypeEnum[operability];
+        // TODO: Grab data - currently placeholder
+        return item["Operability"] == operability;
       });
     }
 
@@ -220,7 +246,7 @@ export class CalculationService {
 
   getNFactor(homeHeight: number, windShielding: WindShieldingEnum): number {
     var result = this.nFactorData.filter(function(item) {
-      return item["Wind Shielding"] == WindShieldingEnum[windShielding];
+      return item["Wind Shielding"] == windShielding;
     }).find(function(item) { return item["Number of Stories"] == homeHeight; } );
 
     return +result["N-factor"];
@@ -228,10 +254,10 @@ export class CalculationService {
 
   getSolarHeatGainCoefficient(glaze: GlassTypeEnum, frame: FrameTypeEnum): number {
     var result = this.existingWindowSHGCData.find(function(item) {
-      return item["Glazing Type"] == GlassTypeEnum[glaze];
+      return item["Glazing Type"] == glaze;
     });
 
-    return +result[FrameTypeEnum[frame]];
+    return +result[frame];
   }
 
   getRetrofitHeatGainCoefficient(operability: OperabilityTypeEnum, frame: FrameTypeEnum, retrofitType: RetrofitWindowType): number {
@@ -239,19 +265,19 @@ export class CalculationService {
 
     if (retrofitType == RetrofitWindowType.ENERGY_STAR) {
       result = this.energyStarSHGCData.find(function(item) {
-        return item["Operability"] == OperabilityTypeEnum[operability];
+        return item["Operability"] == operability;
       });
     } else if (retrofitType == RetrofitWindowType.STORM) {
       result = this.stormWindowSHGCData.find(function(item) {
-        return item["Operability"] == OperabilityTypeEnum[operability];
+        return item["Operability"] == operability;
       });
     } else {
       result = this.filmSHGCData.find(function(item) {
-        return item["Operability"] == OperabilityTypeEnum[operability];
+        return item["Operability"] == operability;
       });
     }
 
-    return +result[FrameTypeEnum[frame]];
+    return +result[frame];
   }
 
   getHeatingSeasonSolarRadiation(orientation: OrientationTypeEnum, heatingSetPoint: number): number {
@@ -259,7 +285,7 @@ export class CalculationService {
       return item["Heating Setpoint"] == heatingSetPoint;
     });
 
-    return +result[OrientationTypeEnum[orientation]];
+    return +result[orientation];
   }
 
   getHeatingSeasonSolarRadiation_simp(orientation: OrientationTypeEnum, heatingSetPoint: number): number {
@@ -268,13 +294,13 @@ export class CalculationService {
     });
 
     var orientationResult = this.windowOrientationDistributionData.find(function(item) {
-      return item["Primary Orientation"] == OrientationTypeEnum[orientation];
+      return item["Primary Orientation"] == orientation;
     });
 
-    return ((+radiationResult["NORTH"]) * (+orientationResult["NORTH"])) +
-      ((+radiationResult["SOUTH"]) * (+orientationResult["SOUTH"])) +
-      ((+radiationResult["EAST"]) * (+orientationResult["EAST"])) +
-      ((+radiationResult["WEST"]) * (+orientationResult["WEST"]));
+    return ((+radiationResult["North"]) * (+orientationResult["North"])) +
+      ((+radiationResult["South"]) * (+orientationResult["South"])) +
+      ((+radiationResult["East"]) * (+orientationResult["East"])) +
+      ((+radiationResult["West"]) * (+orientationResult["West"]));
   }
 
   getCoolingSeasonSolarRadiation(orientation: OrientationTypeEnum, coolingSetPoint: number): number {
@@ -282,7 +308,7 @@ export class CalculationService {
       return item["Cooling Setpoint"] == coolingSetPoint;
     });
 
-    return +result[OrientationTypeEnum[orientation]];
+    return +result[orientation];
   }
 
   getCoolingSeasonSolarRadiation_simp(orientation: OrientationTypeEnum, coolingSetPoint: number): number {
@@ -291,18 +317,18 @@ export class CalculationService {
     });
 
     var orientationResult = this.windowOrientationDistributionData.find(function(item) {
-      return item["Primary Orientation"] == OrientationTypeEnum[orientation];
+      return item["Primary Orientation"] == orientation;
     });
 
-    return ((+radiationResult["NORTH"]) * (+orientationResult["NORTH"])) +
-      ((+radiationResult["SOUTH"]) * (+orientationResult["SOUTH"])) +
-      ((+radiationResult["EAST"]) * (+orientationResult["EAST"])) +
-      ((+radiationResult["WEST"]) * (+orientationResult["WEST"]));
+    return ((+radiationResult["North"]) * (+orientationResult["North"])) +
+      ((+radiationResult["South"]) * (+orientationResult["South"])) +
+      ((+radiationResult["East"]) * (+orientationResult["East"])) +
+      ((+radiationResult["West"]) * (+orientationResult["West"]));
   }
 
   getHeatingSystemEfficiency(heatingSystem: HeatingSystemEnum): number {
     var result = this.hvacSystemEfficiencyData.find(function(item) {
-      return item["System"] == HeatingSystemEnum[heatingSystem];
+      return item["System"] == heatingSystem;
     });
 
     return +result["Heating Efficiency"];
@@ -310,7 +336,7 @@ export class CalculationService {
 
   getCoolingSystemEfficiency(coolingSystem: CoolingSystemEnum): number {
     var result = this.hvacSystemEfficiencyData.find(function(item) {
-      return item["System"] == CoolingSystemEnum[coolingSystem];
+      return item["System"] == coolingSystem;
     });
 
     return +result["Cooling Efficiency"];
@@ -318,7 +344,7 @@ export class CalculationService {
 
   getHeatingFuelConversionFactor(heatingSystem: HeatingSystemEnum): number {
     var result = this.hvacFuelConversionData.find(function(item) {
-      return item["System"] == HeatingSystemEnum[heatingSystem];
+      return item["System"] == heatingSystem;
     });
 
     return +result["Conversion Factor"];
@@ -326,7 +352,7 @@ export class CalculationService {
 
   getCoolingFuelConversionFactor(coolingSystem: CoolingSystemEnum): number {
     var result = this.hvacFuelConversionData.find(function(item) {
-      return item["System"] == CoolingSystemEnum[coolingSystem];
+      return item["System"] == coolingSystem;
     });
 
     return +result["Conversion Factor"];
@@ -334,7 +360,7 @@ export class CalculationService {
 
   getHeatingEnergyPricePerUnit(heatingSystem: HeatingSystemEnum): number {
     var result = this.heatingEnergyPriceData.find(function(item) {
-      return item["Source"] == HeatingSystemEnum[heatingSystem]
+      return item["Source"] == heatingSystem;
     });
 
     return +result.Price;
@@ -342,31 +368,105 @@ export class CalculationService {
 
   getCoolingEnergyPricePerUnit(coolingSystem: CoolingSystemEnum): number {
     var result = this.coolingEnergyPriceData.find(function(item) {
-      return item["Source"] == CoolingSystemEnum[coolingSystem]
+      return item["Source"] == coolingSystem;
     });
 
     return +result.Price;
   }
 
   // TODO: Test this
-  getProductLifespan(frame: FrameTypeEnum, retrofitType: RetrofitWindowType): number {
+  getProductLifespan(frame: NewFrameType, retrofitType: RetrofitWindowType): number {
     let result;
 
     if (retrofitType == RetrofitWindowType.ENERGY_STAR) {
       result = this.energyStarWindowLifespanData.find(function(item) {
-        return item["Product"] == FrameTypeEnum[frame];
+        return item["Product"] == NewFrameType[frame];
       });
     } else if (retrofitType == RetrofitWindowType.STORM) {
       result = this.stormWindowLifespanData.find(function(item) {
-        return item["Product"] == FrameTypeEnum[frame];
+        return item["Product"] == NewFrameType[frame];
       });
     } else {
       result = this.filmWindowLifespanData.find(function(item) {
-        return item["Product"] == FrameTypeEnum[frame];
+        return item["Product"] == NewFrameType[frame];
       });
     }
     console.log(result)
 
     return +result["Lifespan"];
+  }
+
+  // TODO: Test this
+  getRetrofitFrameGWP(frame: NewFrameType, windowType: RetrofitWindowType): number {
+    let result;
+
+    if (windowType == RetrofitWindowType.ENERGY_STAR) {
+      result = this.retrofitFrameGWPData.filter(function(item) {
+        return item["Retrofit Type"] == "ENERGY_STAR";
+      }).find(function(item) { return item["Frame Material"] == NewFrameType[frame]; } );
+    } else {
+      result = this.retrofitFrameGWPData.find(function(item) {
+        return item["Retrofit Type"] == RetrofitWindowType[windowType];
+      });
+    }
+
+    return +result["GWP"];
+  }
+
+  // TODO: Test this
+  getRetrofitGlazeGWP(windowType: RetrofitWindowType): number {
+    let result = this.retrofitGlazeGWPData.find(function(item) {
+      return item["Retrofit Type"] == RetrofitWindowType[windowType];
+    });
+
+    return +result["GWP"];
+  }
+
+  // TODO: Test this
+  getHeatingOperationalCarbonConversionFactor(heatingSystem: HeatingSystemEnum): number {
+    let result = this.operationalCarbonConversionData.find(function(item) {
+      return item["HVAC System"] == heatingSystem;
+    });
+
+    return +result["Conversion Factor"];
+  }
+
+  // TODO: Test this
+  getCoolingOperationalCarbonConversionFactor(coolingSystem: CoolingSystemEnum): number {
+    let result = this.operationalCarbonConversionData.find(function(item) {
+      return item["HVAC System"] == coolingSystem;
+    });
+
+    return +result["Conversion Factor"];
+  }
+
+  // TODO: Test this
+  getEnergyStarUpfrontCost(frame: NewFrameType, low: boolean): number {
+    let result = this.energyStarUpfrontCostData.find(function(item) {
+      return item["Frame Material"] == NewFrameType[frame];
+    });
+
+    if (low) {
+      return +result["Low"];
+    } else {
+      return +result["High"];
+    }
+  }
+
+  getStormUpfrontCost(low: boolean): number {
+    if (low) {
+      return 1;
+    } else {
+      return 1;
+    }
+  }
+
+  // TODO: Test this
+  getFilmUpfrontCost(low: boolean): number {
+    if (low) {
+      return +this.filmUpfrontCostData[0]["Low"];
+    } else {
+      return +this.filmUpfrontCostData[0]["High"];
+    }
   }
 }

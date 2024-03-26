@@ -144,7 +144,7 @@ export class WindowPropertiesComponent {
 
   selectSimplifiedOrientationOption(value: string, index: number) {
     this.currentlyClickedOrientationCardIndex = index;
-    this.simpleWindow.orientation = OrientationTypeEnum[value];
+    this.simpleWindow.orientation = value as OrientationTypeEnum;
     this.userData.windowProperties = [ this.simpleWindow ];
     this.userDataService.setUserWindowData(this.userData);
   }

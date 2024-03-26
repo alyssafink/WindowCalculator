@@ -1,7 +1,7 @@
 System,Conversion Factor
-HEAT_PUMP,1
-HF_HEAT_PUMP,1
-NATURAL_GAS,0.01
-PROPANE,0.011
-ELECTRIC,0.293
-CENTRAL_AC,1
+Heat Pump,1
+High Efficiency Heat Pump,1
+Natural Gas Furnace,0.01
+Propane Furnace,0.011
+Electric Furnace,0.293
+Central Air Conditioning,1

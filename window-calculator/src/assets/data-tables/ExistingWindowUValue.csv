@@ -1,13 +1,13 @@
 Glazing Type,Frame Material,U-value
-CLEAR,ALUMINUM,1.24
-CLEAR,ALUMINUM_TB,1.07
-CLEAR,WOOD,0.93
-CLEAR,VINYL,0.91
-TINTED,ALUMINUM,1.24
-TINTED,ALUMINUM_TB,1.07
-TINTED,WOOD,0.93
-TINTED,VINYL,0.91
-LOW_E,ALUMINUM,0.97
-LOW_E,ALUMINUM_TB,0.8
-LOW_E,WOOD,0.67
-LOW_E,VINYL,0.65
+Clear,Aluminum,1.24
+Clear,Aluminum with Thermal Break,1.07
+Clear,Wood,0.93
+Clear,Vinyl,0.91
+Tinted,Akuminum,1.24
+Tinted,Aluminum with Thermal Break,1.07
+Tinted,Wood,0.93
+Tinted,Vinyl,0.91
+Low-E,Aluminum,0.97
+Low-E,Aluminum with Thermal Break,0.8
+Low-E,Wood,0.67
+Low-E,Vinyl,0.65

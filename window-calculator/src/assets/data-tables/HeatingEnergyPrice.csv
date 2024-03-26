@@ -1,6 +1,6 @@
 Source,Price
-HEAT_PUMP,0.146
-HF_HEAT_PUMP,0.146
-NATURAL_GAS,1.80484
-PROPANE,3.09
-ELECTRIC,0.146
+Heat Pump,0.146
+High Efficiency Heat Pump,0.146
+Natural Gas Furnace,1.80484
+Propane Furnace,3.09
+Electric Furnace,0.146

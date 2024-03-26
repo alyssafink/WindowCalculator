@@ -1,7 +1,7 @@
-Operability,ALUMINUM,ALUMINUM_TB,VINYL,WOOD
-FIXED,0.23,0.23,0.23,0.23
-AWNING_SINGLE,0.23,0.23,0.23,0.23
-AWNING_MULTI,0.23,0.23,0.23,0.23
-VERT_PRE,0.23,0.23,0.23,0.23
-VERT_POST,0.23,0.23,0.23,0.23
-HORIZ,0.23,0.23,0.23,0.23
+Operability,Aluminum,Aluminum with Thermal Break,Vinyl,Wood
+Fixed,0.23,0.23,0.23,0.23
+Awning Window (Single Sash),0.23,0.23,0.23,0.23
+Awning Window (Multiple Sash),0.23,0.23,0.23,0.23
+Vertical Slider (Pre-1970),0.23,0.23,0.23,0.23
+Vertical Slider (Post-1970),0.23,0.23,0.23,0.23
+Horizontal Slider,0.23,0.23,0.23,0.23

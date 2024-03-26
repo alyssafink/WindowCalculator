@@ -33,12 +33,14 @@ export class HvacSystemsComponent {
   selectHeatingOption(value: HeatingSystemEnum, index: number) {
     this.currentlyClickedHeatingCardIndex = index;
     this.userData.heatingSystem = value;
+    console.log(this.userData)
     this.userDataService.setUserWindowData(this.userData);
   }
 
   selectCoolingOption(value: CoolingSystemEnum, index: number) {
     this.currentlyClickedCoolingCardIndex = index;
     this.userData.coolingSystem = value;
+    console.log(this.userData)
     this.userDataService.setUserWindowData(this.userData);
   }
 

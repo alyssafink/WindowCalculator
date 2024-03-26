@@ -27,31 +27,7 @@ export class ThermostatSystemsComponent {
     this.heatingSetPoint = 70;
     this.coolingSetPoint = 77;
 
-    let homeData = {
-      homeName: "Test",
-      heatingSystem: HeatingSystemEnum.ELECTRIC,
-      homeHeight: 3,
-      coolingSetPoint: 60,
-      heatingSetPoint: 55,
-      coolingSystem: CoolingSystemEnum.CENTRAL_AC,
-      windShielding: WindShieldingEnum.EXPOSED,
-      windowProperties: [{
-        name: "",
-        width: 0,
-        height: 0,
-        area: 256,
-        perimeter: 247,
-        glass: GlassTypeEnum.CLEAR,
-        frame: FrameTypeEnum.ALUMINUM,
-        operability: OperabilityTypeEnum.AWNING_MULTI,
-        orientation: OrientationTypeEnum.EAST,
-        simplified: false
-      }]
-    }
-
     this.userData = this.userDataService.getUserWindowData();
-
-    this.userData = homeData;
 
     this.userData.heatingSetPoint = this.heatingSetPoint;
     this.userData.coolingSetPoint = this.coolingSetPoint;

@@ -3,14 +3,14 @@ import { UserDataService } from '../data-collection/user-data/user-data.service'
 import { CoolingSystemEnum, HeatingSystemEnum, WindShieldingEnum, WindowDataModel } from '../data-collection/user-data/window-data-model';
 import { FrameTypeEnum, GlassTypeEnum, OperabilityTypeEnum, OrientationTypeEnum, WindowPropertiesModel } from '../data-collection/user-data/window-properties-model';
 import { CalculationService } from './services/calculation.service';
-import { RetrofitWindowType } from './retrofit-window';
-import { NgIf } from '@angular/common';
+import { NewFrameType, RetrofitWindowType } from './retrofit-window';
+import { CommonModule, NgIf } from '@angular/common';
 import { FinancialCalculator } from './financial-calculator';
 
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, CommonModule],
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
@@ -19,59 +19,58 @@ export class ReportComponent implements OnInit {
 // Do calculations here and pass to report sub-components
 // user can input a quote from window business and it should factor into financial calculation
   loaded = false;
+  userInputFrameMaterial: NewFrameType = NewFrameType.FIBERGLASS;
+  userInputUpfrontCost_energyStar: number = 0;
+  userInputUpfrontCost_storm: number = 0;
+  userInputUpfrontCost_film: number = 0;
 
-  upfrontCost = {}; // Typical upfront cost for replacement windows
+  upfrontCost_low = {}; // Typical low end upfront cost for replacement windows
+  upfrontCost_high = {}; // Typical high end upfront cost for replacement windows
   deltaQh = {}; // Annual heating demand savings
   heatSavings = {}; // Sh, annual heating financial savings
   deltaQc = {}; // Annual cooling demand savings
   coolSavings = {}; // Sc, annual cooling financial savings
   totalSavings = {}; // Sy, annual total financial savings
   productLifespan = {}; // Typical product lifespan for replacement windows
-  lifetimeSavings = {}; // Lifetime energy savings for replacement windows
-  paybackDates = {};
+  lifetimeSavings = {}; // Lifetime financial savings for replacement windows
+  paybackDates = {}; // Payback dates for replacement windows
+  upfrontCarbonImpact = {};
+  lifetimeEnergyImpact = {};
+  lifetimeEnergySavings = {};
+  lifetimeTreeImpact = {};
 
   constructor(private userDataService: UserDataService, private calculationService: CalculationService, private financialCalculator: FinancialCalculator) {}
 
   ngOnInit() {
     // run calculations and then load child components
     let homeData: WindowDataModel = this.userDataService.getUserWindowData();
-    homeData = {
-      homeName: "Test",
-      heatingSystem: HeatingSystemEnum.ELECTRIC,
-      homeHeight: 3,
-      coolingSetPoint: 60,
-      heatingSetPoint: 55,
-      coolingSystem: CoolingSystemEnum.CENTRAL_AC,
-      windShielding: WindShieldingEnum.EXPOSED,
-      windowProperties: [{
-        name: "",
-        width: 0,
-        height: 0,
-        area: 256,
-        perimeter: 247,
-        glass: GlassTypeEnum.CLEAR,
-        frame: FrameTypeEnum.ALUMINUM,
-        operability: OperabilityTypeEnum.AWNING_MULTI,
-        orientation: OrientationTypeEnum.EAST,
-        simplified: false
-      }]
-    }
+    console.log(homeData)
 
     this.calculationService.observableLock.subscribe((x) => {
       if (x == "Data Tables Loaded") {
         for (let windowType of Object.values(RetrofitWindowType).filter((v) => !isNaN(Number(v))).map(v => Number(v))) {
           windowType = RetrofitWindowType[RetrofitWindowType[windowType]]
+          this.calculateUpfrontCost(homeData.windowProperties, windowType);
+
+          // Tested
           this.calculateAnnualHeatingDemandEnergySavings(homeData, windowType);
           this.calculateAnnualHeatingFinancialSavings(homeData, windowType);
           this.calculateAnnualCoolingDemandEnergySavings(homeData, windowType);
           this.calculateAnnualCoolingFinancialSavings(homeData, windowType);
           this.calculateTotalAnnualFinancialSavings(homeData, windowType);
+          //
 
-          this.calculateProductLifespan(FrameTypeEnum.ALUMINUM, windowType); // TODO: Fix frame type
+          this.calculateProductLifespan(this.userInputFrameMaterial, windowType);
 
           this.calculateLifetimeSavings(windowType);
 
           this.calculatePaybackDate(windowType);
+
+          // recalculate the following for Energy Star windows upon frame material input change
+          this.calculateUpfrontCarbonImpact(homeData, windowType);
+          this.calculateLifetimeEnergySavings(homeData, windowType);
+          this.calculateLifetimeEnergyImpact(windowType);
+          this.calculateLifetimeTreeImpact(windowType);
         }
 
         console.log("report loaded")
@@ -82,12 +81,105 @@ export class ReportComponent implements OnInit {
     this.calculationService.loadDataTables();
   }
 
-  calculatePaybackDate(retrofitWindowType: RetrofitWindowType) {
-    let currentYear = new Date().getFullYear();
-    this.paybackDates[retrofitWindowType] = currentYear + (this.upfrontCost[retrofitWindowType] / this.totalSavings[retrofitWindowType]);
+  calculateUpfrontCost(windowData: WindowPropertiesModel[], windowType: RetrofitWindowType) {
+    if (windowType == RetrofitWindowType.ENERGY_STAR) {
+      // Low: number of windows * price per (low)
+      // High: number of windows * price per (high)
+      let pricePerLow = this.calculationService.getEnergyStarUpfrontCost(this.userInputFrameMaterial, true);
+      let pricePerHigh = this.calculationService.getEnergyStarUpfrontCost(this.userInputFrameMaterial, false);
+      let numWindows = windowData[0].simplified ? 16 : windowData.length; // If using simplified data, default to 16 windows
+
+      this.upfrontCost_low[windowType] = pricePerLow * numWindows;
+      this.upfrontCost_high[windowType] = pricePerHigh * numWindows;
+    } else if (windowType == RetrofitWindowType.STORM) {
+      // TODO: idk
+    } else {
+      // Low: total area * price per (low)
+      // High: total area * price per (high)
+      let pricePerLow = this.calculationService.getStormUpfrontCost(true);
+      let pricePerHigh = this.calculationService.getStormUpfrontCost(false);
+      let totalArea = 0;
+      for (let window of windowData) {
+        totalArea += window.area;
+      }
+
+      this.upfrontCost_low[windowType] = pricePerLow * totalArea;
+      this.upfrontCost_high[windowType] = pricePerHigh * totalArea;
+    }
   }
 
-  calculateProductLifespan(frame: FrameTypeEnum, retrofitWindowType: RetrofitWindowType) {
+  calculateUpfrontCarbonImpact(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
+    let frameGWP = this.calculateFrameGWP(homeData.windowProperties, retrofitWindowType);
+    let glazeGWP = this.calculateGlazeGWP(homeData.windowProperties, retrofitWindowType);
+    this.upfrontCarbonImpact[retrofitWindowType] = frameGWP + glazeGWP;
+  }
+
+  calculateFrameGWP(windowData: WindowPropertiesModel[], retrofitWindowType: RetrofitWindowType) {
+    let Mf = this.calculationService.getRetrofitFrameGWP(this.userInputFrameMaterial, retrofitWindowType);
+    let Pt = 0;
+    for (let window of windowData) {
+      Pt += window.perimeter;
+    }
+
+    return Mf * Pt;
+  }
+
+  calculateGlazeGWP(windowData: WindowPropertiesModel[], retrofitWindowType: RetrofitWindowType) {
+    let Mg = this.calculationService.getRetrofitGlazeGWP(retrofitWindowType);
+    let At = 0;
+    for (let window of windowData) {
+      At += window.area;
+    }
+
+    return Mg * At;
+  }
+
+  calculateLifetimeEnergySavings(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
+    let heatingSavings = this.calculateLifetimeOperationalHeatingSavings(homeData.heatingSystem, retrofitWindowType);
+    let coolingSavings = this.calculateLifetimeOperationalCoolingSavings(homeData.coolingSystem, retrofitWindowType);
+    this.lifetimeEnergySavings[retrofitWindowType] = heatingSavings + coolingSavings;
+  }
+
+  calculateLifetimeOperationalHeatingSavings(heatingSystem: HeatingSystemEnum, windowType: RetrofitWindowType): number {
+    let deltaQh = this.deltaQh[windowType];
+    let Eh = this.calculationService.getHeatingSystemEfficiency(heatingSystem);
+    let Fh = this.calculationService.getHeatingFuelConversionFactor(heatingSystem);
+    let Xh = this.calculationService.getHeatingOperationalCarbonConversionFactor(heatingSystem);
+    let L = this.productLifespan[windowType];
+
+    return (deltaQh / Eh) * Fh * Xh * L;
+  }
+
+  calculateLifetimeOperationalCoolingSavings(coolingSystem: CoolingSystemEnum, windowType: RetrofitWindowType): number {
+    let deltaQc = this.deltaQc[windowType];
+    let Ec = this.calculationService.getCoolingSystemEfficiency(coolingSystem);
+    let Fc = this.calculationService.getCoolingFuelConversionFactor(coolingSystem);
+    let Xc = this.calculationService.getCoolingOperationalCarbonConversionFactor(coolingSystem);
+    let L = this.productLifespan[windowType];
+
+    return (deltaQc / Ec) * Fc * Xc * L;
+  }
+
+  calculateLifetimeEnergyImpact(retrofitWindowType: RetrofitWindowType) {
+    this.lifetimeEnergyImpact[retrofitWindowType] = this.lifetimeEnergySavings[retrofitWindowType] - this.upfrontCarbonImpact[retrofitWindowType];
+  }
+
+  calculateLifetimeTreeImpact(retrofitWindowType: RetrofitWindowType) {
+    const EPA_TREE_FACTOR = 60;
+    this.lifetimeTreeImpact[retrofitWindowType] = this.lifetimeEnergyImpact[retrofitWindowType] / EPA_TREE_FACTOR;
+  }
+
+  calculatePaybackDate(retrofitWindowType: RetrofitWindowType) {
+    let currentYear = new Date().getFullYear();
+    let upfrontCost =
+      retrofitWindowType == RetrofitWindowType.ENERGY_STAR ? this.userInputUpfrontCost_energyStar :
+      retrofitWindowType == RetrofitWindowType.STORM ? this.userInputUpfrontCost_storm :
+      this.userInputUpfrontCost_film;
+
+    this.paybackDates[retrofitWindowType] = currentYear + (upfrontCost / this.totalSavings[retrofitWindowType]);
+  }
+
+  calculateProductLifespan(frame: NewFrameType, retrofitWindowType: RetrofitWindowType) {
     this.productLifespan[retrofitWindowType] = this.calculationService.getProductLifespan(frame, retrofitWindowType)
   }
 
@@ -97,26 +189,30 @@ export class ReportComponent implements OnInit {
 
   calculateAnnualHeatingDemandEnergySavings(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
     let deltaQth = this.financialCalculator.calculateHeatTransmission_HeatingSeason(homeData, retrofitWindowType);
-    let deltaQsh = this.financialCalculator.calculateInfiltrationHeatLoss_HeatingSeason(homeData, retrofitWindowType);
-    let deltaQvh = this.financialCalculator.calculateSolarHeatGain_HeatingSeason(homeData, retrofitWindowType);
+    let deltaQvh = this.financialCalculator.calculateInfiltrationHeatLoss_HeatingSeason(homeData, retrofitWindowType);
+    let deltaQsh = this.financialCalculator.calculateSolarHeatGain_HeatingSeason(homeData, retrofitWindowType);
 
     this.deltaQh[retrofitWindowType] = deltaQth + deltaQvh - deltaQsh;
   }
 
   calculateAnnualHeatingFinancialSavings(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
     let energyCoeff = this.calculationService.getHeatingSystemEfficiency(homeData.heatingSystem);
+    console.log('Eh',energyCoeff)
     let fuelConversionFactor = this.calculationService.getHeatingFuelConversionFactor(homeData.heatingSystem);
+    console.log('Fh',fuelConversionFactor)
     let energyPrice = this.calculationService.getHeatingEnergyPricePerUnit(homeData.heatingSystem);
+    console.log('P',energyPrice)
+    console.log('Qh', this.deltaQh[retrofitWindowType])
 
     this.heatSavings[retrofitWindowType] = (this.deltaQh[retrofitWindowType] / energyCoeff) * fuelConversionFactor * energyPrice;
   }
 
   calculateAnnualCoolingDemandEnergySavings(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
     let deltaQtc = this.financialCalculator.calculateHeatTransmission_CoolingSeason(homeData, retrofitWindowType);
-    let deltaQsc = this.financialCalculator.calculateInfiltrationHeatLoss_CoolingSeason(homeData, retrofitWindowType);
-    let deltaQvc = this.financialCalculator.calculateSolarHeatGain_CoolingSeason(homeData, retrofitWindowType);
+    let deltaQvc = this.financialCalculator.calculateInfiltrationHeatLoss_CoolingSeason(homeData, retrofitWindowType);
+    let deltaQsc = this.financialCalculator.calculateSolarHeatGain_CoolingSeason(homeData, retrofitWindowType);
 
-    this.deltaQc[retrofitWindowType] = deltaQtc + deltaQvc - deltaQsc;
+    this.deltaQc[retrofitWindowType] = deltaQtc + deltaQvc + deltaQsc;
   }
 
   calculateAnnualCoolingFinancialSavings(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
@@ -124,7 +220,7 @@ export class ReportComponent implements OnInit {
     let fuelConversionFactor = this.calculationService.getCoolingFuelConversionFactor(homeData.coolingSystem);
     let energyPrice = this.calculationService.getCoolingEnergyPricePerUnit(homeData.coolingSystem);
 
-    this.coolSavings[retrofitWindowType] = (this.deltaQh[retrofitWindowType] / energyCoeff) * fuelConversionFactor * energyPrice;
+    this.coolSavings[retrofitWindowType] = (this.deltaQc[retrofitWindowType] / energyCoeff) * fuelConversionFactor * energyPrice;
   }
 
   calculateTotalAnnualFinancialSavings(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {

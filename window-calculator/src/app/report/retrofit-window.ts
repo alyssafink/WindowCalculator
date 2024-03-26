@@ -3,3 +3,10 @@ export enum RetrofitWindowType {
   STORM,
   ENERGY_STAR
 }
+
+export enum NewFrameType {
+  ALUMINUM,
+  VINYL,
+  FIBERGLASS,
+  WOOD
+}

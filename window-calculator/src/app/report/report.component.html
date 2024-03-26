@@ -1,2 +1,18 @@
 <p>report works!</p>
-<p *ngIf="loaded">Report Loaded</p>
+<div *ngIf="loaded">
+  <h5>Data Dump:</h5>
+  <div>Upfront Cost, Low End: {{upfrontCost_low | json}}</div>
+  <div>Upfront Cost, High End: {{upfrontCost_high | json}}</div>
+  <div>Delta Qh: {{deltaQh | json}}</div>
+  <div>Heat Savings: {{heatSavings | json}}</div>
+  <div>deltaQc: {{deltaQc | json}}</div>
+  <div>Cool Savings: {{coolSavings | json}}</div>
+  <div style="font-weight: bolder;">Total Annual Financial Savings: {{totalSavings | json}}</div>
+  <div>Product Lifespan: {{productLifespan | json}}</div>
+  <div>Lifetime Financial Savings: {{lifetimeSavings | json}}</div>
+  <div>Payback Dates: {{paybackDates | json}}</div>
+  <div>Upfront Carbon Impact: {{upfrontCarbonImpact | json}}</div>
+  <div>Lifetime Energy Savings: {{lifetimeEnergySavings | json}}</div>
+  <div>Lifetime Energy Impact: {{lifetimeEnergyImpact | json}}</div>
+  <div>Lifetime Tree Impact: {{lifetimeTreeImpact | json}}</div>
+</div>

@@ -1,4 +1,4 @@
 Source,Price
-HEAT_PUMP,0.15
-HI_EFF_HEAT_PUMP,0.15
-CENTRAL_AC,0.15
+Heat Pump,0.15
+High Efficiency Heat Pump,0.15
+Central Air Conditioning,0.15

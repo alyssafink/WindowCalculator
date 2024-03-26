@@ -1,5 +1,5 @@
 Frame Material,U-value
-ALUMINUM,0.4
-ALUMINUM_TB,0.4
-WOOD,0.4
-VINYL,0.4
+Aluminum,0.4
+Aluminum with Thermal Break,0.4
+Wood,0.4
+Vinyl,0.4
