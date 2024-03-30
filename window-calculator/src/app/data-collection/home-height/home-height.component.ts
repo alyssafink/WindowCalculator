@@ -26,7 +26,6 @@ export class HomeHeightComponent {
 
   ngOnInit() {
     this.userData = this.userDataService.getUserWindowData();
-    let windowData: WindowDataModel = new WindowDataModel();
   }
 
   selectOption(height: number) {

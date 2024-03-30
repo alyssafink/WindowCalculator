@@ -21,9 +21,6 @@ export class DataCollectionComponent {
 
   ngOnInit() {
     this.currentStage = 0;
-    let windowData: WindowDataModel = new WindowDataModel();
-    // Assign window data from bound vars
-    this.userDataService.setUserWindowData(windowData);
   }
 
   incrementStage() {

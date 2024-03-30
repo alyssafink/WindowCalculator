@@ -1,3 +1,126 @@
-<p>home works!</p>
-This is the homepage. it does stuff
-
+<!-- header -->
+<app-header></app-header>
+<!-- Data collection component -->
+<div class="card mx-auto w-75 mb-4 mt-4">
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="row mt-5 ms-4 mb-3">
+        <div class="col">
+          <h1>Window Calculator</h1>
+          <h3>Tucson Window Upgrades</h3>
+          <div class="mt-4 mb-4">
+            Considering upgrading your single-pane windows, but not sure it's worth it?
+          </div>
+          <div class="mt-4 mb-4">
+            The Window Calculator can help.
+          </div>
+          <div class="mt-4 mb-4">
+            After you share some basic information about your home,
+            the Window Calculator will create a personalized report
+            detailing the financial, comfort, and environmental benefits of
+            three different window upgrade options for your home.
+          </div>
+          <input type="text" class="form-control" id="homeNameControl" placeholder="Insert project name"  [(ngModel)]="homeName">
+        </div>
+        <div class="col">
+          <img class="img-fluid" [src]="'/assets/home/person.png'" alt="Person shocked at electricity bill" />
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-sm-3 w-10 d-flex justify-content-end" style="padding:0;">
+          <button type="button" class="btn btn-secondary" (click)="startModel()" [disabled]="!homeName">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Rest -->
+<div class="d-flex justify-content-center">
+  <div class="accordion w-75" id="faq">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-expanded="true" aria-controls="dropdown1">
+          Who is this tool for?
+        </button>
+      </h2>
+      <div id="dropdown1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+        <div class="accordion-body">
+          Info
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false" aria-controls="dropdown2">
+          How do I know if I have single or double-pane windows?
+        </button>
+      </h2>
+      <div id="dropdown2" class="accordion-collapse collapse" data-bs-parent="#faq">
+        <div class="accordion-body">
+          Info
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-expanded="false" aria-controls="dropdown3">
+          What about historic windows?
+        </button>
+      </h2>
+      <div id="dropdown3" class="accordion-collapse collapse" data-bs-parent="#faq">
+        <div class="accordion-body">
+          Info
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown4" aria-expanded="false" aria-controls="dropdown4">
+          What are the benefits of window upgrades?
+        </button>
+      </h2>
+      <div id="dropdown4" class="accordion-collapse collapse" data-bs-parent="#faq">
+        <div class="accordion-body">
+          Info
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown5" aria-expanded="false" aria-controls="dropdown5">
+          How much info do I need to know about my home?
+        </button>
+      </h2>
+      <div id="dropdown5" class="accordion-collapse collapse" data-bs-parent="#faq">
+        <div class="accordion-body">
+          Info
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown6" aria-expanded="false" aria-controls="dropdown6">
+          How does the calculator work?
+        </button>
+      </h2>
+      <div id="dropdown6" class="accordion-collapse collapse" data-bs-parent="#faq">
+        <div class="accordion-body">
+          Info
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown7" aria-expanded="false" aria-controls="dropdown7">
+          What are the window upgrade options?
+        </button>
+      </h2>
+      <div id="dropdown7" class="accordion-collapse collapse" data-bs-parent="#faq">
+        <div class="accordion-body">
+          Info
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
