@@ -13,10 +13,10 @@ export class WindowDataModel {
 }
 
 export enum HomeHeightEnum {
-  ONE = 1,
-  ONE_HALF = 1.5,
-  TWO = 2,
-  THREE = 3
+  ONE = "1 Story",
+  ONE_HALF = "1.5 Story",
+  TWO = "2 Story",
+  THREE = "3 Story"
 }
 
 export enum WindShieldingEnum {

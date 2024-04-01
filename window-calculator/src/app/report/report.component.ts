@@ -6,11 +6,13 @@ import { CalculationService } from './services/calculation.service';
 import { NewFrameType, RetrofitWindowType } from './retrofit-window';
 import { CommonModule, NgIf } from '@angular/common';
 import { FinancialCalculator } from './financial-calculator';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [NgIf, CommonModule],
+  imports: [NgIf, CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
@@ -18,6 +20,7 @@ export class ReportComponent implements OnInit {
 // Get in data from data collection components via service
 // Do calculations here and pass to report sub-components
 // user can input a quote from window business and it should factor into financial calculation
+  public homeData: WindowDataModel;
   loaded = false;
   userInputFrameMaterial: NewFrameType = NewFrameType.FIBERGLASS;
   userInputUpfrontCost_energyStar: number = 0;
@@ -43,21 +46,21 @@ export class ReportComponent implements OnInit {
 
   ngOnInit() {
     // run calculations and then load child components
-    let homeData: WindowDataModel = this.userDataService.getUserWindowData();
-    console.log(homeData)
+    this.homeData = this.userDataService.getUserWindowData();
+    console.log(this.homeData)
 
     this.calculationService.observableLock.subscribe((x) => {
       if (x == "Data Tables Loaded") {
         for (let windowType of Object.values(RetrofitWindowType).filter((v) => !isNaN(Number(v))).map(v => Number(v))) {
           windowType = RetrofitWindowType[RetrofitWindowType[windowType]]
-          this.calculateUpfrontCost(homeData.windowProperties, windowType);
+          this.calculateUpfrontCost(this.homeData.windowProperties, windowType);
 
           // Tested
-          this.calculateAnnualHeatingDemandEnergySavings(homeData, windowType);
-          this.calculateAnnualHeatingFinancialSavings(homeData, windowType);
-          this.calculateAnnualCoolingDemandEnergySavings(homeData, windowType);
-          this.calculateAnnualCoolingFinancialSavings(homeData, windowType);
-          this.calculateTotalAnnualFinancialSavings(homeData, windowType);
+          this.calculateAnnualHeatingDemandEnergySavings(this.homeData, windowType);
+          this.calculateAnnualHeatingFinancialSavings(this.homeData, windowType);
+          this.calculateAnnualCoolingDemandEnergySavings(this.homeData, windowType);
+          this.calculateAnnualCoolingFinancialSavings(this.homeData, windowType);
+          this.calculateTotalAnnualFinancialSavings(this.homeData, windowType);
           //
 
           this.calculateProductLifespan(this.userInputFrameMaterial, windowType);
@@ -67,8 +70,8 @@ export class ReportComponent implements OnInit {
           this.calculatePaybackDate(windowType);
 
           // recalculate the following for Energy Star windows upon frame material input change
-          this.calculateUpfrontCarbonImpact(homeData, windowType);
-          this.calculateLifetimeEnergySavings(homeData, windowType);
+          this.calculateUpfrontCarbonImpact(this.homeData, windowType);
+          this.calculateLifetimeEnergySavings(this.homeData, windowType);
           this.calculateLifetimeEnergyImpact(windowType);
           this.calculateLifetimeTreeImpact(windowType);
         }
