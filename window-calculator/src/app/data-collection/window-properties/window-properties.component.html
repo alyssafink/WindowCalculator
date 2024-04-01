@@ -50,7 +50,7 @@
           <ng-container *ngFor="let option of windowTypeEnum | keyvalue; index as i">
             <div class="col-sm mt-2 d-flex justify-content-center">
               <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfOperabilityCardIsClicked(i)}">
-                <img class="card-img-top" src="/assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: 5rem;">
+                <img class="card-img-top" src="/assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
                 <div class="card-body w-100 option-text">
                   <a class="card-text option-text btn stretched-link" (click)="selectSimplifiedOperabilityOption(option.value,i)" style="color: white">{{option.value}}</a>
                 </div>
@@ -164,7 +164,7 @@
               <ng-container *ngFor="let option of windowTypeEnum | keyvalue; index as i">
                 <div class="col-sm mt-2 d-flex justify-content-center">
                   <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfOperabilityCardIsClicked(i)}">
-                    <img class="card-img-top" src="/assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: 5rem;">
+                    <img class="card-img-top" src="/assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
                     <div class="card-body w-100 option-text">
                       <a class="card-text option-text btn stretched-link" (click)="selectDetailedOperabilityOption(option.value,i)" style="color: white">{{option.value}}</a>
                     </div>

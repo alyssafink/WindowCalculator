@@ -6,7 +6,7 @@
       <ng-container *ngFor="let option of heatingSystemEnum | keyvalue; index as i">
         <div class="col-sm mt-2">
           <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfHeatingCardIsClicked(i)}">
-            <img class="card-img-top" src="/assets/heating-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: 5rem;">
+            <img class="card-img-top" src="/assets/heating-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
             <div class="card-body w-100 option-text">
               <a class="card-text option-text btn stretched-link" (click)="selectHeatingOption(option.value, i)" style="color: white">{{option.value}}</a>
             </div>
@@ -22,7 +22,7 @@
       <ng-container *ngFor="let option of coolingSystemEnum | keyvalue; index as i">
         <div class="col-sm mt-3">
           <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfCoolingCardIsClicked(i)}">
-            <img class="card-img-top" src="/assets/cooling-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: 5rem;">
+            <img class="card-img-top" src="/assets/cooling-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
             <div class="card-body w-100 option-text">
               <a class="card-text option-text btn stretched-link" (click)="selectCoolingOption(option.value, i)" style="color: white">{{option.value}}</a>
             </div>
