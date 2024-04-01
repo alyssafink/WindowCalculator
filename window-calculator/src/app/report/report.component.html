@@ -1,4 +1,103 @@
-<p>report works!</p>
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card ms-4 me-auto mb-4 mt-4">
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                Icon
+              </div>
+              <div class="col">{{homeData.homeName}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card ms-4 me-auto mb-4 mt-4">
+        <div class="card-body">
+          <div>
+            <div class="fw-bold">What's the Best Investment?</div>
+            <div>A professional energy assessor can help you prioritize changes to save money and make your home more comfortable.</div>
+            <button class="btn btn-primary w-100">Energy Assessments</button>
+          </div>
+          <div>
+            <div class="fw-bold">Save Money on Upgrades</div>
+            <div>Several programs offer rebates for qualifying purchases, including energy assessments, window upgrades, and much more. These can add up to thousands of dollars in savings.</div>
+            <button class="btn btn-primary w-100">Federal Tax Credits</button>
+            <button class="btn btn-primary w-100">TEP Rebates</button>
+            <button class="btn btn-primary w-100">Southwest Gas Rebates</button>
+          </div>
+          <div>
+            <div>Income-eligible households can apply for the state Weatherization Assistance Program, which funds the full cost of energy efficiency improvements.</div>
+            <button class="btn btn-primary w-100">Find Out if You Qualify</button>
+          </div>
+          <div class="row">
+            Social Icons
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="card ms-auto me-4 mb-4 mt-4">
+        <div class="card-body container">
+          <div class="row">
+            <div class="col">
+              <h5>Welcome to the window upgrade report for your home.</h5>
+              <div>Explore this report to learn more about your upgrade options and the benefits that each could provide, based on your specific home.</div>
+              <div>Next, consider getting a <a>home energy assessment</a>, which is an important first step for figuring out what improvements are best for your home and needs.</div>
+              Enter home info*
+            </div>
+            <div class="col">
+              img
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card ms-auto me-4 mb-4 mt-4">
+        <div class="card-body">
+          <h5>Your Window Upgrade Benefits</h5>
+          <div>Window upgrades do more than save energy. Learn about the other benefits of your upgrade options based on the information you shared about your home.</div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-lg-3 card me-2 mt-4 mb-4">
+              <div class="card-body fw-bold text-break d-flex align-items-center justify-content-center">Financial Tradeoffs</div>
+            </div>
+            <div class="col-lg-3 card me-2 mt-4 mb-4">
+              <div class="card-body fw-bold text-break d-flex align-items-center justify-content-center text-center">Environmental Impact</div>
+            </div>
+            <div class="col-lg-3 card me-2 mt-4 mb-4">
+              <div class="card-body fw-bold text-break d-flex align-items-center justify-content-center">Sound Insulation</div>
+            </div>
+            <div class="col-lg-3 card me-2 mt-4 mb-4">
+              <div class="card-body fw-bold text-break d-flex align-items-center justify-content-center">Thermal Comfort</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card ms-auto me-4 mb-4 mt-4">
+        <div class="card-body">
+          <h5>Your Window Upgrade Options</h5>
+          <div>These three window upgrade options have the best long-term benefits compared to their upfront cost. Click to learn more.</div>
+          <div class="row">
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body fw-bold text-break d-flex align-items-center justify-content-center text-center">Low-E Window Film</div>
+            </div>
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body fw-bold text-break d-flex align-items-center justify-content-center text-center">Low-E Storm Windows</div>
+            </div>
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body fw-bold text-break d-flex align-items-center justify-content-center text-center">ENERGY STAR Replacements</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+
 <div *ngIf="loaded">
   <h5>Data Dump:</h5>
   <div>Upfront Cost, Low End: {{upfrontCost_low | json}}</div>

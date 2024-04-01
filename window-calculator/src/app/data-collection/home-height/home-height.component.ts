@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, KeyValue } from '@angular/common';
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
@@ -21,11 +21,21 @@ export class HomeHeightComponent {
   isNotNumber = isNaN;
   userData: WindowDataModel;
   public currentlyClickedCardIndex: number = -1;
+  readonly homeHeightOptions = {
+    "ONE": 1,
+    "ONE_HALF": 1.5,
+    "TWO": 2,
+    "THREE": 3
+  };
 
   constructor(private userDataService: UserDataService) {}
 
   ngOnInit() {
     this.userData = this.userDataService.getUserWindowData();
+  }
+
+  originalOrder = (a: KeyValue<string,number>, b: KeyValue<string,number>): number => {
+    return 0;
   }
 
   selectOption(height: number) {

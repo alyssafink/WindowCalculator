@@ -6,7 +6,7 @@
       <ng-container *ngFor="let option of windShieldingEnum | keyvalue; index as i">
         <div class="col-sm">
           <div class="mx-auto card text-center" style="width: 10rem;" [ngClass]="{'highlight':checkIfCardIsClicked(i)}">
-            <img class="card-img-top" src="/assets/wind-shielding/{{option.key}}.jpg" alt="{{option.value}}" style="height: 5rem;">
+            <img class="card-img-top" src="/assets/wind-shielding/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
             <div class="card-body w-100 option-text">
               <a class="card-text option-text btn stretched-link" (click)="selectOption(option.value,i)" style="color: white">{{option.value}}</a>
             </div>
