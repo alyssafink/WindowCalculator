@@ -1,6 +1,6 @@
 <div style="max-height:70vh; overflow-y: auto;">
-  <h3>What are your typical thermostat settings? <fa-icon [icon]="faQuestion" placement="bottom" ngbTooltip="Use the up and down arrows to adjust both the typical heating setting and the typical cooling setting in your home."></fa-icon></h3>
-  <div class="container-fluid w-50"> <!--Has background graphic-->
+  <h3 class="ms-4 mb-4 d-flex align-items-start">What are your typical thermostat settings? <fa-icon class="ms-1" style="font-size:large;" [icon]="faQuestion" placement="bottom" ngbTooltip="Use the up and down arrows to adjust both the typical heating setting and the typical cooling setting in your home."></fa-icon></h3>
+  <div class="mb-4 container-fluid w-50"> <!--Has background graphic-->
     <div class="row row-cols-2">
       <div class="col-sm">
         <!-- Hot side -->
@@ -15,7 +15,7 @@
           </div>
           <div class="col-sm">
             <div class="row justify-content-center">Heat to:</div>
-            <div class="row justify-content-center" style="color:sienna; font-weight: 600; font-size: 36pt;" >{{heatingSetPoint}}</div>
+            <div class="row justify-content-center fw-bold text-danger" style="font-size: 36pt;" >{{heatingSetPoint}}</div>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
         <div class="row align-items-center">
           <div class="col-sm">
             <div class="row justify-content-center">Cool to:</div>
-            <div class="row justify-content-center" style="color:lightskyblue; font-weight: 600; font-size: 36pt;">{{coolingSetPoint}}</div>
+            <div class="row justify-content-center text-primary fw-bold" style="font-size: 36pt;">{{coolingSetPoint}}</div>
           </div>
           <div class="col-sm">
             <div class="row justify-content-center">
@@ -42,10 +42,10 @@
 <div class="container mt-3">
   <div class="row justify-content-between">
     <div class="col-sm-3">
-      <button type="button" class="btn btn-light" style="color: dodgerblue;" [routerLink]="['../', 3]">&lt; Previous</button>
+      <button type="button" class="btn btn-light" [routerLink]="['../', 3]">&lt; Previous</button>
     </div>
-    <div class="col-sm-3">
-      <button type="button" class="btn btn-secondary" [routerLink]="['../', 5]">Next &gt;</button>
+    <div class="col-sm-2 d-flex justify-content-end">
+      <button type="button" class="btn btn-action" [routerLink]="['../', 5]">Next &gt;</button>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <!-- header -->
 <app-header></app-header>
 <!-- Data collection component -->
-<div class="card mx-auto w-75 mb-4 mt-4">
+<div class="card mx-auto w-75 mb-4 mt-4 shadow">
   <div class="card-body">
     <div class="container-fluid">
       <div class="row mt-5 ms-4 mb-3">
@@ -28,7 +28,7 @@
       </div>
       <div class="row justify-content-end">
         <div class="col-sm-3 w-10 d-flex justify-content-end" style="padding:0;">
-          <button type="button" class="btn btn-secondary" (click)="startModel()" [disabled]="!homeName">Get Started</button>
+          <button type="button" class="btn btn-action" (click)="startModel()" [disabled]="!homeName">Get Started</button>
         </div>
       </div>
     </div>

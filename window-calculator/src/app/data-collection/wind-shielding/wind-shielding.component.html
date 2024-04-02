@@ -1,15 +1,13 @@
-<div style="max-height:70vh; overflow-y: auto;">
-  <h3>How protected from wind is your home? <fa-icon [icon]="faQuestion" placement="bottom" ngbTooltip="Select the exposure level that best matches the area around your home. If your home is in a typical suburban condition, select “Typical.” If your home is relatively isolated from other buildings and not surrounded by dense vegetation, select “Exposed.” If your home is surrounded by especially dense vegetation and/or tightly-packed buildings, select “Well-shielded.”"></fa-icon></h3>
-  <div class="container-fluid">
+<div style="max-height:70vh;">
+  <h3 class="ms-4 mb-4 d-flex align-items-start">How protected from wind is your home? <fa-icon class="ms-1" style="font-size: large;" [icon]="faQuestion" placement="bottom" ngbTooltip="Select the exposure level that best matches the area around your home. If your home is in a typical suburban condition, select “Typical.” If your home is relatively isolated from other buildings and not surrounded by dense vegetation, select “Exposed.” If your home is surrounded by especially dense vegetation and/or tightly-packed buildings, select “Well-shielded.”"></fa-icon></h3>
+  <div class="mb-4 container-fluid">
     <div class="row justify-content-evenly">
       <!-- Display each option as small card -->
       <ng-container *ngFor="let option of windShieldingEnum | keyvalue; index as i">
         <div class="col-sm">
-          <div class="mx-auto card text-center" style="width: 10rem;" [ngClass]="{'highlight':checkIfCardIsClicked(i)}">
+          <div class="mx-auto card text-center" style="width: 10rem; height:100%;" [ngClass]="{'highlight':checkIfCardIsClicked(i)}">
             <img class="card-img-top" src="/assets/wind-shielding/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
-            <div class="card-body w-100 option-text">
-              <a class="card-text option-text btn stretched-link" (click)="selectOption(option.value,i)" style="color: white">{{option.value}}</a>
-            </div>
+            <div class="card-body btn btn-primary w-100 stretched-link card-btn" (click)="selectOption(option.value,i)">{{option.value}}</div>
           </div>
         </div>
       </ng-container>
@@ -19,10 +17,10 @@
 <div class="container mt-3">
   <div class="row justify-content-between">
     <div class="col-sm-3">
-      <button type="button" class="btn btn-light" style="color: dodgerblue;" [routerLink]="['../', 1]">&lt; Previous</button>
+      <button type="button" class="btn btn-light" [routerLink]="['../', 1]">&lt; Previous</button>
     </div>
-    <div class="col-sm-3">
-      <button type="button" class="btn btn-secondary" [routerLink]="['../', 3]">Next &gt;</button>
+    <div class="col-sm-2 d-flex justify-content-end">
+      <button type="button" class="btn btn-action" [routerLink]="['../', 3]">Next &gt;</button>
     </div>
   </div>
 </div>

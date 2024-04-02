@@ -1,30 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 
+$primary: rgb(119,202,218);
 $secondary: silver;
+$danger: rgb(197,89,63);
+
+$custom-colors: (
+  "action": rgb(244,121,44)
+);
+
+.btn-action {
+  color: white !important;
+}
 
 .header-style {
   background-color: white;
-  border-bottom: solid;
+  border-bottom: 1px solid black;
   width: 100vw;
 }
 
 .footer-style {
-  background-color: lightblue;
+  background-color: rgb(184,244,255);
   width: 100vw;
 }
 
 .option-text {
-  background-color: rgb(78, 185, 252);
-  color: white;
+  background-color: $primary;
+  color: black !important;
 }
 
 .highlight {
-  box-shadow: 10px 5px 5px red;
+  box-shadow: 10px 5px 5px gray;
 }
 
 .pointable {
   cursor: pointer;
 }
 
+.card {
+  border: 1px solid rgb(153, 153, 153) !important;
+
+  &-btn {
+    border-radius: 0 !important;
+  }
+}
+
+body {
+  background-color: rgb(220, 220, 220) !important
+}
+
 /* Importing Bootstrap SCSS file. */
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 @import 'bootstrap/scss/bootstrap';
+
+

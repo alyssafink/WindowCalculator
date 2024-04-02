@@ -8,11 +8,12 @@ import { CommonModule, NgIf } from '@angular/common';
 import { FinancialCalculator } from './financial-calculator';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [NgIf, CommonModule, HeaderComponent, FooterComponent],
+  imports: [NgIf, CommonModule, HeaderComponent, FooterComponent, RouterLink],
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
