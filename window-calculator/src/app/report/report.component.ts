@@ -8,12 +8,16 @@ import { CommonModule, NgIf } from '@angular/common';
 import { FinancialCalculator } from './financial-calculator';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { FinanceReportComponent } from './finance-report/finance-report.component';
+import { EnvironmentReportComponent } from './environment-report/environment-report.component';
+import { ComfortReportComponent } from './comfort-report/comfort-report.component';
+import { SoundReportComponent } from './sound-report/sound-report.component';
 
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [NgIf, CommonModule, HeaderComponent, FooterComponent, RouterLink],
+  imports: [NgIf, CommonModule, HeaderComponent, FooterComponent, RouterLink, RouterOutlet],
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
@@ -42,6 +46,7 @@ export class ReportComponent implements OnInit {
   lifetimeEnergyImpact = {};
   lifetimeEnergySavings = {};
   lifetimeTreeImpact = {};
+  treePic = {};
 
   constructor(private userDataService: UserDataService, private calculationService: CalculationService, private financialCalculator: FinancialCalculator) {}
 
@@ -49,6 +54,31 @@ export class ReportComponent implements OnInit {
     // run calculations and then load child components
     this.homeData = this.userDataService.getUserWindowData();
     console.log(this.homeData)
+
+    // TODO: remove after testing
+    this.homeData = {
+      homeName: "My Home",
+      homeHeight: 1,
+      heatingSystem: HeatingSystemEnum.HEAT_PUMP,
+      coolingSystem: CoolingSystemEnum.HEAT_PUMP,
+      heatingSetPoint: 70, // 55-85 range
+      coolingSetPoint: 77, // 60-90 range
+      windShielding: WindShieldingEnum.TYPICAL,
+      windowProperties: [
+        {
+          name: "Window 1",
+          width: 36,
+          height: 24,
+          area: 247, // set to 247 ft2 if simplified
+          perimeter: 256, // set to 256 ft if simplified
+          glass: GlassTypeEnum.CLEAR,
+          frame: FrameTypeEnum.ALUMINUM,
+          operability: OperabilityTypeEnum.AWNING_MULTI,
+          orientation: OrientationTypeEnum.EVEN,
+          simplified: true
+        }
+      ]
+    }
 
     this.calculationService.observableLock.subscribe((x) => {
       if (x == "Data Tables Loaded") {
@@ -83,6 +113,33 @@ export class ReportComponent implements OnInit {
     });
 
     this.calculationService.loadDataTables();
+  }
+
+  onOutletLoaded(component: FinanceReportComponent | EnvironmentReportComponent | ComfortReportComponent | SoundReportComponent) {
+    if (component instanceof FinanceReportComponent) {
+      component.initialCosts_low = this.upfrontCost_low;
+      component.initialCosts_high = this.upfrontCost_high;
+      component.lifespan = this.productLifespan;
+      component.yearlySavings = this.totalSavings;
+      component.lifetimeSavings = this.lifetimeSavings;
+    } else if (component instanceof EnvironmentReportComponent) {
+      component.embodiedCarbon = this.upfrontCarbonImpact;
+      component.annualCarbonSavings = this.lifetimeEnergySavings;
+      component.lifetimeCarbonImpact = this.lifetimeEnergyImpact;
+      for (let key of Object.keys(this.lifetimeTreeImpact)) {
+          this.lifetimeTreeImpact[key] = Math.round(this.lifetimeTreeImpact[key]);
+          console.log(this.lifetimeTreeImpact[key])
+          this.treePic[key] = Math.round(this.lifetimeTreeImpact[key] / 100);
+          this.treePic[key] = this.treePic[key] > 10 ? 10 : this.treePic[key]; // 10 is upper bound for pics
+      }
+      console.log(this.lifetimeTreeImpact, this.treePic)
+      component.numTrees = this.lifetimeTreeImpact;
+      component.treePic = this.treePic;
+    } else if (component instanceof ComfortReportComponent) {
+      component
+    } else if (component instanceof SoundReportComponent) {
+
+    }
   }
 
   calculateUpfrontCost(windowData: WindowPropertiesModel[], windowType: RetrofitWindowType) {
