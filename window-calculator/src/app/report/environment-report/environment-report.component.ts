@@ -4,12 +4,13 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { RetrofitWindowType } from '../retrofit-window';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-environment-report',
   standalone: true,
-  imports: [FontAwesomeModule, NgbTooltipModule, CommonModule],
+  imports: [FontAwesomeModule, NgbTooltipModule, CommonModule, RouterLink],
   templateUrl: './environment-report.component.html',
   styleUrl: './environment-report.component.scss'
 })

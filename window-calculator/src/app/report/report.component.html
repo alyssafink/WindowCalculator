@@ -1,4 +1,5 @@
 <app-header></app-header>
+<app-report-header></app-report-header>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3">
@@ -6,10 +7,10 @@
         <div class="card-body">
           <div class="container">
             <div class="row">
-              <div class="col">
+              <div class="col-sm">
                 Icon
               </div>
-              <div class="col">{{homeData.homeName}}</div>
+              <div role="button" class="col-sm stretched-link" [routerLink]="['/report']">{{homeData.homeName}}</div>
             </div>
           </div>
         </div>
@@ -19,18 +20,18 @@
           <div>
             <div class="fw-bold">What's the Best Investment?</div>
             <div class="mt-2">A professional energy assessor can help you prioritize changes to save money and make your home more comfortable.</div>
-            <button class="btn btn-action w-100 mt-3">Energy Assessments</button>
+            <a href="https://www.energy.gov/energysaver/home-energy-assessments" target="_blank" class="btn btn-action w-100 mt-3">Energy Assessments</a>
           </div>
           <div class="mt-5">
             <div class="fw-bold">Save Money on Upgrades</div>
             <div clas="mt-2">Several programs offer rebates for qualifying purchases, including energy assessments, window upgrades, and much more. These can add up to thousands of dollars in savings.</div>
-            <button class="btn btn-action w-100 mt-2">Federal Tax Credits</button>
-            <button class="btn btn-action w-100 mt-3">TEP Rebates</button>
-            <button class="btn btn-action w-100 mt-3">Southwest Gas Rebates</button>
+            <a href="https://www.energystar.gov/about/federal-tax-credits" target="_blank" class="btn btn-action w-100 mt-2">Federal Tax Credits</a>
+            <a href="https://www.tep.com/rebates/" target="_blank" class="btn btn-action w-100 mt-3">TEP Rebates</a>
+            <a href="https://www.swgas.com/en/rebates-and-promotions-search-residential-arizona" target="_blank" class="btn btn-action w-100 mt-3">Southwest Gas Rebates</a>
           </div>
           <div class="mt-2">
             <div>Income-eligible households can apply for the state Weatherization Assistance Program, which funds the full cost of energy efficiency improvements.</div>
-            <button class="btn btn-action w-100 mt-3">Find Out if You Qualify</button>
+            <a href="https://housing.az.gov/general-public/weatherization-assistance-program" target="_blank" class="btn btn-action w-100 mt-3">Find Out if You Qualify</a>
           </div>
           <div class="row mt-2">
             Social Icons

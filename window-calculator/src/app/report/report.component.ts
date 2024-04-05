@@ -13,11 +13,12 @@ import { FinanceReportComponent } from './finance-report/finance-report.componen
 import { EnvironmentReportComponent } from './environment-report/environment-report.component';
 import { ComfortReportComponent } from './comfort-report/comfort-report.component';
 import { SoundReportComponent } from './sound-report/sound-report.component';
+import { ReportHeaderComponent } from './report-header/report-header.component';
 
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [NgIf, CommonModule, HeaderComponent, FooterComponent, RouterLink, RouterOutlet],
+  imports: [ReportHeaderComponent, NgIf, CommonModule, HeaderComponent, FooterComponent, RouterLink, RouterOutlet],
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
@@ -56,29 +57,29 @@ export class ReportComponent implements OnInit {
     console.log(this.homeData)
 
     // TODO: remove after testing
-    // this.homeData = {
-    //   homeName: "My Home",
-    //   homeHeight: 1,
-    //   heatingSystem: HeatingSystemEnum.HEAT_PUMP,
-    //   coolingSystem: CoolingSystemEnum.HEAT_PUMP,
-    //   heatingSetPoint: 70, // 55-85 range
-    //   coolingSetPoint: 77, // 60-90 range
-    //   windShielding: WindShieldingEnum.TYPICAL,
-    //   windowProperties: [
-    //     {
-    //       name: "Window 1",
-    //       width: 36,
-    //       height: 24,
-    //       area: 247, // set to 247 ft2 if simplified
-    //       perimeter: 256, // set to 256 ft if simplified
-    //       glass: GlassTypeEnum.CLEAR,
-    //       frame: FrameTypeEnum.ALUMINUM,
-    //       operability: OperabilityTypeEnum.AWNING_MULTI,
-    //       orientation: OrientationTypeEnum.EVEN,
-    //       simplified: true
-    //     }
-    //   ]
-    // }
+    this.homeData = {
+      homeName: "My Home",
+      homeHeight: 1,
+      heatingSystem: HeatingSystemEnum.HEAT_PUMP,
+      coolingSystem: CoolingSystemEnum.HEAT_PUMP,
+      heatingSetPoint: 70, // 55-85 range
+      coolingSetPoint: 77, // 60-90 range
+      windShielding: WindShieldingEnum.TYPICAL,
+      windowProperties: [
+        {
+          name: "Window 1",
+          width: 36,
+          height: 24,
+          area: 247, // set to 247 ft2 if simplified
+          perimeter: 256, // set to 256 ft if simplified
+          glass: GlassTypeEnum.CLEAR,
+          frame: FrameTypeEnum.ALUMINUM,
+          operability: OperabilityTypeEnum.AWNING_MULTI,
+          orientation: OrientationTypeEnum.EVEN,
+          simplified: true
+        }
+      ]
+    }
 
     this.calculationService.observableLock.subscribe((x) => {
       if (x == "Data Tables Loaded") {
