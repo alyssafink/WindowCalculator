@@ -131,6 +131,7 @@ export class ReportComponent implements OnInit {
       component.lifespan = this.productLifespan;
       component.yearlySavings = this.totalSavings;
       component.lifetimeSavings = this.lifetimeSavings;
+      component.paybackDates = this.paybackDates;
     } else if (component instanceof EnvironmentReportComponent) {
       component.embodiedCarbon = this.upfrontCarbonImpact;
       component.annualCarbonSavings = this.lifetimeEnergySavings;

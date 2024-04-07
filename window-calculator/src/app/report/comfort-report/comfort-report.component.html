@@ -22,19 +22,19 @@
     <div class="row mt-2 mb-3">
       <div class="col-sm-6 ms-4 thermal-left d-flex flex-column align-items-center justify-content-center">
         <div class="fw-bold text-light">Feels like</div>
-        <div class="fs-3 text-light fw-bold"><span class="fs-1 fw-bolder text-light text-outline-action">{{coolingSetPoint + upgradeTempIncreases[windowType.WINDOW_FILM]}}</span>&deg;F</div>
-        <div class="fw-bold text-light">Set to {{coolingSetPoint}}&deg;F</div>
+        <div class="fs-3 text-light fw-bold"><span class="fs-1 fw-bolder text-light text-outline-action">{{coolingSetPoint + upgradeTempIncreases[windowType.WINDOW_FILM] | number: '1.0-1'}}</span>&deg;F</div>
+        <div class="fw-bold text-light">Set to {{coolingSetPoint | number: '1.0-1'}}&deg;F</div>
       </div>
       <div class="col-sm">
         <div>
-          Feels {{upgradeTempIncreases[windowType.WINDOW_FILM]}}&deg;F warmer than the thermostat temperature.
+          Feels {{upgradeTempIncreases[windowType.WINDOW_FILM] | number: '1.0-1'}}&deg;F warmer than the thermostat temperature.
         </div>
-        <div>{{existingTempIncrease}}&deg;F Your Home</div>
-        <div>{{NEW_HOME_INCR}}&deg;F New Home</div>
+        <div>{{existingTempIncrease | number: '1.0-1'}}&deg;F Your Home</div>
+        <div>{{NEW_HOME_INCR | number: '1.0-1'}}&deg;F New Home</div>
         <div>
           Low-e window film cuts the negative impact of existing windows on comfort in half by decreasing the amount of solar radiation that passes through, and reflecting energy from the hot glass back outside.
         </div>
-        <button class="btn btn-action me-4 w-100" [routerLink]="['/info/film']">Learn More</button>
+        <button class="btn btn-action me-4 w-100" [routerLink]="['/report/film-info']">Learn More</button>
       </div>
     </div>
   </div>
@@ -45,19 +45,19 @@
     <div class="row mt-2 mb-3">
       <div class="col-sm-6 ms-4 thermal-left d-flex flex-column align-items-center justify-content-center">
         <div class="fw-bold text-light">Feels like</div>
-        <div class="fs-3 text-light fw-bold"><span class="fs-1 fw-bolder text-light text-outline-action">{{coolingSetPoint + upgradeTempIncreases[windowType.STORM]}}</span>&deg;F</div>
-        <div class="fw-bold text-light">Set to {{coolingSetPoint}}&deg;F</div>
+        <div class="fs-3 text-light fw-bold"><span class="fs-1 fw-bolder text-light text-outline-action">{{coolingSetPoint + upgradeTempIncreases[windowType.STORM] | number: '1.0-1'}}</span>&deg;F</div>
+        <div class="fw-bold text-light">Set to {{coolingSetPoint | number: '1.0-1'}}&deg;F</div>
       </div>
       <div class="col-sm">
         <div>
-          Feels {{upgradeTempIncreases[windowType.STORM]}}&deg;F warmer than the thermostat temperature.
+          Feels {{upgradeTempIncreases[windowType.STORM] | number: '1.0-1'}}&deg;F warmer than the thermostat temperature.
         </div>
-        <div>{{existingTempIncrease}}&deg;F Your Home</div>
-        <div>{{NEW_HOME_INCR}}&deg;F New Home</div>
+        <div>{{existingTempIncrease | number: '1.0-1'}}&deg;F Your Home</div>
+        <div>{{NEW_HOME_INCR | number: '1.0-1'}}&deg;F New Home</div>
         <div>
           Low-e storm windows can have an even bigger impact on comfort than low-e window film, depending on the frame material of your existing windows, because they eliminate the effects poorly insulated frames.
         </div>
-        <button class="btn btn-action me-4 w-100" [routerLink]="['/info/film']">Learn More</button>
+        <button class="btn btn-action me-4 w-100" [routerLink]="['/report/storm-info']">Learn More</button>
       </div>
     </div>
   </div>
@@ -68,19 +68,19 @@
     <div class="row mt-2 mb-3">
       <div class="col-sm-6 ms-4 thermal-left d-flex flex-column align-items-center justify-content-center">
         <div class="fw-bold text-light">Feels like</div>
-        <div class="fs-3 text-light fw-bold"><span class="fs-1 fw-bolder text-light text-outline-action">{{coolingSetPoint + upgradeTempIncreases[windowType.ENERGY_STAR]}}</span>&deg;F</div>
-        <div class="fw-bold text-light">Set to {{coolingSetPoint}}&deg;F</div>
+        <div class="fs-3 text-light fw-bold"><span class="fs-1 fw-bolder text-light text-outline-action">{{coolingSetPoint + upgradeTempIncreases[windowType.ENERGY_STAR] | number: '1.0-1'}}</span>&deg;F</div>
+        <div class="fw-bold text-light">Set to {{coolingSetPoint | number: '1.0-1'}}&deg;F</div>
       </div>
       <div class="col-sm">
         <div>
-          Feels {{upgradeTempIncreases[windowType.ENERGY_STAR]}}&deg;F warmer than the thermostat temperature.
+          Feels {{upgradeTempIncreases[windowType.ENERGY_STAR] | number: '1.0-1'}}&deg;F warmer than the thermostat temperature.
         </div>
-        <div>{{existingTempIncrease}}&deg;F Your Home</div>
-        <div>{{NEW_HOME_INCR}}&deg;F New Home</div>
+        <div>{{existingTempIncrease | number: '1.0-1'}}&deg;F Your Home</div>
+        <div>{{NEW_HOME_INCR | number: '1.0-1'}}&deg;F New Home</div>
         <div>
           Double-pane replacement windows with the ENERGY STAR label keep you cooler in the summer and warmer in the winter than any other option, although low-e storm windows are close.
         </div>
-        <button class="btn btn-action me-4 w-100" [routerLink]="['/info/film']">Learn More</button>
+        <button class="btn btn-action me-4 w-100" [routerLink]="['/report/energy-star-info']">Learn More</button>
       </div>
     </div>
   </div>
