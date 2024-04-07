@@ -69,6 +69,12 @@ export class CalculationService {
   stormUpfrontCostData: any[];
   filmUpfrontCostData: any[];
 
+  // Temperature Increase Data Tables
+  existingWindowOperativeTempIncreaseData: any[];
+  filmOperativeTempIncreaseData: any[];
+  stormWindowOperativeTempIncreaseData: any[];
+  replacementWindowOperativeTempIncreaseData: any[];
+
   constructor(private httpClient: HttpClient) {}
 
    loadDataTables() {
@@ -104,6 +110,10 @@ export class CalculationService {
       this.httpClient.get('assets/data-tables/EnergyStarUpfrontCost.csv', { responseType: 'text' }),
       //this.httpClient.get('assets/data-tables/StormUpfrontCost.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/FilmUpfrontCost.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/ExistingWindowOperativeTempIncrease.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/FilmOperativeTempIncrease.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/StormWindowOperativeTempIncrease.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/ReplacementWindowOperativeTempIncrease.csv', { responseType: 'text' }),
     ]).subscribe(([
       existingWindowUValueDataString,
       stormWindowUValueDataString,
@@ -136,6 +146,10 @@ export class CalculationService {
       energyStarUpfrontCostDataString,
       //stormUpfrontCostDataString,
       filmUpfrontCostDataString,
+      existingWindowOperativeTempIncreaseDataString,
+      filmOperativeTempIncreaseDataString,
+      stormWindowOperativeTempIncreaseDataString,
+      replacementWindowOperativeTempIncreaseDataString
     ]) => {
       this.existingWindowUValueData = d3.csvParse(existingWindowUValueDataString);
       this.stormWindowUValueData = d3.csvParse(stormWindowUValueDataString);
@@ -168,6 +182,10 @@ export class CalculationService {
       this.energyStarUpfrontCostData = d3.csvParse(energyStarUpfrontCostDataString);
       //this.stormUpfrontData = d3.csvParse(stormUpfrontCostDataString);
       this.filmUpfrontCostData = d3.csvParse(filmUpfrontCostDataString);
+      this.existingWindowOperativeTempIncreaseData = d3.csvParse(existingWindowOperativeTempIncreaseDataString);
+      this.filmOperativeTempIncreaseData = d3.csvParse(filmOperativeTempIncreaseDataString);
+      this.stormWindowOperativeTempIncreaseData = d3.csvParse(stormWindowOperativeTempIncreaseDataString);
+      this.replacementWindowOperativeTempIncreaseData = d3.csvParse(replacementWindowOperativeTempIncreaseDataString);
       this.lock.next('Data Tables Loaded');
     });
    }
@@ -453,6 +471,7 @@ export class CalculationService {
     }
   }
 
+  // TODO: Update
   getStormUpfrontCost(low: boolean): number {
     if (low) {
       return 1;
@@ -468,5 +487,38 @@ export class CalculationService {
     } else {
       return +this.filmUpfrontCostData[0]["High"];
     }
+  }
+
+  // TODO: Test this
+  getUpgradeOperativeTempIncrease(frame: FrameTypeEnum, retrofitType: RetrofitWindowType): number {
+    let result;
+    console.log(frame, retrofitType)
+    console.log(this.filmOperativeTempIncreaseData, this.existingWindowSHGCData)
+
+    if (retrofitType == RetrofitWindowType.ENERGY_STAR) {
+      result = this.replacementWindowOperativeTempIncreaseData.find(function(item) {
+        return item["Frame Material"] == frame;
+      });
+    } else if (retrofitType == RetrofitWindowType.STORM) {
+      result = this.stormWindowOperativeTempIncreaseData.find(function(item) {
+        return item["Frame Material"] == frame;
+      });
+    } else {
+      result = this.filmOperativeTempIncreaseData.find(function(item) {
+        return item["Frame Material"] == frame;
+      });
+    }
+    console.log(result)
+
+    return +result["Operative Temperature Increase"];
+  }
+
+  // TODO: Test this
+  getExistingOperativeTempIncrease(frame: FrameTypeEnum, glaze: GlassTypeEnum): number {
+    let result = this.existingWindowOperativeTempIncreaseData.filter(function(item) {
+      return item["Glazing Type"] == glaze;
+    }).find(function(item) { return item["Frame Material"] == frame; } );
+
+    return +result["Operative Temperature Increase"];
   }
 }

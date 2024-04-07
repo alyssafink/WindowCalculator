@@ -14,11 +14,12 @@ import { EnvironmentReportComponent } from './environment-report/environment-rep
 import { ComfortReportComponent } from './comfort-report/comfort-report.component';
 import { SoundReportComponent } from './sound-report/sound-report.component';
 import { ReportHeaderComponent } from './report-header/report-header.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [ReportHeaderComponent, NgIf, CommonModule, HeaderComponent, FooterComponent, RouterLink, RouterOutlet],
+  imports: [ShareButtonsModule, ReportHeaderComponent, NgIf, CommonModule, HeaderComponent, FooterComponent, RouterLink, RouterOutlet],
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
@@ -48,6 +49,9 @@ export class ReportComponent implements OnInit {
   lifetimeEnergySavings = {};
   lifetimeTreeImpact = {};
   treePic = {};
+
+  operativeTemp = {}; // Summer indoor operating temp
+  existingOperativeTemp = 0;
 
   constructor(private userDataService: UserDataService, private calculationService: CalculationService, private financialCalculator: FinancialCalculator) {}
 
@@ -106,7 +110,11 @@ export class ReportComponent implements OnInit {
           this.calculateLifetimeEnergySavings(this.homeData, windowType);
           this.calculateLifetimeEnergyImpact(windowType);
           this.calculateLifetimeTreeImpact(windowType);
+
+          this.calculateOperativeTemperature(this.homeData, windowType);
         }
+
+        this.calculateExistingOperativeTemperature(this.homeData);
 
         console.log("report loaded")
         this.loaded = true;
@@ -137,7 +145,9 @@ export class ReportComponent implements OnInit {
       component.numTrees = this.lifetimeTreeImpact;
       component.treePic = this.treePic;
     } else if (component instanceof ComfortReportComponent) {
-      component
+      component.coolingSetPoint = this.homeData.coolingSetPoint;
+      component.existingTempIncrease = this.existingOperativeTemp;
+      component.upgradeTempIncreases = this.operativeTemp;
     } else if (component instanceof SoundReportComponent) {
 
     }
@@ -168,6 +178,14 @@ export class ReportComponent implements OnInit {
       this.upfrontCost_low[windowType] = pricePerLow * totalArea;
       this.upfrontCost_high[windowType] = pricePerHigh * totalArea;
     }
+  }
+
+  calculateOperativeTemperature(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
+    this.operativeTemp[retrofitWindowType] = this.calculationService.getUpgradeOperativeTempIncrease(homeData.windowProperties[0].frame, retrofitWindowType);
+  }
+
+  calculateExistingOperativeTemperature(homeData: WindowDataModel) {
+    this.existingOperativeTemp = this.calculationService.getExistingOperativeTempIncrease(homeData.windowProperties[0].frame, homeData.windowProperties[0].glass);
   }
 
   calculateUpfrontCarbonImpact(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {

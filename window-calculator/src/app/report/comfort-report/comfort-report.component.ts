@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { RetrofitWindowType } from '../retrofit-window';
 
 @Component({
   selector: 'app-comfort-report',
@@ -13,4 +14,10 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ComfortReportComponent {
   faQuestion = faQuestionCircle;
+  windowType = RetrofitWindowType;
+
+  public coolingSetPoint;
+  public existingTempIncrease;
+  public upgradeTempIncreases;
+  public readonly NEW_HOME_INCR = 1.3;
 }
