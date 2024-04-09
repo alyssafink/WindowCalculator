@@ -3,7 +3,7 @@
     <div class="row mt-2 mb-3">
       <div class="col-sm ms-4">
         <h2>Financial Tradeoffs</h2>
-        <div>
+        <div class="mt-4">
           The Window Calculator recommends three different window upgrade options that typically have the best energy savings in Tucson's climate compared to their initial cost.
           These options — low-e window film, low-e storm windows, and ENERGY STAR replacement windows — offer a range of price points based on your budget.
         </div>
@@ -18,11 +18,11 @@
 </div>
 <div class="card ms-auto me-4 mb-4 mt-4">
   <div class="card-body container">
-    <h4 class="ms-4 mt-3">Low-E Window Film</h4>
-    <div class="row mt-2 mb-3">
+    <h3 class="ms-4 mt-3">Low-E Window Film</h3>
+    <div class="row mt-4 mb-3">
       <div class="col-sm-8 ms-4">
         <div id="filmChart"></div>
-        <div>
+        <div class="mt-3">
           Low-E film is a lower cost window upgrade that still provides meaningful energy savings for your home.
           It typically costs $10 - $30 per square foot of window and lowers heating and cooling costs by around 10%, paying off its initial cost in 1-6 years.
           While similar to window tinting, Low-E window film provides much greater savings for only a small increase in initial price.
@@ -31,12 +31,28 @@
       </div>
       <div class="col d-flex flex-column justify-content-between">
         <div>
-          <div><span style="color: red;">{{initialCosts_low[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}} - {{initialCosts_high[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}}</span> Initial cost <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes the typical range of material, shipping, and installation costs for each upgrade option, based on the information you shared about your home. The cost of window upgrades varies significantly based on a number of factors, including window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, and more."></fa-icon></div>
-          <div><span style="color: green;">{{lifespan[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}} years</span> Lifespan <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the time frame over which each product will typically retain its optimal appearance and energy performance. Many upgrade options can last longer with proper care."></fa-icon></div>
-          <div><span style="color: gray;">{{yearlySavings[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}}</span> Yearly Savings <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes estimated heating and cooling energy savings based on the difference in energy performance between your existing windows and typical values for each window upgrade option."></fa-icon></div>
-          <div><span style="color: orange;">{{lifetimeSavings[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}}</span> Lifetime Savings <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number estimates the total amount of money that you can expect to save over the lifespan of the product."></fa-icon></div>
-          <input type="text" placeholder="Project Quote">
-          <input type="text" placeholder="Rebate Amount">
+          <div>
+            <div>
+              <span class="fs-5 fw-bold text-action">{{initialCosts_low[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}}</span> - <span class="fs-5 fw-bold text-darkblue">{{initialCosts_high[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}}</span>
+            </div>
+            <div>Initial cost <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes the typical range of material, shipping, and installation costs for each upgrade option, based on the information you shared about your home. The cost of window upgrades varies significantly based on a number of factors, including window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, and more."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{lifespan[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}} years</div>
+            <div>Lifespan <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the time frame over which each product will typically retain its optimal appearance and energy performance. Many upgrade options can last longer with proper care."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{yearlySavings[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}}</div>
+            <div>Yearly Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes estimated heating and cooling energy savings based on the difference in energy performance between your existing windows and typical values for each window upgrade option."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{lifetimeSavings[retrofitWindowTypes.WINDOW_FILM] | currency: 'USD': 'symbol': '1.0-0'}}</div>
+            <div>Lifetime Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number estimates the total amount of money that you can expect to save over the lifespan of the product."></fa-icon></div>
+          </div>
+          <div class="me-4 mt-4">
+            <input class="mt-2 mb-2 form-control me-4" type="text" placeholder="Project Quote" [(ngModel)]="userInputUpfrontCost_film" (change)="createUserInputFilmChart()">
+            <input class="mt-2 mb-2 form-control me-4" type="text" placeholder="Rebate Amount">
+          </div>
         </div>
         <div class="d-flex justify-content-end">
           <button class="btn btn-action align-self-end me-4" [routerLink]="['/report/film-info']">Learn More</button>
@@ -47,13 +63,11 @@
 </div>
 <div class="card ms-auto me-4 mb-4 mt-4">
   <div class="card-body container">
-    <h4 class="ms-4 mt-3">Low-E Storm Windows</h4>
-    <div class="row mt-2 mb-3">
+    <h3 class="ms-4 mt-3">Low-E Storm Windows</h3>
+    <div class="row mt-4 mb-3">
       <div class="col-sm-8 ms-4">
-        <div>
-          Chart
-        </div>
-        <div>
+        <div id="stormChart"></div>
+        <div class="mt-3">
           Low-E Storm windows provide similar energy savings to brand-new, energy-efficient windows at around X/X the cost.
           They typically cost XX-XX per square foot of window and lower heating and cooling costs by around 23% when installed over single-pane windows, paying off their initial cost in about 10 years.
         </div>
@@ -63,12 +77,28 @@
       </div>
       <div class="col d-flex flex-column justify-content-between">
         <div>
-          <div><span style="color: red;">{{initialCosts_low[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}} - {{initialCosts_high[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}}</span> Initial cost <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes the typical range of material, shipping, and installation costs for each upgrade option, based on the information you shared about your home. The cost of window upgrades varies significantly based on a number of factors, including window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, and more."></fa-icon></div>
-          <div><span style="color: green;">{{lifespan[retrofitWindowTypes.STORM] | number: '1.0-0'}} years</span> Lifespan <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the time frame over which each product will typically retain its optimal appearance and energy performance. Many upgrade options can last longer with proper care."></fa-icon></div>
-          <div><span style="color: gray;">{{yearlySavings[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}}</span> Yearly Savings <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes estimated heating and cooling energy savings based on the difference in energy performance between your existing windows and typical values for each window upgrade option."></fa-icon></div>
-          <div><span style="color: orange;">{{lifetimeSavings[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}}</span> Lifetime Savings <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number estimates the total amount of money that you can expect to save over the lifespan of the product."></fa-icon></div>
-          <input type="text" placeholder="Project Quote">
-          <input type="text" placeholder="Rebate Amount">
+          <div>
+            <div>
+              <span class="fs-5 fw-bold text-action">{{initialCosts_low[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}}</span> - <span class="fs-5 fw-bold text-darkblue">{{initialCosts_high[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}}</span>
+            </div>
+            <div>Initial cost <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes the typical range of material, shipping, and installation costs for each upgrade option, based on the information you shared about your home. The cost of window upgrades varies significantly based on a number of factors, including window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, and more."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{lifespan[retrofitWindowTypes.STORM] | number: '1.0-0'}} years</div>
+            <div>Lifespan <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the time frame over which each product will typically retain its optimal appearance and energy performance. Many upgrade options can last longer with proper care."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{yearlySavings[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}}</div>
+            <div>Yearly Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes estimated heating and cooling energy savings based on the difference in energy performance between your existing windows and typical values for each window upgrade option."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{lifetimeSavings[retrofitWindowTypes.STORM] | currency: 'USD': 'symbol': '1.0-0'}}</div>
+            <div>Lifetime Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number estimates the total amount of money that you can expect to save over the lifespan of the product."></fa-icon></div>
+          </div>
+          <div class="me-4 mt-4">
+            <input class="mt-2 mb-2 form-control me-4" type="text" placeholder="Project Quote" [(ngModel)]="userInputUpfrontCost_storm" (change)="createUserInputStormChart()">
+            <input class="mt-2 mb-2 form-control me-4" type="text" placeholder="Rebate Amount">
+          </div>
         </div>
         <div class="d-flex justify-content-end">
           <button class="btn btn-action align-self-end me-4" [routerLink]="['/report/storm-info']">Learn More</button>
@@ -80,13 +110,11 @@
 </div>
 <div class="card ms-auto me-4 mb-4 mt-4">
   <div class="card-body container">
-    <h4 class="ms-4 mt-3">ENERGY STAR Replacement Windows</h4>
-    <div class="row mt-2 mb-3">
+    <h3 class="ms-4 mt-3">ENERGY STAR Replacement Windows</h3>
+    <div class="row mt-4 mb-3">
       <div class="col-sm-8 ms-4">
-        <div>
-          Chart
-        </div>
-        <div>
+        <div id="esChart"></div>
+        <div class="mt-3">
           Double-pane replacement windows with the ENERGY STAR label are the certified energy-efficient option if your windows are no longer repairable. Their cost ranges from $400-$2000+ per window, depending on the frame material, window size, and more.
           The typical Tucson homeowner can expect to see their entire energy bill drop by around 12%.
         </div>
@@ -96,12 +124,28 @@
       </div>
       <div class="col d-flex flex-column justify-content-between">
         <div>
-          <div><span style="color: red;">{{initialCosts_low[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}} - {{initialCosts_high[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}}</span> Initial cost <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes the typical range of material, shipping, and installation costs for each upgrade option, based on the information you shared about your home. The cost of window upgrades varies significantly based on a number of factors, including window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, and more."></fa-icon></div>
-          <div><span style="color: green;">{{lifespan[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}} years</span> Lifespan <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the time frame over which each product will typically retain its optimal appearance and energy performance. Many upgrade options can last longer with proper care."></fa-icon></div>
-          <div><span style="color: gray;">{{yearlySavings[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}}</span> Yearly Savings <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes estimated heating and cooling energy savings based on the difference in energy performance between your existing windows and typical values for each window upgrade option."></fa-icon></div>
-          <div><span style="color: orange;">{{lifetimeSavings[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}}</span> Lifetime Savings <fa-icon class="ms-1" style="font-size:medium" [icon]="faQuestion" placement="bottom" ngbTooltip="This number estimates the total amount of money that you can expect to save over the lifespan of the product."></fa-icon></div>
-          <input type="text" placeholder="Project Quote">
-          <input type="text" placeholder="Rebate Amount">
+          <div>
+            <div>
+              <span class="fs-5 fw-bold text-action">{{initialCosts_low[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}}</span> - <span class="fs-5 fw-bold text-darkblue">{{initialCosts_high[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}}</span>
+            </div>
+            <div>Initial cost <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes the typical range of material, shipping, and installation costs for each upgrade option, based on the information you shared about your home. The cost of window upgrades varies significantly based on a number of factors, including window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, and more."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{lifespan[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}} years</div>
+            <div>Lifespan <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the time frame over which each product will typically retain its optimal appearance and energy performance. Many upgrade options can last longer with proper care."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{yearlySavings[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}}</div>
+            <div>Yearly Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number includes estimated heating and cooling energy savings based on the difference in energy performance between your existing windows and typical values for each window upgrade option."></fa-icon></div>
+          </div>
+          <div class="mt-3">
+            <div class="fs-5 fw-bold text-primary">{{lifetimeSavings[retrofitWindowTypes.ENERGY_STAR] | currency: 'USD': 'symbol': '1.0-0'}}</div>
+            <div>Lifetime Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number estimates the total amount of money that you can expect to save over the lifespan of the product."></fa-icon></div>
+          </div>
+          <div class="me-4 mt-4">
+            <input class="mt-2 mb-2 form-control me-4" type="text" placeholder="Project Quote" [(ngModel)]="userInputUpfrontCost_energyStar" (change)="createUserInputESChart()">
+            <input class="mt-2 mb-2 form-control me-4" type="text" placeholder="Rebate Amount">
+          </div>
         </div>
         <div class="d-flex justify-content-end">
           <button class="btn btn-action align-self-end me-4" [routerLink]="['/report/energy-star-info']">Learn More</button>

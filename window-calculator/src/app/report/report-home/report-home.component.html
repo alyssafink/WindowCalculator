@@ -1,11 +1,11 @@
 <div class="card ms-auto me-4 mb-4 mt-4">
   <div class="card-body container">
-    <div class="row">
-      <div class="col-sm">
-        <h5>Welcome to the window upgrade report for your home.</h5>
-        <div>Explore this report to learn more about your upgrade options and the benefits that each could provide, based on your specific home.</div>
-        <div>Next, consider getting a <a>home energy assessment</a>, which is an important first step for figuring out what improvements are best for your home and needs.</div>
-        Enter home info*
+    <div class="row mt-3 mb-3">
+      <div class="col-sm ms-4">
+        <h2>Welcome to the window upgrade report for <span class="text-primary">your home.</span></h2>
+        <div class="mt-4">Explore this report to learn more about your upgrade options and the benefits that each could provide, based on your specific home.</div>
+        <div class="mt-2">Next, consider getting a <a class="link-action" href="https://www.energy.gov/energysaver/home-energy-assessments" target="_blank">home energy assessment</a>, which is an important first step for figuring out what improvements are best for your home and needs.</div>
+        <div class="mt-4" style="border-bottom: 1px solid black; border-top: 1px solid black;">Edit Home Info</div>
       </div>
       <div class="col-sm">
         <img class="img-fluid" style="max-height:450px;" [src]="'/assets/report/home/ExcitedPerson.jpg'" alt="Excited Person" />
@@ -15,31 +15,32 @@
 </div>
 <div class="card ms-auto me-4 mb-4 mt-4">
   <div class="card-body">
-    <h5>Your Window Upgrade Benefits</h5>
-    <div>Window upgrades do more than save energy. Learn about the other benefits of your upgrade options based on the information you shared about your home.</div>
-    <div class="row d-flex justify-content-around">
-      <div class="col-lg-3 card me-2 mt-4 mb-4">
+    <h4 class="text-center mt-3">Your Window Upgrade Benefits</h4>
+    <div class="text-center">Window upgrades do more than save energy. Learn about the other benefits of your upgrade options based on the information you shared about your home.</div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-3 card me-2 mt-4 mb-4 ms-4 me-4 bg-background">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/FinancialIcon.jpg'" alt="Financial Icon" />
-          <a class="text-decoration-none fw-bold text-break stretched-link" [routerLink]="['./', 'finance']">Financial Tradeoffs</a>
+          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/FinancialIcon.png'" alt="Financial Icon" />
+          <a class="text-decoration-none fw-bold text-break stretched-link text-center link-body-emphasis" [routerLink]="['./', 'finance']">Financial Tradeoffs</a>
         </div>
       </div>
-      <div class="col-lg-3 card me-2 mt-4 mb-4">
+      <div class="col-lg-3 card me-2 mt-4 mb-4 ms-4 me-4 bg-background">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/EnvironmentalIcon.jpg'" alt="Environmental Icon" />
-          <a class="text-decoration-none fw-bold text-break stretched-link text-center" [routerLink]="['./', 'environment']">Environmental Impact</a>
+          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/EnvironmentalIcon.png'" alt="Environmental Icon" />
+          <a class="text-decoration-none fw-bold text-break stretched-link text-center link-body-emphasis" [routerLink]="['./', 'environment']">Environmental Impact</a>
         </div>
       </div>
-      <div class="col-lg-3 card me-2 mt-4 mb-4">
+      <div class="w-100"></div>
+      <div class="col-lg-3 card me-2 mt-4 mb-4 ms-4 me-4 bg-background">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/SoundIcon.jpg'" alt="Sound Icon" />
-          <a class="text-decoration-none fw-bold text-break stretched-link" [routerLink]="['./', 'sound']">Sound Insulation</a>
+          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/SoundIcon.png'" alt="Sound Icon" />
+          <a class="text-decoration-none fw-bold text-break stretched-link text-center link-body-emphasis" [routerLink]="['./', 'sound']">Sound Insulation</a>
         </div>
       </div>
-      <div class="col-lg-3 card me-2 mt-4 mb-4">
+      <div class="col-lg-3 card me-2 mt-4 mb-4 ms-4 me-4 bg-background">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/ComfortIcon.jpg'" alt="Comfort Icon" />
-          <a class="text-decoration-none fw-bold text-break stretched-link" [routerLink]="['./', 'thermal']">Thermal Comfort</a>
+          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/ComfortIcon.png'" alt="Comfort Icon" />
+          <a class="text-decoration-none fw-bold text-break stretched-link text-center link-body-emphasis" [routerLink]="['./', 'thermal']">Thermal Comfort</a>
         </div>
       </div>
     </div>
@@ -47,25 +48,25 @@
 </div>
 <div class="card ms-auto me-4 mb-4 mt-4">
   <div class="card-body">
-    <h5>Your Window Upgrade Options</h5>
-    <div>These three window upgrade options have the best long-term benefits compared to their upfront cost. Click to learn more.</div>
+    <h4 class="text-center mt-3">Your Window Upgrade Options</h4>
+    <div class="text-center ms-3 me-3">These three window upgrade options have the best long-term benefits compared to their upfront cost. Click to learn more.</div>
     <div class="row">
-      <div class="col-sm-3 card mx-auto mt-4 mb-4">
+      <div class="col-sm-3 card mx-auto mt-4 mb-4 bg-background">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/FilmIcon.jpg'" alt="Low-E Film Icon" />
-          <a class="text-decoration-none fw-bold text-break stretched-link" [routerLink]="['./', 'film-info']">Low-E Window Film</a>
+          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/FilmIcon.png'" alt="Low-E Film Icon" />
+          <a class="text-decoration-none fw-bold text-break stretched-link text-center link-body-emphasis" [routerLink]="['./', 'film-info']">Low-E Window Film</a>
         </div>
       </div>
-      <div class="col-sm-3 card mx-auto mt-4 mb-4">
+      <div class="col-sm-3 card mx-auto mt-4 mb-4 bg-background">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/StormIcon.jpg'" alt="Storm Window Icon" />
-          <a class="text-decoration-none fw-bold text-break stretched-link text-center" [routerLink]="['./', 'storm-info']">Low-E Storm Windows</a>
+          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/StormIcon.png'" alt="Storm Window Icon" />
+          <a class="text-decoration-none fw-bold text-break stretched-link text-center link-body-emphasis" [routerLink]="['./', 'storm-info']">Low-E Storm Windows</a>
         </div>
       </div>
-      <div class="col-sm-3 card mx-auto mt-4 mb-4">
+      <div class="col-sm-3 card mx-auto mt-4 mb-4 bg-background">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/ReplacementIcon.jpg'" alt="Replacement Window Icon" />
-          <a class="text-decoration-none fw-bold text-break stretched-link text-center" [routerLink]="['./', 'energy-star-info']">ENERGY STAR Replacements</a>
+          <img class="img-fluid" style="max-height:50px" [src]="'/assets/report/home/ReplacementIcon.png'" alt="Replacement Window Icon" />
+          <a class="text-decoration-none fw-bold text-break stretched-link text-center link-body-emphasis" [routerLink]="['./', 'energy-star-info']">ENERGY STAR Replacements</a>
         </div>
       </div>
     </div>
