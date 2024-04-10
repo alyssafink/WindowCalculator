@@ -1,0 +1,7 @@
+Operability,Flow coefficient
+Fixed,0.0035
+Awning Window (Single Sash),0.012
+Awning Window (Multiple Sash),0.046
+Vertical Slider (Pre-1970),0.046
+Vertical Slider (Post-1970),0.012
+Horizontal Slider,0.046
