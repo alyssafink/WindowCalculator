@@ -22,10 +22,12 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "@observablehq/plot": "github:observablehq/plot",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "d3": "^7.9.0",
     "fs-web": "^1.0.1",
+    "ngx-sharebuttons": "^13.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
