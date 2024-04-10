@@ -166,11 +166,20 @@ export class ReportComponent implements OnInit {
       this.upfrontCost_high[windowType] = pricePerHigh * numWindows;
     } else if (windowType == RetrofitWindowType.STORM) {
       // TODO: idk
+      let pricePerLow = this.calculationService.getStormUpfrontCost(true);
+      let pricePerHigh = this.calculationService.getStormUpfrontCost(false);
+      let totalArea = 0;
+      for (let window of windowData) {
+        totalArea += window.area;
+      }
+
+      this.upfrontCost_low[windowType] = pricePerLow * totalArea;
+      this.upfrontCost_high[windowType] = pricePerHigh * totalArea;
     } else {
       // Low: total area * price per (low)
       // High: total area * price per (high)
-      let pricePerLow = this.calculationService.getStormUpfrontCost(true);
-      let pricePerHigh = this.calculationService.getStormUpfrontCost(false);
+      let pricePerLow = this.calculationService.getFilmUpfrontCost(true);
+      let pricePerHigh = this.calculationService.getFilmUpfrontCost(false);
       let totalArea = 0;
       for (let window of windowData) {
         totalArea += window.area;

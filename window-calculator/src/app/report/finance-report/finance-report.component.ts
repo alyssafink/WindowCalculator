@@ -155,9 +155,7 @@ export class FinanceReportComponent {
   }
 
   createFilmChart() {
-    this.initialCosts_high[this.retrofitWindowTypes.WINDOW_FILM] = 1000;
-    this.initialCosts_low[this.retrofitWindowTypes.WINDOW_FILM] = 100;
-    //this.paybackDates[this.retrofitWindowTypes.WINDOW_FILM] = 2030;
+    console.log(this.initialCosts_high, this.initialCosts_low)
     let startingYear = new Date().getFullYear();
     let endingYear = startingYear + this.YEAR_SPAN;
     let productEndYear = startingYear + this.lifespan[this.retrofitWindowTypes.WINDOW_FILM];

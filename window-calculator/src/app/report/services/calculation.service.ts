@@ -483,9 +483,13 @@ export class CalculationService {
   // TODO: Test this
   getFilmUpfrontCost(low: boolean): number {
     if (low) {
-      return +this.filmUpfrontCostData[0]["Low"];
+      return +this.filmUpfrontCostData.find(function(item) {
+        return item["Range"] == "Low";
+      })["Cost"];
     } else {
-      return +this.filmUpfrontCostData[0]["High"];
+      return +this.filmUpfrontCostData.find(function(item) {
+        return item["Range"] == "High";
+      })["Cost"];
     }
   }
 
