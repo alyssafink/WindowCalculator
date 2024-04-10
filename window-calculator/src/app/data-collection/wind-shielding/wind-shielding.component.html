@@ -1,4 +1,9 @@
-<div style="max-height:70vh;">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <img class="img-fluid" style="max-width:65%;" [src]="'/assets/stepindicator/Step2.jpg'" alt="Progress bar (2)" />
+  </div>
+</div>
+<div class="mt-5">
   <h3 class="ms-4 mb-4 d-flex align-items-start">How protected from wind is your home? <fa-icon class="ms-1" style="font-size: large;" [icon]="faQuestion" placement="bottom" ngbTooltip="Select the exposure level that best matches the area around your home. If your home is in a typical suburban condition, select “Typical.” If your home is relatively isolated from other buildings and not surrounded by dense vegetation, select “Exposed.” If your home is surrounded by especially dense vegetation and/or tightly-packed buildings, select “Well-shielded.”"></fa-icon></h3>
   <div class="mb-4 container-fluid">
     <div class="row justify-content-evenly">
@@ -19,8 +24,9 @@
     <div class="col-sm-3">
       <button type="button" class="btn btn-light" [routerLink]="['../', 1]">&lt; Previous</button>
     </div>
-    <div class="col-sm-2 d-flex justify-content-end">
-      <button type="button" class="btn btn-action" [routerLink]="['../', 3]">Next &gt;</button>
+    <div *ngIf="hover && currentlyClickedCardIndex == -1" class="col-sm text-danger d-flex align-items-center justify-content-end">Select an item to continue</div>
+    <div class="col-sm-2 d-flex justify-content-end" (mouseenter)="hover=true"  (mouseleave)="hover=false">
+      <button type="button" class="btn btn-action" [ngClass]="{'disabled':currentlyClickedCardIndex == -1}" [routerLink]="['../', 3]">Next &gt;</button>
     </div>
   </div>
 </div>

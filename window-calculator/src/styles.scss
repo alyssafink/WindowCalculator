@@ -3,9 +3,19 @@
 $primary: rgb(119,202,218);
 $secondary: silver;
 $danger: rgb(197,89,63);
+$success: rgb(0,163,118);
+$action: rgb(244,121,44);
+$background: rgb(220, 220, 220);
+$lightprimary: rgb(184,244,255);
+$border: rgb(153, 153, 153);
+$darkblue: rgb(4,76,88);
 
 $custom-colors: (
-  "action": rgb(244,121,44)
+  "action": $action,
+  "background": $background,
+  "lightprimary": $lightprimary,
+  "border": $border,
+  "darkblue": $darkblue
 );
 
 .btn-action {
@@ -14,12 +24,12 @@ $custom-colors: (
 
 .header-style {
   background-color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $border;
   width: 100vw;
 }
 
 .footer-style {
-  background-color: rgb(184,244,255);
+  background-color: $primary;
   width: 100vw;
 }
 
@@ -36,8 +46,48 @@ $custom-colors: (
   cursor: pointer;
 }
 
+.badge {
+  font-size: large !important;
+  font-weight: 600 !important;
+  opacity: 0.75 !important;
+}
+
+.nav-link {
+  font-size: 14px !important;
+}
+
+.nav-item {
+  border-left: 1px solid $border;
+
+  &-last {
+    border-right: 1px solid $border;
+  }
+}
+
+.thermal-left {
+  background-image: url("/assets/report/comfort/ThermalComfort_Thermostat.png");
+  background-origin: content-box;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sb-icon {
+  box-shadow: none !important;
+}
+
+.text-outline {
+  &-action {
+    text-shadow: -1px 0 $action, 0 1px $action, 1px 0 $action, 0 -1px $action;
+  }
+}
+
+.form-control {
+  border: 1px solid $border !important;
+}
+
 .card {
-  border: 1px solid rgb(153, 153, 153) !important;
+  border: 1px solid $border !important;
 
   &-btn {
     border-radius: 0 !important;
@@ -45,7 +95,7 @@ $custom-colors: (
 }
 
 body {
-  background-color: rgb(220, 220, 220) !important
+  background-color: $background !important
 }
 
 /* Importing Bootstrap SCSS file. */
@@ -54,5 +104,6 @@ body {
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import 'bootstrap/scss/bootstrap';
-
-
+.fs-6 {
+  font-size: 0.75rem !important;
+}

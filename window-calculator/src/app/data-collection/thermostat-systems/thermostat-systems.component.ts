@@ -6,11 +6,12 @@ import { UserDataService } from '../user-data/user-data.service';
 import { CoolingSystemEnum, HeatingSystemEnum, WindShieldingEnum, WindowDataModel } from '../user-data/window-data-model';
 import { FrameTypeEnum, GlassTypeEnum, OperabilityTypeEnum, OrientationTypeEnum } from '../user-data/window-properties-model';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-thermostat-systems',
   standalone: true,
-  imports: [FontAwesomeModule, NgbTooltipModule, RouterLink],
+  imports: [FontAwesomeModule, NgbTooltipModule, RouterLink, CommonModule],
   templateUrl: './thermostat-systems.component.html',
   styleUrl: './thermostat-systems.component.scss'
 })

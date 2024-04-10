@@ -15,7 +15,6 @@ import { SoundReportComponent } from './report/sound-report/sound-report.compone
 import { LowEInfoComponent } from './info/low-e-info/low-e-info.component';
 import { StormInfoComponent } from './info/storm-info/storm-info.component';
 import { EnergyStarInfoComponent } from './info/energy-star-info/energy-star-info.component';
-import { InfoComponent } from './info/info.component';
 import { ReportHomeComponent } from './report/report-home/report-home.component';
 
 export const routes: Routes = [
@@ -27,16 +26,10 @@ export const routes: Routes = [
         { path: 'finance', component: FinanceReportComponent },
         { path: 'environment', component: EnvironmentReportComponent },
         { path: 'thermal', component: ComfortReportComponent },
-        { path: 'sound', component: SoundReportComponent }
-      ]
-    },
-    {
-      path: 'info',
-      component: InfoComponent,
-      children: [
-        { path: 'film', component: LowEInfoComponent },
-        { path: 'storm', component: StormInfoComponent },
-        { path: 'energy-star', component: EnergyStarInfoComponent },
+        { path: 'sound', component: SoundReportComponent },
+        { path: 'film-info', component: LowEInfoComponent },
+        { path: 'storm-info', component: StormInfoComponent },
+        { path: 'energy-star-info', component: EnergyStarInfoComponent }
       ]
     },
     {

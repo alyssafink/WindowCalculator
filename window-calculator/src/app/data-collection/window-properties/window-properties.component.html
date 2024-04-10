@@ -1,4 +1,10 @@
-<div style="max-height:70vh; overflow-y: auto;">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <img class="img-fluid" style="max-width:65%;" [src]="'/assets/stepindicator/Step5.jpg'" alt="Progress bar (5)" />
+  </div>
+</div>
+
+<div style="max-height:70vh; overflow-y: auto;" class="mt-5">
   <h3 class="ms-4 mb-4 d-flex align-items-start">What type of windows are in your home? <fa-icon class="ms-1" style="font-size: large;" [icon]="faQuestion" placement="bottom" ngbTooltip="Select whether you would like to enter information about each window in your home (Detailed Window Information), or about your windows in general (Simplified Window Information). If you choose the simplified option, you can always return to this page and enter detailed information later for an even more accurate report."></fa-icon></h3>
   <div class="mb-4 container-fluid btn-group mb-4" role="group" aria-label="Window Information Selection Group">
     <div class="row w-100 justify-content-around">
@@ -197,8 +203,9 @@
     <div class="col-sm-3">
       <button type="button" class="btn btn-light" [routerLink]="['../', 4]">&lt; Previous</button>
     </div>
-    <div class="col-sm-2 d-flex justify-content-end">
-      <button type="button" class="btn btn-action" (click)="submitData()" [routerLink]="['/report']">Submit</button>
+    <div *ngIf="hover && (view == '' || (view == 'Detailed' && windows.length == 0) || (view == 'Simplified' && (currentlyClickedFrameCardIndex == -1 || currentlyClickedGlassCardIndex == -1 || currentlyClickedOperabilityCardIndex == -1 || currentlyClickedOrientationCardIndex == -1)))" class="col-sm text-danger d-flex align-items-center justify-content-end">Enter window data to continue</div>
+    <div class="col-sm-2 d-flex justify-content-end" (mouseenter)="hover=true"  (mouseleave)="hover=false">
+      <button type="button" class="btn btn-action" [ngClass]="{'disabled':(view == '' || (view == 'Detailed' && windows.length == 0) || (view == 'Simplified' && (currentlyClickedFrameCardIndex == -1 || currentlyClickedGlassCardIndex == -1 || currentlyClickedOperabilityCardIndex == -1 || currentlyClickedOrientationCardIndex == -1)))}" (click)="submitData()" [routerLink]="['/report']">Submit</button>
     </div>
   </div>
 </div>

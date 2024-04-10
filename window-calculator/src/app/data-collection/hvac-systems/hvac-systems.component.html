@@ -1,4 +1,9 @@
-<div style="max-height:70vh; overflow-y: auto;">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <img class="img-fluid" style="max-width:65%;" [src]="'/assets/stepindicator/Step3.jpg'" alt="Progress bar (3)" />
+  </div>
+</div>
+<div style="max-height:70vh; overflow-y: auto;" class="mt-5">
   <h3 class="ms-4 mb-4 d-flex align-items-start">What type of heating system is in your home? <fa-icon class="ms-1" style="font-size: large" [icon]="faQuestion" placement="bottom" ngbTooltip="Select the heating system that best matches the system in your home. Select the high efficiency option if your heat pump has the ENERGY STAR label (7.2 HSPF2 or higher)."></fa-icon></h3>
   <div class="mb-4 container-fluid">
     <div class="row mb-3">
@@ -34,8 +39,9 @@
     <div class="col-sm-3">
       <button type="button" class="btn btn-light" [routerLink]="['../', 2]">&lt; Previous</button>
     </div>
-    <div class="col-sm-2 d-flex justify-content-end">
-      <button type="button" class="btn btn-action" [routerLink]="['../', 4]">Next &gt;</button>
+    <div *ngIf="hover && (currentlyClickedHeatingCardIndex == -1 || currentlyClickedCoolingCardIndex == -1)" class="col-sm text-danger d-flex align-items-center justify-content-end">Select an item for each question to continue</div>
+    <div class="col-sm-2 d-flex justify-content-end" (mouseenter)="hover=true"  (mouseleave)="hover=false">
+      <button type="button" class="btn btn-action" [ngClass]="{'disabled':currentlyClickedHeatingCardIndex == -1 || currentlyClickedCoolingCardIndex == -1}" [routerLink]="['../', 4]">Next &gt;</button>
     </div>
   </div>
 </div>

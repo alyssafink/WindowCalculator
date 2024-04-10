@@ -20,6 +20,7 @@ export class HvacSystemsComponent {
   coolingSystemEnum = CoolingSystemEnum;
   heatingSystemEnum = HeatingSystemEnum;
   isNotNumber = isNaN;
+  hover = false;
   userData: WindowDataModel;
   currentlyClickedHeatingCardIndex = -1;
   currentlyClickedCoolingCardIndex = -1;

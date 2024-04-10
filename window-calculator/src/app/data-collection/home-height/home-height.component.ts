@@ -18,6 +18,7 @@ import { RouterLink } from '@angular/router';
 export class HomeHeightComponent {
   faQuestion = faQuestionCircle;
   homeHeightEnum = HomeHeightEnum;
+  hover = false;
   isNotNumber = isNaN;
   userData: WindowDataModel;
   public currentlyClickedCardIndex: number = -1;

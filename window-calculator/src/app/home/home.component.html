@@ -27,7 +27,8 @@
         </div>
       </div>
       <div class="row justify-content-end">
-        <div class="col-sm-3 w-10 d-flex justify-content-end" style="padding:0;">
+        <div *ngIf="hover && !homeName" class="col-sm text-danger d-flex align-items-center justify-content-end">Enter a name for your home to continue</div>
+        <div class="col-sm-3 w-10 d-flex justify-content-end" style="padding:0; " (mouseenter)="hover=true"  (mouseleave)="hover=false">
           <button type="button" class="btn btn-action" (click)="startModel()" [disabled]="!homeName">Get Started</button>
         </div>
       </div>

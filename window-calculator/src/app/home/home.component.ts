@@ -13,10 +13,11 @@ import { WindowDataModel } from '../data-collection/user-data/window-data-model'
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
-    imports: [DataCollectionComponent, HeaderComponent, FooterComponent, FormsModule, RouterLink]
+    imports: [DataCollectionComponent, HeaderComponent, FooterComponent, FormsModule, RouterLink, CommonModule]
 })
 export class HomeComponent {
   homeName: string;
+  hover = false;
 
   constructor(private userDataService: UserDataService, private router: Router, private route: ActivatedRoute) {}
 

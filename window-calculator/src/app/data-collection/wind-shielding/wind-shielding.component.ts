@@ -18,6 +18,7 @@ export class WindShieldingComponent {
   faQuestion = faQuestionCircle;
   windShieldingEnum = WindShieldingEnum;
   userData: WindowDataModel;
+  hover = false;
   currentlyClickedCardIndex = -1;
 
   constructor(private userDataService: UserDataService) {}

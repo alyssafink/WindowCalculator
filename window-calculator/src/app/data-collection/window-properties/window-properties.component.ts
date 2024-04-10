@@ -30,6 +30,7 @@ export class WindowPropertiesComponent {
   orientationList_Det = ["North", "East", "South", "West", "Evenly Distributed"];
 
   editing: number = -1;
+  hover = false;
 
   windows: WindowPropertiesModel[];
   simpleWindow: WindowPropertiesModel;
