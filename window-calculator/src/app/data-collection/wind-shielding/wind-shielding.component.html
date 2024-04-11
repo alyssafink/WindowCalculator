@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <img class="img-fluid" style="max-width:65%;" [src]="'/assets/stepindicator/Step2.jpg'" alt="Progress bar (2)" />
+    <img class="img-fluid" style="max-width:65%;" [src]="'assets/stepindicator/Step2.jpg'" alt="Progress bar (2)" />
   </div>
 </div>
 <div class="mt-5">
@@ -11,7 +11,7 @@
       <ng-container *ngFor="let option of windShieldingEnum | keyvalue; index as i">
         <div class="col-sm">
           <div class="mx-auto card text-center" style="width: 10rem; height:100%;" [ngClass]="{'highlight':checkIfCardIsClicked(i)}">
-            <img class="card-img-top" src="/assets/wind-shielding/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
+            <img class="card-img-top" src="assets/wind-shielding/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
             <div class="card-body btn btn-primary w-100 stretched-link card-btn" (click)="selectOption(option.value,i)">{{option.value}}</div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <img class="img-fluid" style="max-width:65%;" [src]="'/assets/stepindicator/Step3.jpg'" alt="Progress bar (3)" />
+    <img class="img-fluid" style="max-width:65%;" [src]="'assets/stepindicator/Step3.jpg'" alt="Progress bar (3)" />
   </div>
 </div>
 <div style="max-height:70vh; overflow-y: auto;" class="mt-5">
@@ -11,7 +11,7 @@
       <ng-container *ngFor="let option of heatingSystemEnum | keyvalue; index as i">
         <div class="col-sm mt-2">
           <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfHeatingCardIsClicked(i)}">
-            <img class="card-img-top" src="/assets/heating-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
+            <img class="card-img-top" src="assets/heating-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
             <div class="card-body btn btn-primary w-100 stretched-link card-btn" (click)="selectHeatingOption(option.value,i)">{{option.value}}</div>
 
           </div>
@@ -26,7 +26,7 @@
       <ng-container *ngFor="let option of coolingSystemEnum | keyvalue; index as i">
         <div class="col-sm mt-3">
           <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfCoolingCardIsClicked(i)}">
-            <img class="card-img-top" src="/assets/cooling-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
+            <img class="card-img-top" src="assets/cooling-systems/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
             <div class="card-body btn btn-primary w-100 stretched-link card-btn" (click)="selectCoolingOption(option.value,i)">{{option.value}}</div>
           </div>
         </div>

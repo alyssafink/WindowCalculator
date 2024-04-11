@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <img class="img-fluid" style="max-width:65%;" [src]="'/assets/stepindicator/Step1.jpg'" alt="Progress bar (1)" />
+    <img class="img-fluid" style="max-width:65%;" [src]="'assets/stepindicator/Step1.jpg'" alt="Progress bar (1)" />
   </div>
 </div>
 <div class="mb-2 mt-5">
@@ -11,7 +11,7 @@
       <ng-container *ngFor="let option of homeHeightOptions | keyvalue: originalOrder">
         <div *ngIf="!isNotNumber(option.value)" class="col-sm">
           <div class="mx-auto card text-center" style="width: 10rem;" [ngClass]="{'highlight':checkIfCardIsClicked(option.value)}">
-            <img class="card-img-top" src="/assets/home-height/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
+            <img class="card-img-top" src="assets/home-height/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
             <div class="card-body btn btn-primary w-100 stretched-link card-btn" (click)="selectOption(option.value)">{{homeHeightEnum[option.key]}}</div>
           </div>
         </div>
