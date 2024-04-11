@@ -1,2 +1,0 @@
-# WindowCalculator
-Calculator for windows
