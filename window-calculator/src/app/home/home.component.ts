@@ -18,6 +18,7 @@ import { WindowDataModel } from '../data-collection/user-data/window-data-model'
 export class HomeComponent {
   homeName: string;
   hover = false;
+  buttonClicked: number = 0;
 
   constructor(private userDataService: UserDataService, private router: Router, private route: ActivatedRoute) {}
 

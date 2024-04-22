@@ -1,13 +1,13 @@
 <!-- header -->
 <app-header></app-header>
 <!-- Data collection component -->
-<div class="card mx-auto w-75 mb-4 mt-4 shadow">
+<div class="card mx-auto col-sm-9 mb-4 mt-4 shadow">
   <div class="card-body">
     <div class="container-fluid">
-      <div class="row mt-5 ms-4 mb-3">
-        <div class="col">
+      <div class="row mt-sm-5 ms-sm-4 mb-3">
+        <div class="col-sm mt-2 mt-sm-0">
           <h1>Window Calculator</h1>
-          <h3>Tucson Window Upgrades</h3>
+          <h3 class="text-primary">Tucson Window Upgrades</h3>
           <div class="mt-4 mb-4">
             Considering upgrading your single-pane windows, but not sure it's worth it?
           </div>
@@ -22,7 +22,7 @@
           </div>
           <input type="text" class="form-control" id="homeNameControl" placeholder="Insert project name"  [(ngModel)]="homeName">
         </div>
-        <div class="col">
+        <div class="col order-first order-md-last">
           <img class="img-fluid" [src]="'/assets/home/person.png'" alt="Person shocked at electricity bill" />
         </div>
       </div>
@@ -36,15 +36,15 @@
   </div>
 </div>
 <!-- Rest -->
-<div class="d-flex justify-content-center">
-  <div class="accordion w-75" id="faq">
+<div class="d-flex justify-content-center mb-4">
+  <div class="accordion col-sm-9" id="faq">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-expanded="true" aria-controls="dropdown1">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-expanded="true" aria-controls="dropdown1">
           Who is this tool for?
         </button>
       </h2>
-      <div id="dropdown1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+      <div id="dropdown1" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
           <div>
             If you own a home in or near Tucson, AZ that has at least one single-pane window, the Window Calculator is for you! This tool uses local climate data to calculate the health, comfort, and energy efficiency benefits of three different window upgrade options. These three options offer the best long-term savings in our climate compared to their initial cost.
@@ -63,7 +63,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false" aria-controls="dropdown2">
+        <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false" aria-controls="dropdown2">
           How do I know if I have single or double-pane windows?
         </button>
       </h2>
@@ -92,7 +92,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-expanded="false" aria-controls="dropdown3">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-expanded="false" aria-controls="dropdown3">
           What about historic windows?
         </button>
       </h2>
@@ -104,62 +104,36 @@
           <div class="mt-3">
             Luckily, there are window upgrade options that offer the financial, comfort, and environmental benefits of window replacement without the need to get rid of your historic windows. Read below, then enter your home information above to learn more about your upgrade options.
           </div>
-          <div class="accordion mt-3" id="windowTypeDropdowns">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#windowFilm" aria-expanded="false" aria-controls="windowFilm">
-                  Low-E Window Film
-                </button>
-              </h2>
-              <div id="windowFilm" class="accordion-collapse collapse" data-bs-parent="#windowTypeDropdowns">
-                <div class="accordion-body">
-                  A transparent plastic coating that is applied to the inside surface of existing windows.
-                </div>
+          <div class="row">
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body d-flex flex-column align-items-center justify-content-start">
+                <img class="img-fluid" style="max-height:50px" [src]="'assets/report/home/FilmIcon.png'" alt="Low-E Film Icon" />
+                <div class="fw-bold text-break text-center">Low-E Window Film</div>
+                <div class="text-center mt-2">A transparent plastic coating that is applied to the inside surface of existing windows.</div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stormWindows" aria-expanded="false" aria-controls="stormWindows">
-                  Low-E Storm Windows
-                </button>
-              </h2>
-              <div id="stormWindows" class="accordion-collapse collapse" data-bs-parent="#windowTypeDropdowns">
-                <div class="accordion-body">
-                  Secondary window units that are added either temporarily or permanently to the inside or outside of your existing windows.
-                </div>
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <img class="img-fluid" style="max-height:50px" [src]="'assets/report/home/StormIcon.png'" alt="Storm Window Icon" />
+                <div class="fw-bold text-break text-center">Low-E Storm Windows</div>
+                <div class="text-center mt-2">Secondary window units that are added either temporarily or permanently to the inside or outside of your existing windows.</div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#replacementWindow" aria-expanded="false" aria-controls="replacementWindow">
-                  ENERGY STAR Replacement Windows
-                </button>
-              </h2>
-              <div id="replacementWindow" class="accordion-collapse collapse" data-bs-parent="#windowTypeDropdowns">
-                <div class="accordion-body">
-                  New double-pane windows that are independently certified to meet climate-specific energy efficiency guidelines.
-                </div>
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <img class="img-fluid" style="max-height:50px" [src]="'assets/report/home/ReplacementIcon.png'" alt="Replacement Window Icon" />
+                <div class="fw-bold text-break text-center">ENERGY STAR Replacements</div>
+                <div class="text-center mt-2">New double-pane windows that are independently certified to meet climate-specific energy efficiency guidelines.</div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown4" aria-expanded="false" aria-controls="dropdown4">
-          What are the benefits of window upgrades?
-        </button>
-      </h2>
-      <div id="dropdown4" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Info
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown5" aria-expanded="false" aria-controls="dropdown5">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown5" aria-expanded="false" aria-controls="dropdown5">
           How much information do I need to know about my home?
         </button>
       </h2>
@@ -170,7 +144,7 @@
             If you have more time, you also have the option to enter more specific information about your windows, like their sizes, for an even more accurate report about the financial, comfort, and environmental impacts of three upgrade options.
           </div>
           <div class="mt-3">
-            Home information
+            <div class="fw-bold">Home information</div>
             <ul>
               <li>Number of Stories</li>
               <li>Wind Protection</li>
@@ -179,7 +153,7 @@
             </ul>
           </div>
           <div>
-            Window Properties
+            <div class="fw-bold">Window properties</div>
             <ul>
               <li>Glass Type</li>
               <li>Frame Material</li>
@@ -187,7 +161,7 @@
             </ul>
           </div>
           <div>
-            Optional information
+            <div class="fw-bold">Optional information</div>
             <ul>
               <li>Window Dimensions</li>
             </ul>
@@ -197,7 +171,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown6" aria-expanded="false" aria-controls="dropdown6">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown6" aria-expanded="false" aria-controls="dropdown6">
           How does the calculator work?
         </button>
       </h2>
@@ -207,63 +181,65 @@
             Homes are made up of a lot of different parts, and each one is as unique as the people who live in it. This means that calculating things like energy consumption requires a lot of information.
             Read below to learn how the Window Calculator simplifies this calculation process across five different topics in order to generate a personalized report for your home.
           </div>
-          <div class="mt-3">
-            <p class="gap-1">
-              <a class="btn btn-primary mb-2 mx-2" data-bs-toggle="collapse" data-bs-target="#energyUse" aria-expanded="false" aria-controls="energyUse">Energy Use</a>
-              <a class="btn btn-primary mb-2 mx-2" data-bs-toggle="collapse" data-bs-target="#upfrontCost" aria-expanded="false" aria-controls="upfrontCost">Upfront Cost</a>
-              <a class="btn btn-primary mb-2 mx-2" data-bs-toggle="collapse" data-bs-target="#embodiedCarbon" aria-expanded="false" aria-controls="embodiedCarbon">Embodied Carbon</a>
-              <a class="btn btn-primary mb-2 mx-2" data-bs-toggle="collapse" data-bs-target="#comfort" aria-expanded="false" aria-controls="comfort">Comfort</a>
-              <a class="btn btn-primary mb-2 mx-2" data-bs-toggle="collapse" data-bs-target="#soundInsulation" aria-expanded="false" aria-controls="soundInsulation">Sound Insulation</a>
-            </p>
-            <div class="collapse" id="energyUse">
-              <div class="card card-body">
-                <div>
-                  The amount of energy that a building uses is determined by both the way that heat flows through it and the electricity used by appliances and lighting.
-                  When more heat is entering a building than it's releasing, a cooling system will turn on and use energy to lower the temperature back to a comfortable level.
-                </div>
-                <div class="mt-3">
-                  The Window Calculator uses typical values about parts of your home (like the insulating ability of different window types) information about the physics of heat flow and to determine how much energy the three upgrade options save by reducing heat loss in the winter and heat gain in the summer.
-                </div>
-              </div>
-            </div>
-            <div class="collapse" id="upfrontCost">
-              <div class="card card-body">
-                <div>
-                  The cost of window upgrades will vary based on a lot of factors, including base window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, rebates, and more.
-                  In order to estimate a reasonable total expected cost for each upgrade option, the Window Calculator relies on information from manufacturers and installers to create a range of potential costs for a typical project, based on the total number and size of the windows considered for upgrades.
+          <div class="mt-3 mb-3" id="calcWorking">
+            <button [ngClass]="{'btn-primary': buttonClicked == 0, 'btn-outline-primary': buttonClicked != 0}" class="btn mb-2 mx-2 dropdown" data-bs-toggle="collapse" data-bs-target="#energyUse" aria-expanded="false" aria-controls="energyUse" (click)="buttonClicked = 0">Energy Use</button>
+            <button [ngClass]="{'btn-primary': buttonClicked == 1, 'btn-outline-primary': buttonClicked != 1}" class="btn btn-primary mb-2 mx-2 dropdown" data-bs-toggle="collapse" data-bs-target="#upfrontCost" aria-expanded="false" aria-controls="upfrontCost" (click)="buttonClicked = 1">Upfront Cost</button>
+            <button [ngClass]="{'btn-primary': buttonClicked == 2, 'btn-outline-primary': buttonClicked != 2}" class="btn btn-primary mb-2 mx-2 dropdown" data-bs-toggle="collapse" data-bs-target="#embodiedCarbon" aria-expanded="false" aria-controls="embodiedCarbon" (click)="buttonClicked = 2">Embodied Carbon</button>
+            <button [ngClass]="{'btn-primary': buttonClicked == 3, 'btn-outline-primary': buttonClicked != 3}" class="btn btn-primary mb-2 mx-2 dropdown" data-bs-toggle="collapse" data-bs-target="#comfort" aria-expanded="false" aria-controls="comfort" (click)="buttonClicked = 3">Comfort</button>
+            <button [ngClass]="{'btn-primary': buttonClicked == 4, 'btn-outline-primary': buttonClicked != 4}" class="btn btn-primary mb-2 mx-2 dropdown" data-bs-toggle="collapse" data-bs-target="#soundInsulation" aria-expanded="false" aria-controls="soundInsulation" (click)="buttonClicked = 4">Sound Insulation</button>
+
+            <div class="accordion">
+              <div class="collapse indent show" id="energyUse" data-bs-parent="#calcWorking">
+                <div class="card card-body">
+                  <div>
+                    The amount of energy that a building uses is determined by both the way that heat flows through it and the electricity used by appliances and lighting.
+                    When more heat is entering a building than it's releasing, a cooling system will turn on and use energy to lower the temperature back to a comfortable level.
+                  </div>
+                  <div class="mt-3">
+                    The Window Calculator uses typical values about parts of your home (like the insulating ability of different window types) information about the physics of heat flow and to determine how much energy the three upgrade options save by reducing heat loss in the winter and heat gain in the summer.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="collapse" id="embodiedCarbon">
-              <div class="card card-body">
-                Embodied carbon is one measurement of the environmental impact that a product has before it is installed in your home, including manufacturing and transportation. The Window Calculator cross-references the size of your windows with third-party verified data about the embodied carbon of all three upgrade options to estimate the environmental impact of each option before it enters your home.
+              <div class="collapse" id="upfrontCost" data-bs-parent="#calcWorking">
+                <div class="card card-body">
+                  <div>
+                    The cost of window upgrades will vary based on a lot of factors, including base window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, rebates, and more.
+                    In order to estimate a reasonable total expected cost for each upgrade option, the Window Calculator relies on information from manufacturers and installers to create a range of potential costs for a typical project, based on the total number and size of the windows considered for upgrades.
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="collapse" id="comfort">
-              <div class="card card-body">
-                Upgrading your windows can have a big impact on the comfort of your home, helping it feel cooler in the summer and warmer in the winter. This is because thermal comfort depends on both the air temperature and the temperature of things around you.
-                The Window Calculator uses information about the typical insulating and shading properties of different window types to determines how hot your windows will get in the summer.
-                This is then used to calculate how much hotter your windows make your home feel.
+              <div class="collapse" id="embodiedCarbon" data-bs-parent="#calcWorking">
+                <div class="card card-body">
+                  Embodied carbon is one measurement of the environmental impact that a product has before it is installed in your home, including manufacturing and transportation. The Window Calculator cross-references the size of your windows with third-party verified data about the embodied carbon of all three upgrade options to estimate the environmental impact of each option before it enters your home.
+                </div>
               </div>
-            </div>
-            <div class="collapse" id="soundInsulation">
-              <div class="card card-body">
-                <div>
-                  Windows are often a weak point in the effort to keep unwanted noise from airplanes, barking dogs, and loud neighbors out of your home.
-                  The Window Calculator compares the typical sound insulating properties of single-pane windows with each window upgrade option to determine how much they improve your privacy.
+              <div class="collapse" id="comfort" data-bs-parent="#calcWorking">
+                <div class="card card-body">
+                  Upgrading your windows can have a big impact on the comfort of your home, helping it feel cooler in the summer and warmer in the winter. This is because thermal comfort depends on both the air temperature and the temperature of things around you.
+                  The Window Calculator uses information about the typical insulating and shading properties of different window types to determines how hot your windows will get in the summer.
+                  This is then used to calculate how much hotter your windows make your home feel.
+                </div>
+              </div>
+              <div class="collapse" id="soundInsulation" data-bs-parent="#calcWorking">
+                <div class="card card-body">
+                  <div>
+                    Windows are often a weak point in the effort to keep unwanted noise from airplanes, barking dogs, and loud neighbors out of your home.
+                    The Window Calculator compares the typical sound insulating properties of single-pane windows with each window upgrade option to determine how much they improve your privacy.
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
           <div>
-            Want more information? Check out the detailed report of the Window Calculator methods here. <!--TODO: Link-->
+            Want more information? Check out the detailed report of the Window Calculator methods. <!--TODO: Link-->
           </div>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown7" aria-expanded="false" aria-controls="dropdown7">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown7" aria-expanded="false" aria-controls="dropdown7">
           What are the window upgrade options?
         </button>
       </h2>
@@ -272,43 +248,26 @@
           <div>
             Read below, then enter your home information above to learn more about your upgrade options.
           </div>
-          <div>
-            <div class="accordion mt-3" id="windowTypeDropdowns">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#windowFilm" aria-expanded="false" aria-controls="windowFilm">
-                    Low-E Window Film
-                  </button>
-                </h2>
-                <div id="windowFilm" class="accordion-collapse collapse" data-bs-parent="#windowTypeDropdowns">
-                  <div class="accordion-body">
-                    A transparent plastic coating that is applied to the inside surface of existing windows.
-                  </div>
-                </div>
+          <div class="row">
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body d-flex flex-column align-items-center justify-content-start">
+                <img class="img-fluid" style="max-height:50px" [src]="'assets/report/home/FilmIcon.png'" alt="Low-E Film Icon" />
+                <div class="fw-bold text-break text-center">Low-E Window Film</div>
+                <div class="text-center mt-2">A transparent plastic coating that is applied to the inside surface of existing windows.</div>
               </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stormWindows" aria-expanded="false" aria-controls="stormWindows">
-                    Low-E Storm Windows
-                  </button>
-                </h2>
-                <div id="stormWindows" class="accordion-collapse collapse" data-bs-parent="#windowTypeDropdowns">
-                  <div class="accordion-body">
-                    Secondary window units that are added either temporarily or permanently to the inside or outside of your existing windows.
-                  </div>
-                </div>
+            </div>
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <img class="img-fluid" style="max-height:50px" [src]="'assets/report/home/StormIcon.png'" alt="Storm Window Icon" />
+                <div class="fw-bold text-break text-center">Low-E Storm Windows</div>
+                <div class="text-center mt-2">Secondary window units that are added either temporarily or permanently to the inside or outside of your existing windows.</div>
               </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#replacementWindow" aria-expanded="false" aria-controls="replacementWindow">
-                    ENERGY STAR Replacement Windows
-                  </button>
-                </h2>
-                <div id="replacementWindow" class="accordion-collapse collapse" data-bs-parent="#windowTypeDropdowns">
-                  <div class="accordion-body">
-                    New double-pane windows that are independently certified to meet climate-specific energy efficiency guidelines.
-                  </div>
-                </div>
+            </div>
+            <div class="col-sm-3 card mx-auto mt-4 mb-4">
+              <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <img class="img-fluid" style="max-height:50px" [src]="'assets/report/home/ReplacementIcon.png'" alt="Replacement Window Icon" />
+                <div class="fw-bold text-break text-center">ENERGY STAR Replacements</div>
+                <div class="text-center mt-2">New double-pane windows that are independently certified to meet climate-specific energy efficiency guidelines.</div>
               </div>
             </div>
           </div>

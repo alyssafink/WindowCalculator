@@ -39,7 +39,7 @@
   </div>
 </div>
 <div class="d-flex justify-content-center">
-  <div class="accordion w-75" id="faq">
+  <div class="accordion w-100" id="faq">
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-expanded="true" aria-controls="dropdown1">
@@ -48,19 +48,121 @@
       </h2>
       <div id="dropdown1" class="accordion-collapse collapse show" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div id="carouselExampleIndicators" class="carousel carousel-dark slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/assets/info/storm/.png" class="img-fluid d-block w-100" alt="Rolled Film Sheet">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/info/storm/.png" class="d-block w-100" alt="Film Adhesive">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/info/storm/.png" class="d-block w-100" alt="Removing Bubbles">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/info/storm/.png" class="d-block w-100" alt="Reduction in Glare">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/info/storm/.png" class="d-block w-100" alt="Before and After">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false" aria-controls="dropdown2">
-          How do storm windows work?
+          Window Properties Guide
         </button>
       </h2>
       <div id="dropdown2" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div class="">
+            There are three key properties that define the impact that windows have on your home. All three window upgrade options selectively modify these properties to help you save money, lower your energy use, increase comfort, and more.
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>U-Value</h5>
+              <div class="mt-2">
+                Window u-values are a measurement of insulating capability. The lower the number, the better a window is at keeping heat out in the summer and in during the winter.
+              </div>
+              <div class="mt-2">
+                Low-e storm windows improve window u-value in two ways. First, the addition of a dead air gap between your existing window and the storm window acts like the thick wall of a cooler to add insulating capability. Second, the low-emissivity (low-e) coating helps reflect heat, keeping it out in the summer and in during the winter.
+              </div>
+              <div class="row mt-2">
+                <div class="col-sm">
+                  <img class="img-fluid" style="max-height:125px;" [src]="'assets/info/storm/before.png'" alt="U-Value Before" />
+                </div>
+                <div class="col-sm">
+                  <img class="img-fluid" style="max-height:125px;" [src]="'assets/info/storm/after.png'" alt="U-Value After" />
+                </div>
+              </div>
+              <div class="mt-2">
+                The thermal images above were taken in winter outside of a home before and after storm window installation. Notice how much less heat is escaping from the window after storm windows are added. Source: <a href="https://stormwindows.co.uk/thermal-efficiency/" target="_blank">Storm Bespoke Secondary Glazing</a>.
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid" style="max-height:100px;" [src]="''" alt="U-Value" />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>SHGC</h5>
+              <div class="mt-2">
+                The solar heat gain coefficient (SHGC) corresponds to the fraction of solar radiation that passes through a window into your home. The lower the number, the more money you will save on cooling bills. The SHGC of single-pane windows typically ranges from 0.47 - 0.66, depending on whether your windows are already tinted or not. This means that 47-66% of the solar radiation that comes into contact with your current windows is passed into your home.
+              </div>
+              <div class="mt-2">
+                The coating on low-e storm windows is spectrally selective, which means that it lets in solar radiation that you want (daylight) and reflects solar radiation that you don’t want (infrared radiation / solar heat).
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid" style="max-height:100px;" [src]="''" alt="SHGC" />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>Visible Transmittance</h5>
+              <div class="mt-2">
+                Visible transmittance is the fraction of sunlight visible to the human eye that passes through a window into your home. The visible transmittance needs of every home are different - some need a lower number to reduce glare, some need to maximize daylighting, and some are somewhere in the middle. The best way to figure out if the visible transmittance of a product is right for your home is to ask the manufacturer or distributor for images of past projects where it has been installed.
+              </div>
+              <div class="mt-2">
+                Adding a low-e coating to storm windows does lower the visible transmittance but does not darken it as much as typical window tinting because it is spectrally selective. This means that it is better at letting in solar radiation that you want (daylight) and reflects solar radiation that you don’t want (infrared radiation / solar heat).
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid" style="max-height:100px;" [src]="''" alt="U-Value" />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>Comparing Products</h5>
+              <div class="mt-2">
+                In order to compare different storm windows to determine which one is best for your home, look for the <a href="https://aercenergyrating.org/reading-the-residential-label/" target="_blank">Attachments Energy Rating Council (AERC)</a> label. The AERC provides independent certification for the properties of storm windows, so you can trust that they will perform as well as promised.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -72,7 +174,24 @@
       </h2>
       <div id="dropdown3" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div class="col-md-6 embed-responsive embed-responsive-4by3">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/DeU6wn0psrU?si=HCJVBm5JFSA_4iuo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="mt-2">
+            Low-e storm window installation typically takes around 20-30 minutes per window, and can be done as a DIY project or by a professional. It only requires a few tools and is a fairly simple process - the most important part is making sure you measure your window openings correctly so that the storm windows are a good fit. Follow this step-by-step guide to get ready for installation, then check out the resources provided by the Building America Solution Center if you are planning to do it yourself.
+          </div>
+          <ol class="mt-2">
+            <li>Look carefully at your existing windows to make sure they are in good shape. There should not be any moisture, missing glass, rotting wood, or broken parts. If you notice any of these things, get them fixed first.</li>
+            <li>Know what to look for. Read the guide to low-e storm window performance above, and understand which factors are most important to you. Do you want windows that are operable or fixed?</li>
+            <li>Use the <a href="https://aercenergyrating.org/product-search/residential-product-search/" target="_blank">Attachments Energy Rating Council (AERC) product search</a> to find storm windows that fit your needs. AERC-rated products have to meet independent testing requirements, so their label means that you can trust a storm window to perform as well as promised. The AERC label includes both a Cool and Warm Climate rating. Since Tucson can get so hot in the summer, higher Warm Climate ratings are beneficial.</li>
+            <li>Once you’ve found a product or two that you like, reach out to the manufacturer for more information, including pricing. You’ll likely have to provide window measurements in order to receive a quote, since storm windows have to be custom-made in order to ensure they are a tight fit. Make sure you follow the manufacturer’s measurement instructions carefully.</li>
+            <li>If you’re thinking about hiring a professional, ask the manufacturer to recommend a local installer who has experience with their products. If you’re planning on installing your storm windows yourself, check out the resources below and the instructional video above.</li>
+          </ol>
+          <div class="mt-2">
+            <h5>Installation Resources</h5>
+            <div>Building America Solution Center - <a href="https://basc.pnnl.gov/resource-guides/low-e-exterior-storm-windows" target="_blank">step-by-step instructions for exterior storm windows</a></div>
+            <div>Building America Solution Center - <a href="https://basc.pnnl.gov/resource-guides/interior-storm-windows-and-panels#edit-group-scope" target="_blank">step-by-step instructions for interior storm windows</a></div>
+          </div>
         </div>
       </div>
     </div>
@@ -84,7 +203,21 @@
       </h2>
       <div id="dropdown4" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div>
+            <span class="fw-bold">Upfront Cost:</span>
+            Low-e storm windows are the most energy-efficient alternative to replacement windows in Tucson, but typically only cost 1/3 the amount. They cost around $13-$30 per square foot of window based on the size of the opening, operability, and whether they are interior or exterior storm windows. Shipping adds XXX, and installation XXX, depending on whether you do it yourself or hire a professional. This represents a 10-15% price increase over less energy efficient storm windows without a low-e coating. If Southwest Gas is your utility provider and you install storm windows that are ENERGY STAR certified for the Southern climate zone, you’ll be eligible for <a href="https://www.swgas.com/en/rebate/arizona-windows-homeowner/renter" target="_blank">$1/sf rebate</a> through the start of 2025, which could save you a few hundred dollars.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Energy Savings:</span>
+            Despite having an upfront cost as much as three times lower than new, high-performance windows, low-e storm windows create nearly identical energy savings, reducing your annual energy bill by around 16-23%. This is because the insulating air gap between existing windows and storm windows acts just like the gap between two panes of glass to reduce unwanted heat flow, and the low-e coating creates even more insulating capability. Those savings add up to hundreds of dollars a year, and you can expect your investment to pay off in 10 years. Additionally, your energy savings from installing low-e storm windows instead of storm windows with clear glass will pay back the cost difference in 2-5 years.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Product Lifespan:</span>
+            Many low-e storm windows will last at least 15-20 years, and many warranties cover the first 15.
+          </div>
+          <div class="mt-2">
+            Your personalized <a [routerLink]="['/report/finance']">home window upgrade report</a> estimates how much low-e film could save you on energy bills based on your specific home information.
+          </div>
         </div>
       </div>
     </div>
@@ -96,7 +229,24 @@
       </h2>
       <div id="dropdown5" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div>
+            <span class="fw-bold">Measuring Impact:</span>
+            The Window Calculator analysis considers two aspects of a window upgrade option’s environmental impact: its initial carbon impact and its operational carbon impact. These are measured in kilograms of carbon dioxide equivalent (kg CO2e). A higher number indicates that a product has contributed more to global warming through manufacturing, transportation, installation, energy use, or disposal.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Embodied Carbon:</span>
+            Embodied carbon is a measurement of the greenhouse gas emissions created in order to manufacture a storm window, transport it, and install it in your home. Two of the major materials in a low-e storm window - glass and aluminum - require a lot of energy to manufacture, which means that storm windows have a higher embodied carbon than low-e film. How storm windows compare to ENERGY STAR replacement windows varies depending on the frame material of the new window.
+          </div>
+          <div class="mt-2">
+            Whatever the embodied carbon impact, adding low-e storm windows saves so much energy that they will have a net positive environmental impact within a year or so. Since storm windows last at least 15-20 years, they are a great way to reduce your home’s carbon footprint in the long run.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Next Steps:</span>
+            Check out the <a [routerLink]="['/report/environment']">Environmental Impact</a> section of your personalized home window upgrade report to compare the benefits of each window upgrade option.
+          </div>
+          <div class="mt-2">
+            If you’re really interested in improving the environmental impact of your home, a <a href="https://www.energy.gov/energysaver/home-energy-assessments" target="_blank">home energy assessment</a> can help you prioritize the changes that can have the biggest impact.
+          </div>
         </div>
       </div>
     </div>
@@ -108,7 +258,21 @@
       </h2>
       <div id="dropdown6" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div>
+            <span class="fw-bold">How It Works:</span>
+            Storm windows are one of the most effective ways to reduce the amount of sound that is transmitted through your windows. This is because of the dead air space between your existing single-pane windows and new storm windows, which is even wider (ideally around 1”) than the insulating air space in double-pane windows, resulting in even better sound reduction.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Why Windows Matter:</span>
+            Windows are typically the weak point in your home for sound transmission, letting in the most traffic and airplane noises, along with other annoyances like your neighbor’s leaf blower. This means that storm windows can help save your sanity - and your sleep. If the exterior walls of your home aren’t insulated, though, you’ll need to add insulation in order to really reduce the amount of noise that travels inside.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Sound Ratings:</span>
+            Sound transmission through windows is measured through two different ratings: STC and OITC. STC (or Sound Transmission Class) is a measure of how well a window blocks commons sounds, like conversation. OITC (or Outdoor/Indoor Transmission Class) is a measure of how well a window blocks lower-level noises, like airplanes and construction. For both, a higher number is better. STC ratings are more common to find on windows, but sometimes you will see an OITC rating as well. In either case, it is important to keep in mind that a rating difference of ~3 is nearly impossible for the human ear to discern, while a rating difference of 10 cuts the amount of sound transmitted in half.
+          </div>
+          <div class="mt-2">
+            If dramatically improving sound insulation is important to you, consider checking out the <a [routerLink]="['/report/sound']">Sound Blocking</a> page of your personalized home window upgrade report to weigh the benefits of your other window upgrade options.
+          </div>
         </div>
       </div>
     </div>
@@ -120,7 +284,30 @@
       </h2>
       <div id="dropdown7" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div>
+            <span class="fw-bold">Windows and Comfort:</span>
+            Your HVAC systems work hard to keep the air temperature comfortable when windows let heat into and out of your home, but windows affect how comfortable your home feels in three other ways, too.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Sunlight:</span>
+            Sunlight contributes to both comfort and discomfort, depending on the season. During the winter, sitting in the sun can feel quite pleasant, even if the air temperature is a bit cooler than you would prefer. During the summer, however, you might want to avoid that sunny window seat.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Glass Temperature:</span>
+            Poorly-insulated windows can get quite hot in the summer, reaching 120 °F or more. Sitting next to poorly-insulated windows can feel like sitting next to a sun-baked brick wall in the summer, making you sweat even if the air temperature is comfortable.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Air Movement:</span>
+            The difference in temperature between your windows and the indoor air can cause drafts if it is extreme, which make you feel colder in the winter. Air leakage through windows also lets in hot air in the summer, and cold air in the winter.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Temperature Control:</span>
+            Low-e storm windows make your home more comfortable by controlling the temperature of the glass during extreme weather. The insulating air gap between your existing windows and new storm windows lets less heat through, and the low-e coating reflects heat away, keeping it outside your home in the summer, and inside your home in the winter. Storm windows without a low-e coating will feel hotter in the summer and colder in the winter because they aren’t as good at reflecting heat.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Decreased Air Leakage:</span>
+            Because low-e storm windows don’t get as cold in the winter as single-pane windows do, adding them will help reduce any drafts that your home experiences. They are also often more air tight than existing windows, especially if they are installed on the interior. In addition to reducing unwanted air leakage, this helps keep out unfiltered air that may contain pollen and other air pollutants.
+          </div>
         </div>
       </div>
     </div>
@@ -132,7 +319,109 @@
       </h2>
       <div id="dropdown8" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div>
+            <h5>Can you tell how many of these buildings have low-e storm windows?</h5>
+            <div id="buildingQuiz" class="carousel carousel-action slide">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="10" aria-label="Slide 11"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="11" aria-label="Slide 12"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="12" aria-label="Slide 13"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="13" aria-label="Slide 14"></button>
+                <button type="button" data-bs-target="#buildingQuiz" data-bs-slide-to="14" aria-label="Slide 15"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="/assets/info/storm/buildings/building1.png" class="img-fluid d-block w-100" alt="Building 1">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building2.png" class="img-fluid d-block w-100" alt="Building 2">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building3.png" class="img-fluid d-block w-100" alt="Building 3">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building4.png" class="img-fluid d-block w-100" alt="Building 4">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building5.png" class="img-fluid d-block w-100" alt="Building 5">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building6.png" class="img-fluid d-block w-100" alt="Building 6">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building7.png" class="img-fluid d-block w-100" alt="Building 7">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building8.png" class="img-fluid d-block w-100" alt="Building 8">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building9.png" class="img-fluid d-block w-100" alt="Building 9">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building10.png" class="img-fluid d-block w-100" alt="Building 10">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building11.png" class="img-fluid d-block w-100" alt="Building 11">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building12.png" class="img-fluid d-block w-100" alt="Building 12">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building13.png" class="img-fluid d-block w-100" alt="Building 13">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building14.png" class="img-fluid d-block w-100" alt="Building 14">
+                </div>
+                <div class="carousel-item">
+                  <img src="/assets/info/storm/buildings/building15.png" class="img-fluid d-block w-100" alt="Building 15">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#buildingQuiz" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#buildingQuiz" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <button class="btn btn-action" (click)="showAnswer = true">Show Answer</button>
+            <div *ngIf="showAnswer">All of the above buildings have storm windows!</div>
+          </div>
+
+          <div class="mt-2">
+            Low-e storm windows are one of the best ways to improve the energy efficiency and comfort of your home while preserving its architectural character. They can lower your energy bills just as much as replacement windows, but cost much less, especially compared to historically-accurate replicas of custom wood windows.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Storm Window Selection Guidance:</span>
+            Storm windows come in almost every color, so just make sure to pick ones that match the color of your existing windows. If you choose operable storm windows, also make sure that the sash configuration aligns with that of your existing windows so they blend in. Low-e storm windows are highly customizable because they need to fit snugly into the window opening, so you should be able to find ones that are right for your home, no matter how unique your windows are.
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Historic Properties:</span>
+            If your home is listed on the National Register of Historic Places, adding low-e storm windows shouldn’t compromise your eligibility for the State Historic Property Tax Program. In fact, the guidelines used to determine eligibility for the program explicitly recommend adding storm windows for energy efficiency and durability. Consider contacting the <a href="mailto:spt@azstateparks.gov" target="_blank">Arizona State Historic Preservation Office</a> for help deciding whether exterior or interior low-e storm windows are a better fit for your home.
+            <figure class="text-center mt-2">
+              <blockquote class="blockquote">
+                <p>Recommended: Adding storm windows with a matching or a one-over-one pane configuration that will not obscure the characteristics of the historic windows. Storm windows improve energy efficiency and are especially beneficial when installed over wood windows because they also protect them from accelerated deterioration.</p>
+              </blockquote>
+              <figcaption class="blockquote-footer">
+                <cite title="Source Title">Guidance</cite> 103
+              </figcaption>
+            </figure>
+          </div>
+          <div class="mt-2">
+            <span class="fw-bold">Historic Preservation Zones:</span>
+            If you live in one of Tucson’s Historic Preservation Zones, adding storm windows may require a review process, depending on whether they are permanently installed and how much they affect the exterior appearance of your home. If your local advisory board is concerned about maintaining the appearance of your window frame material, interior storm windows might be a better fit for your home. It could also help to share images demonstrating how little the right storm windows affect the appearance of historic buildings, and point out that they are a recommended upgrade option by many organizations promoting historic preservation, including the State Historic Preservation Office and the National Trust for Historic Preservation.
+          </div>
         </div>
       </div>
     </div>
@@ -144,7 +433,16 @@
       </h2>
       <div id="dropdown9" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <a href="https://www.energy.gov/energysaver/storm-windows" target="_blank">Home Energy Saver - Storm Windows</a><br/>
+          <a class="mt-2" href="https://efficientwindowcoverings.org/" target="_blank">Efficient Window Coverings</a>
+          <div class="mt-2">
+            <div class="fw-bold">References:</div>
+            <div class="mt-2">Culp, T.D. (2014). Database of Low-e Storm Window Performance across U.S. Climate Zones. <a href="https://www.pnnl.gov/main/publications/external/technical_reports/PNNL-22864rev2.pdf" target="_blank">https://www.pnnl.gov/main/publications/external/technical_reports/PNNL-22864rev2.pdf</a></div>
+            <div class="mt-2">Drumheller, S.C. (2007). Field Evaluation of Low-E Storm Windows. Lawrence Berkeley National Laboratory. <a href="https://aercenergyrating.org/wp-content/uploads/2023/03/1940e-2.pdf" target="_blank">https://aercenergyrating.org/wp-content/uploads/2023/03/1940e-2.pdf</a></div>
+            <div class="mt-2">Grimmer, A. (2017). The Secretary of the Interior’s Standards for the Treatment of Historic Properties with Guidelines for Preserving, Rehabilitating, Restoring, & Reconstructing Historic Buildings. U.S. Department of the Interior National Park Service Technical Preservation Services. <a href="https://www.nps.gov/orgs/1739/upload/treatment-guidelines-2017-part1-preservation-rehabilitation.pdf" target="_blank">https://www.nps.gov/orgs/1739/upload/treatment-guidelines-2017-part1-preservation-rehabilitation.pdf</a></div>
+            <div class="mt-2">Klems, J.H. (2002). Measured Winter Performance of Storm Windows. ASHRAE Transactions (109, Part 2). <a href="https://facades.lbl.gov/publications/measured-winter-performance-storm" target="_blank">https://facades.lbl.gov/publications/measured-winter-performance-storm</a></div>
+            <div class="mt-2">Williams, R. (2021). “Historic Wood Windows A Tip Sheet from the National Trust for Historic Preservation’s HOPE Crew.” The National Trust for Historic Preservation. <a href="https://cdn.savingplaces.org/2023/05/18/16/18/17/805/Window Tip Sheet Update_2021.pdf" target="_blank">https://cdn.savingplaces.org/2023/05/18/16/18/17/805/Window Tip Sheet Update_2021.pdf</a></div>
+          </div>
         </div>
       </div>
     </div>

@@ -91,12 +91,70 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false" aria-controls="dropdown2">
-          How does low-e film work?
+          Window Properties Guide
         </button>
       </h2>
       <div id="dropdown2" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div class="">
+            There are three key properties that define the impact that windows have on your home. All three window upgrade options selectively modify these properties to help you save money, lower your energy use, increase comfort, and more.
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>U-Value</h5>
+              <div class="mt-2">
+                Window u-values are a measurement of insulating capability. The lower the number, the better a window is at keeping heat out in the summer and in during the winter.
+              </div>
+              <div class="mt-2">
+                When low-e film is applied to the inside of single-pane windows, it reduces the emissivity of the inside surface (thus the name low-e). This improves the window u-value because heat absorbed by the window is reflected back outside instead of emitted indoors. During winter, it reflects heat back into your home. Window tinting does not affect the u-value.
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid" style="max-height:100px;" [src]="''" alt="U-Value" />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>SHGC</h5>
+              <div class="mt-2">
+                The solar heat gain coefficient (SHGC) corresponds to the fraction of solar radiation that passes through a window into your home. The lower the number, the more money you will save on cooling bills. The SHGC of single-pane windows typically ranges from 0.47 - 0.66, depending on whether your windows are already tinted or not. This means that 47-66% of the solar radiation that comes into contact with your current windows is passed into your home.
+              </div>
+              <div class="mt-2">
+                Low-e film is spectrally selective, which means that it lets in solar radiation that you want (daylight) and reflects solar radiation that you don’t want (infrared radiation / solar heat).
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid" style="max-height:100px;" [src]="''" alt="SHGC" />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>Visible Transmittance</h5>
+              <div class="mt-2">
+                Visible transmittance is the fraction of sunlight visible to the human eye that passes through a window into your home. The visible transmittance needs of every home are different - some need a lower number to reduce glare, some need to maximize daylighting, and some are somewhere in the middle. The best way to figure out if the visible transmittance of a product is right for your home is to ask the manufacturer or distributor for images of past projects where it has been installed or request a product sample for things like low-e film.
+              </div>
+              <div class="mt-2">
+                Low-e film is available in a wide range of visible transmittance because it is spectrally selective. This means that it is able to block the solar radiation that you don’t want (infrared radiation / solar heat) and allow visible light through.
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid" style="max-height:100px;" [src]="''" alt="U-Value" />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm">
+              <h5>Comparing Products</h5>
+              <div class="mt-2">
+                In order to compare different low-e films to determine which one is right for your home, look for the <a href="https://nfrc.org/windows-doors-skylights/windows-films/" target="_blank">NFRC Energy Performance Label</a>. The National Fenestration Rating Council (NFRC) provides independent testing for window film energy efficiency, so their label means you can trust that the film you install will perform as well as promised.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -176,7 +234,7 @@
           </div>
           <div class="mt-2">
             <span class="fw-bold">Next Steps:</span>
-            Check out the Environmental Impact section of your personalized home window upgrade report to compare the benefits of each window upgrade option.
+            Check out the <a [routerLink]="['/report/environment']">Environmental Impact</a> section of your personalized home window upgrade report to compare the benefits of each window upgrade option.
           </div>
           <div class="mt-2">
             If you’re really interested in improving the environmental impact of your home, a <a href="https://www.energy.gov/energysaver/home-energy-assessments" target="_blank">home energy assessment</a> can help you prioritize the changes that can have the biggest impact.
