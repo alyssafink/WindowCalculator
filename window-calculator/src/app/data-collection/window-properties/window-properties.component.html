@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <img class="img-fluid" style="max-width:65%;" [src]="'/assets/stepindicator/Step5.jpg'" alt="Progress bar (5)" />
+    <img class="img-fluid" style="max-width:65%;" [src]="'assets/stepindicator/Step5.jpg'" alt="Progress bar (5)" />
   </div>
 </div>
 
@@ -56,7 +56,7 @@
           <ng-container *ngFor="let option of windowTypeEnum | keyvalue; index as i">
             <div class="col-sm mt-2 d-flex justify-content-center">
               <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfOperabilityCardIsClicked(i)}">
-                <img class="card-img-top" src="/assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
+                <img class="card-img-top" src="assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
                 <div class="card-body btn btn-primary w-100 stretched-link card-btn" (click)="selectSimplifiedOperabilityOption(option.value,i)">{{option.value}}</div>
               </div>
             </div>
@@ -168,7 +168,7 @@
               <ng-container *ngFor="let option of windowTypeEnum | keyvalue; index as i">
                 <div class="col-sm mt-2 d-flex justify-content-center">
                   <div class="mx-auto card text-center h-100" style="width: 10rem;" [ngClass]="{'highlight':checkIfOperabilityCardIsClicked(i)}">
-                    <img class="card-img-top" src="/assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
+                    <img class="card-img-top" src="assets/window-properties/{{option.key}}.jpg" alt="{{option.value}}" style="height: auto;">
                     <div class="card-body btn btn-primary w-100 stretched-link card-btn" (click)="selectDetailedOperabilityOption(option.value,i)">{{option.value}}</div>
                   </div>
                 </div>
