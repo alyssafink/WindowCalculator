@@ -1,14 +1,19 @@
-<div class="card ms-auto me-4 mb-4 mt-4">
+<div class="card ms-auto me-md-4 mb-4 mt-4">
   <div class="card-body container">
     <div class="row mt-2 mb-3">
-      <div class="col-sm ms-4">
+      <div class="d-sm-none col-sm me-4 mb-4">
+        <div class="d-flex justify-content-center">
+          <img class="img-fluid" style="max-height:200px;" [src]="'assets/report/home/FilmIcon.png'" alt="Low-E Icon" />
+        </div>
+      </div>
+      <div class="col-sm ms-md-4">
         <h2>ENERGY STAR Replacement Windows</h2>
         <div class="mt-4">ENERGY STAR replacement windows are the industry standard for home window energy efficiency upgrades. They come in a wide variety of materials, colors, styles, and operabilities, so you’ll be able to find an option that works for your needs.</div>
         <div class="mt-2">They are often the most expensive home window upgrade option, so it can be beneficial to make sure your windows need it before investing.</div>
         <div class="mt-2">To help you decide if ENERGY STAR replacement windows are the right window upgrade option for your home, this page will cover the following topics and share some trustworthy resources for more research.</div>
       </div>
       <div class="col-sm me-4">
-        <div class="d-flex justify-content-center">
+        <div class="d-none d-sm-flex justify-content-center">
           <img class="img-fluid" style="max-height:200px;" [src]="'assets/report/home/FilmIcon.png'" alt="Low-E Icon" />
         </div>
         <div class="mt-5">
@@ -39,15 +44,15 @@
     </div>
   </div>
 </div>
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mb-4 me-md-4">
   <div class="accordion w-100" id="faq">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-expanded="true" aria-controls="dropdown1">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-expanded="true" aria-controls="dropdown1">
           Images
         </button>
       </h2>
-      <div id="dropdown1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+      <div id="dropdown1" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
           Stuff
         </div>
@@ -55,7 +60,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false" aria-controls="dropdown2">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false" aria-controls="dropdown2">
           Window Properties Guide
         </button>
       </h2>
@@ -66,7 +71,7 @@
           </div>
           <div class="row mt-4">
             <div class="col-sm">
-              <h5>U-Value</h5>
+              <div class="fw-bold">U-Value</div>
               <div class="mt-2">
                 Window u-values are a measurement of insulating capability. The lower the number, the better a window is at keeping heat out in the summer and in during the winter.
               </div>
@@ -81,7 +86,7 @@
           </div>
           <div class="row mt-4">
             <div class="col-sm">
-              <h5>SHGC</h5>
+              <div class="fw-bold">SHGC</div>
               <div class="mt-2">
                 The solar heat gain coefficient (SHGC) corresponds to the fraction of solar radiation that passes through a window into your home. The lower the number, the more money you will save on cooling bills. The SHGC of single-pane windows typically ranges from 0.47 - 0.66, depending on whether your windows are already tinted or not. This means that 47-66% of the solar radiation that comes into contact with your current windows is passed into your home.
               </div>
@@ -97,7 +102,7 @@
           </div>
           <div class="row mt-4">
             <div class="col-sm">
-              <h5>Visible Transmittance</h5>
+              <div class="fw-bold">Visible Transmittance</div>
               <div class="mt-2">
                 Visible transmittance is the fraction of sunlight visible to the human eye that passes through a window into your home. The visible transmittance needs of every home are different - some need a lower number to reduce glare, some need to maximize daylighting, and some are somewhere in the middle. The best way to figure out if the visible transmittance of a product is right for your home is to ask the manufacturer or distributor for images of past projects where it has been installed.
               </div>
@@ -113,9 +118,9 @@
           </div>
           <div class="row mt-4">
             <div class="col-sm">
-              <h5>Comparing Products</h5>
+              <div class="fw-bold">Comparing Products</div>
               <div class="mt-2">
-                In order to compare different windows to determine which one is best for your home, look for both the <a href="https://www.energystar.gov/products/res_windows_doors_skylights" target="_blank">ENERGY STAR label</a> for the Southern climate zone and the <a href="https://nfrc.org/energy-performance-label/" target="_blank">NFRC label</a>. NFRC-certified products are independently tested, certified, and labeled to help you make the best purchase decision for your needs. While the ENERGY STAR label tells you if a product is energy-efficient, the NFRC label helps you compare between energy-efficient products by breaking down a product’s energy performance based on the properties listed above.              </div>
+                In order to compare different windows to determine which one is best for your home, look for both the <a class="link-action" href="https://www.energystar.gov/products/res_windows_doors_skylights" target="_blank">ENERGY STAR label</a> for the Southern climate zone and the <a class="link-action" href="https://nfrc.org/energy-performance-label/" target="_blank">NFRC label</a>. NFRC-certified products are independently tested, certified, and labeled to help you make the best purchase decision for your needs. While the ENERGY STAR label tells you if a product is energy-efficient, the NFRC label helps you compare between energy-efficient products by breaking down a product’s energy performance based on the properties listed above.              </div>
             </div>
           </div>
         </div>
@@ -123,17 +128,17 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-expanded="false" aria-controls="dropdown3">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-expanded="false" aria-controls="dropdown3">
           Installation
         </button>
       </h2>
       <div id="dropdown3" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
           <div class="col-md-6 embed-responsive embed-responsive-4by3">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/2YQAqWXXkUA?si=XQ-w4SdEniPOeiNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe style="max-width:100%" width="560" height="315" src="https://www.youtube.com/embed/2YQAqWXXkUA?si=XQ-w4SdEniPOeiNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <div class="mt-2">
-            The <a href="https://basc.pnnl.gov/resource-guides/complete-window-and-frame-replacement" target="_blank">Building America Solution Center</a> and <a href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank">U.S. Department of Energy - Energy Saver program</a> both have excellent resources on the process of selecting and installing replacement windows in your home. Here are the key takeaways:
+            The <a class="link-action" href="https://basc.pnnl.gov/resource-guides/complete-window-and-frame-replacement" target="_blank">Building America Solution Center</a> and <a class="link-action" href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank">U.S. Department of Energy - Energy Saver program</a> both have excellent resources on the process of selecting and installing replacement windows in your home. Here are the key takeaways:
           </div>
           <ul class="mt-2">
             <li>Unless your existing windows are unrepairable, it is often more cost effective to upgrade them with air sealing, shading, low-e storm windows, or shading than it is to completely remove and replace them. Inspect your windows carefully to identify any potential issues that may need be resolved first, including water leaks and other damage. Old wood windows are a common location for lead paint, so if you have them, consider contacting a professional to help you move forward.</li>
@@ -146,7 +151,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown4" aria-expanded="false" aria-controls="dropdown4">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown4" aria-expanded="false" aria-controls="dropdown4">
           Financial Tradeoffs
         </button>
       </h2>
@@ -157,7 +162,7 @@
               <span class="fw-bold">Upfront Cost:</span>
               The cost of ENERGY STAR replacement windows varies significantly based on a number of factors, including frame material, window size, quantity, quality, installation complexity, brand, installer, labor costs, permitting, and more. Vinyl windows are typically the least expensive, and wood windows the most expensive. Historically-accurate custom windows can cost $4,000+ each to manufacture and install. See below for a range of typical window replacement costs including materials and labor for common frame materials. ADD SECTION ABOUT FINANCIAL INCENTIVES.
             </div>
-            <div class="col-sm">
+            <div class="col-sm mt-4 mt-sm-0">
               <table class="table">
                 <thead class="table-light">
                   <tr>
@@ -184,22 +189,22 @@
                   </tr>
                 </tbody>
               </table>
-              <div>
+              <div class="figure-caption">
                 Window cost range estimates obtained from the Modernize Home Services Window Replacement Cost Estimator.
               </div>
             </div>
           </div>
-          <div class="mt-2">
+          <div class="col-sm-6 mt-4">
             <span class="fw-bold">Energy Savings:</span>
             A typical home in Tucson’s hot climate can expect to see their annual energy bill reduced by ~12% after installing ENERGY STAR replacement windows, which adds up to hundreds of dollars a year in savings. Unless your existing windows are irreparable, though, low-e storm windows typically provide a quicker return on investment because they provide similar savings as a lower cost.
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <div class="row">
               <div class="col-sm">
                 <span class="fw-bold">Product Lifespan:</span>
-                The typical lifespan of ENERGY STAR replacement windows varies by the frame material. For example, low-cost vinyl windows will need to be replaced almost twice as soon as well-maintained wood windows. Your personalized <a [routerLink]="['/report/home']">home window upgrade report</a> can help you weigh the benefits of different replacement window materials and compare them to other window upgrade options.
+                The typical lifespan of ENERGY STAR replacement windows varies by the frame material. For example, low-cost vinyl windows will need to be replaced almost twice as soon as well-maintained wood windows. Your personalized <a class="link-action" [routerLink]="['/report']">home window upgrade report</a> can help you weigh the benefits of different replacement window materials and compare them to other window upgrade options.
               </div>
-              <div class="col-sm">
+              <div class="col-sm mt-4 mt-sm-0">
                 <table class="table">
                   <thead class="table-light">
                     <tr>
@@ -226,7 +231,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <div>
+                <div class="figure-caption">
                   Window lifespans are based on a recent literature review of studies on the environmental impact of windows.
                 </div>
               </div>
@@ -237,7 +242,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown5" aria-expanded="false" aria-controls="dropdown5">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown5" aria-expanded="false" aria-controls="dropdown5">
           Environmental Impact
         </button>
       </h2>
@@ -247,13 +252,13 @@
             <span class="fw-bold">Measuring Impact:</span>
             The Window Calculator analysis considers two aspects of a window upgrade option’s environmental impact: its initial carbon impact and its operational carbon impact. These are measured in kilograms of carbon dioxide equivalent (kg CO2e). A higher number indicates that a product has contributed more to global warming through manufacturing, transportation, installation, energy use, or disposal.
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <div class="row">
               <div class="col-sm">
                 <span class="fw-bold">Embodied Carbon:</span>
                 Embodied carbon is a measurement of the greenhouse gas emissions created in order to manufacture an ENERGY STAR replacement window, transport it, and install it in your home. Most of the embodied carbon comes from the production of the glass and primary frame material. Since ENERGY STAR replacement windows have similar glass compositions, this means that their embodied energy varies by frame material. Check out the table to the right to compare options.
               </div>
-              <div class="col-sm">
+              <div class="col-sm mt-4 mt-sm-0">
                 <table class="table">
                   <thead class="table-light">
                     <tr>
@@ -280,29 +285,29 @@
                     </tr>
                   </tbody>
                 </table>
-                <div>
+                <div class="figure-caption">
                   Frame material embodied carbon based the results of a 2021 study of the embodied impacts of various window systems.
                 </div>
               </div>
             </div>
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <span class="fw-bold">Energy Savings:</span>
             Whatever the embodied carbon impact, replacing old single-pane windows with new ENERGY STAR windows saves so much energy that they will have a net positive environmental impact within a few years. Since new windows can last at least 25-50 years, they are a great way to reduce your home’s carbon footprint in the long run.
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <span class="fw-bold">Next Steps:</span>
-            Check out the <a [routerLink]="['/report/environment']">Environmental Impact</a> section of your personalized home window upgrade report to compare the benefits of each window upgrade option.
+            Check out the <a class="link-action" [routerLink]="['/report/environment']">Environmental Impact</a> section of your personalized home window upgrade report to compare the benefits of each window upgrade option.
           </div>
-          <div class="mt-2">
-            If you’re really interested in improving the environmental impact of your home, a <a href="https://www.energy.gov/energysaver/home-energy-assessments" target="_blank">home energy assessment</a> can help you prioritize the changes that can have the biggest impact.
+          <div class="mt-4">
+            If you’re really interested in improving the environmental impact of your home, a <a class="link-action" href="https://www.energy.gov/energysaver/home-energy-assessments" target="_blank">home energy assessment</a> can help you prioritize the changes that can have the biggest impact.
           </div>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown6" aria-expanded="false" aria-controls="dropdown6">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown6" aria-expanded="false" aria-controls="dropdown6">
           Sound Blocking
         </button>
       </h2>
@@ -312,50 +317,50 @@
             <span class="fw-bold">How It Works:</span>
             ENERGY STAR replacement windows cut the amount of sound transmitted through your windows by more than half compared to single-pane windows. This is mostly because of the insulating air gap between the two panes of glass and improved air sealing.
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <span class="fw-bold">Why Windows Matter:</span>
             Windows are typically the weak point in your home for sound transmission, letting in the most traffic and airplane noises, along with other annoyances like your neighbor’s leaf blower. This means that storm windows can help save your sanity - and your sleep. If the exterior walls of your home aren’t insulated, though, you’ll need to add insulation in order to really reduce the amount of noise that travels inside.
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <span class="fw-bold">Sound Ratings:</span>
             Sound transmission through windows is measured through two different ratings: STC and OITC. STC (or Sound Transmission Class) is a measure of how well a window blocks commons sounds, like conversation. OITC (or Outdoor/Indoor Transmission Class) is a measure of how well a window blocks lower-level noises, like airplanes and construction. For both, a higher number is better. STC ratings are more common to find on windows, but sometimes you will see an OITC rating as well. In either case, it is important to keep in mind that a rating difference of ~3 is nearly impossible for the human ear to discern, while a rating difference of 10 cuts the amount of sound transmitted in half.
           </div>
-          <div class="mt-2">
-            If dramatically improving sound insulation is important to you, consider checking out the <a [routerLink]="['/report/sound']">Sound Blocking</a> page of your personalized home window upgrade report to weigh the benefits of your other window upgrade options.
+          <div class="mt-4">
+            If dramatically improving sound insulation is important to you, consider checking out the <a class="link-action" [routerLink]="['/report/sound']">Sound Blocking</a> page of your personalized home window upgrade report to weigh the benefits of your other window upgrade options.
           </div>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown7" aria-expanded="false" aria-controls="dropdown7">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown7" aria-expanded="false" aria-controls="dropdown7">
           Thermal Comfort
         </button>
       </h2>
       <div id="dropdown7" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
+          <div class="fw-bold">Windows and Comfort</div>
           <div>
-            <span class="fw-bold">Windows and Comfort:</span>
             Your HVAC systems work hard to keep the air temperature comfortable when windows let heat into and out of your home, but windows affect how comfortable your home feels in three other ways, too.
           </div>
-          <div class="mt-2">
+          <div class="mt-4 ms-2 ms-sm-4">
             <span class="fw-bold">Sunlight:</span>
             Sunlight contributes to both comfort and discomfort, depending on the season. During the winter, sitting in the sun can feel quite pleasant, even if the air temperature is a bit cooler than you would prefer. During the summer, however, you might want to avoid that sunny window seat.
           </div>
-          <div class="mt-2">
+          <div class="mt-4 ms-2 ms-sm-4">
             <span class="fw-bold">Glass Temperature:</span>
-            Poorly-insulated windows can get quite hot in the summer, reaching 120 °F or more. Sitting next to poorly-insulated windows can feel like sitting next to a sun-baked brick wall in the summer, making you sweat even if the air temperature is comfortable.
+            Poorly-insulated windows can get quite hot in the summer, reaching 120°F or more. Sitting next to poorly-insulated windows can feel like sitting next to a sun-baked brick wall in the summer, making you sweat even if the air temperature is comfortable.
           </div>
-          <div class="mt-2">
+          <div class="mt-4 ms-2 ms-sm-4">
             <span class="fw-bold">Air Movement:</span>
             The difference in temperature between your windows and the indoor air can cause drafts if it is extreme, which make you feel colder in the winter. Air leakage through windows also lets in hot air in the summer, and cold air in the winter.
           </div>
-          <div class="mt-2">
-            <span class="fw-bold">Temperature Control:</span>
+          <div class="mt-4">
+            <div class="fw-bold">Temperature Control</div>
             ENERGY STAR replacement windows make your home more comfortable by controlling the temperature of the glass during extreme weather. The insulating air gap between the two panes of glass lets less heat through, and the low-e coating included between panes reflects heat away, keeping it outside your home in the summer, and inside your home in the winter. Replacement windows without the ENERGY STAR label will feel hotter in the summer and colder in the winter because they aren’t as insulating and let more solar heat through.
           </div>
-          <div class="mt-2">
-            <span class="fw-bold">Decreased Air Leakage:</span>
+          <div class="mt-4">
+            <div class="fw-bold">Decreased Air Leakage</div>
             Because ENERGY STAR replacement windows don’t get as cold in the winter as single-pane windows do, adding them will help reduce any drafts that your home experiences. They are also more air tight than existing windows, especially if they are installed well. In addition to reducing unwanted air leakage, this helps keep out unfiltered air that may contain pollen and other air pollutants.
           </div>
         </div>
@@ -363,7 +368,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown8" aria-expanded="false" aria-controls="dropdown8">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown8" aria-expanded="false" aria-controls="dropdown8">
           Historic Preservation
         </button>
       </h2>
@@ -372,11 +377,11 @@
           <div class="">
             If you live in a historic home or in one of Tucson’s Historic Preservation Zones, replacing windows can be tricky. Generally, the goal is to maintain the exterior appearance of such homes as much as possible. Historically-accurate replicas of custom wood or steel windows can be expensive or hard to find, and it is often more cost-effective to pursue other window upgrade options unless your existing windows are beyond repair.
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <span class="fw-bold">Historic Properties:</span>
             If your home is listed on the National Register of Historic Places, window replacements should be approached with caution. Reach out to the Arizona State Historic Preservation Office to discuss whether replacements that aren’t identical would compromise your eligibility for the State Historic Property Tax Program. They may recommend storm windows as an alternative or only replacing windows that aren’t visible from the street, especially if historically-accurate replicas are unavailable or outside of your budget.
           </div>
-          <div class="mt-2">
+          <div class="mt-4">
             <span class="fw-bold">Historic Preservation Zones:</span>
             If you live in one of Tucson’s Historic Preservation Zones, replacing your windows will require a minor review process involving your local advisory board, the TPCHC Plans Review Subcommittee, city staff, and the PDSD director. Exact requirements vary by neighborhood, but projects that retain the same frame material, window divisions, and operability are most likely to be approved. Aluminum, vinyl, and fiberglass windows are often prohibited. If your windows are beyond repair and historically-accurate replicas are unavailable or outside of your budget, replacement windows may be more likely approved for locations that are not visible from the street. Otherwise, interior-mounted low-e storm windows are a great upgrade option because they can match the color/style/operation of your existing windows and are permanent, but still easily removable.
           </div>
@@ -385,18 +390,46 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown9" aria-expanded="false" aria-controls="dropdown9">
-          Learn More
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown9" aria-expanded="false" aria-controls="dropdown9">
+          Customer Reviews
         </button>
       </h2>
       <div id="dropdown9" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          <a href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank">Energy Saver - Update or Replace Windows</a><br/>
-          <div class="mt-2">
-            <div class="fw-bold">References:</div>
-            <div class="mt-2">ENERGY STAR. (2023). Residential Windows, Doors, and Skylights: Why ENERGY STAR?. <a href="https://www.energystar.gov/products/res_windows_doors_skylights" target="_blank">https://www.energystar.gov/products/res_windows_doors_skylights</a></div>
-            <div class="mt-2">Saadation, S. et al. (2021). Embodied Impacts of Window Systems: A Comparative Assessment of Framing and Glazing Alternatives. Journal of Building Engineering (Vol. 35). <a href="https://doi.org/10.1016/j.jobe.2020.102042" target="_blank">https://doi.org/10.1016/j.jobe.2020.102042</a></div>
-            <div class="mt-2">Souviron, J. et al. (2019). Analysing the Environmental Impact of Windows: a Review. Building and Environment (Volume 161). <a href="https://doi.org/10.1016/j.buildenv.2019.106268" target="_blank">https://doi.org/10.1016/j.buildenv.2019.106268</a></div>
+          <div>Check out these real-life reviews from other Tucson homeowners:</div>
+          <div class="mb-4 row d-flex justify-content-around">
+            <div class="card col-9 col-sm-3 p-0 mt-4">
+                <img class="img-fluid" style="border-radius: 5px !important;" [src]="'assets/info/ReviewTemplate.jpg'" alt="Customer Review" />
+            </div>
+            <div class="card col-9 col-sm-3 p-0 mt-4">
+              <img class="img-fluid" style="border-radius: 5px !important;" [src]="'assets/info/ReviewTemplate.jpg'" alt="Customer Review" />
+            </div>
+            <div class="card col-9 col-sm-3 p-0 mt-4">
+              <img class="img-fluid" style="border-radius: 5px !important;" [src]="'assets/info/ReviewTemplate.jpg'" alt="Customer Review" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown10" aria-expanded="false" aria-controls="dropdown10">
+          Learn More
+        </button>
+      </h2>
+      <div id="dropdown10" class="accordion-collapse collapse" data-bs-parent="#faq">
+        <div class="accordion-body">
+          <div class="mb-2">These links will take you to trustworthy websites with more information:</div>
+          <a class="link-action" href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank">Energy Saver - Update or Replace Windows</a><br/>
+          <div class="mt-4">
+            <a class="btn btn-outline-secondary" data-bs-toggle="collapse" href="#lowERefs" role="button" aria-expanded="false" aria-controls="lowERefs">
+              Technical References
+            </a>
+            <div class="collapse" id="lowERefs">
+              <div class="mt-2 text-break">ENERGY STAR. (2023). Residential Windows, Doors, and Skylights: Why ENERGY STAR?. <a class="link-body-emphasis" href="https://www.energystar.gov/products/res_windows_doors_skylights" target="_blank"> https://www.energystar.gov/products/res_windows_doors_skylights</a></div>
+              <div class="mt-2 text-break">Saadation, S. et al. (2021). Embodied Impacts of Window Systems: A Comparative Assessment of Framing and Glazing Alternatives. Journal of Building Engineering (Vol. 35). <a class="link-body-emphasis" href="https://doi.org/10.1016/j.jobe.2020.102042" target="_blank"> https://doi.org/10.1016/j.jobe.2020.102042</a></div>
+              <div class="mt-2 text-break">Souviron, J. et al. (2019). Analysing the Environmental Impact of Windows: a Review. Building and Environment (Volume 161). <a class="link-body-emphasis" href="https://doi.org/10.1016/j.buildenv.2019.106268" target="_blank"> https://doi.org/10.1016/j.buildenv.2019.106268</a></div>
+            </div>
           </div>
         </div>
       </div>

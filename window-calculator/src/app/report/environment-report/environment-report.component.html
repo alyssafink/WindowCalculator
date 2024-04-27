@@ -1,7 +1,7 @@
-<div class="card ms-auto me-4 mb-4 mt-4">
+<div class="card ms-auto me-md-4 mb-4 mt-4">
   <div class="card-body container">
     <div class="row mt-2 mb-3">
-      <div class="col-sm ms-4">
+      <div class="col-sm ms-md-4">
         <h2>Environmental Impact</h2>
         <div class="mt-4">
           The Window Calculator recommends three different window upgrade options that could have the greatest impact on your home’s carbon footprint - low-e window film, low-e storm windows, and ENERGY STAR replacement windows. Each option causes some greenhouse gas emissions through its production and transportation, known as embodied carbon. This amount, however, is significantly smaller than the resulting greenhouse gas reduction created by energy savings.
@@ -16,11 +16,11 @@
     </div>
   </div>
 </div>
-<div *ngIf="loaded" class="card ms-auto me-4 mb-4 mt-4">
+<div *ngIf="loaded" class="card ms-auto me-md-4 mb-4 mt-4">
   <div class="card-body container">
-    <h3 class="ms-4 mt-3">Low-E Window Film</h3>
+    <h3 class="ms-md-4 mt-3">Low-E Window Film</h3>
     <div class="row mt-2 mb-3">
-      <div class="col-sm-8 ms-4">
+      <div class="col-sm-8 ms-md-4">
         <img class="img-fluid" style="max-height:450px;" src="assets/report/treeeeeeees/{{treePic[retrofitWindowTypes.WINDOW_FILM]}} Trees.jpg" alt="{{treePic[retrofitWindowTypes.WINDOW_FILM]}} Trees" />
         <div class="mt-2">
           Low-e window film doesn’t require as much energy to produce as products with glass do, creating a much lower embodied carbon. If your existing windows are not at the end of their life and storm windows are out of your budget, low-e window film can provide a cost-effective way to make an impact on your home’s carbon footprint, while keeping your current windows out of the landfill.
@@ -32,34 +32,34 @@
             <div>
               <span class="fs-5 fw-bold text-primary">{{embodiedCarbon[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Embodied Carbon <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number is a representation of the greenhouse gas emissions required to manufacture a product and transport it to your home."></fa-icon></div>
+            <div>Embodied Carbon <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number is a representation of the greenhouse gas emissions required to manufacture a product and transport it to your home."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
               <span class="fs-5 fw-bold text-primary">{{annualCarbonSavings[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Embodied Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
+            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
               <span class="fs-5 fw-bold text-primary">{{lifetimeCarbonImpact[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Lifetime Carbon Impact <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the impact that each upgrade option will have on mitigating climate change in terms of a reduction in greenhouse gas emissions, based on the embodied carbon, annual energy savings, and lifetime of the product."></fa-icon></div>
+            <div>Lifetime Carbon Impact <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the impact that each upgrade option will have on mitigating climate change in terms of a reduction in greenhouse gas emissions, based on the embodied carbon, annual energy savings, and lifetime of the product."></fa-icon></div>
           </div>
           <div class="mt-3">This is like planting <span class="fw-bold fs-5 text-success">{{numTrees[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span> trees!</div>
         </div>
         <div class="d-flex justify-content-end">
-          <button class="btn btn-action align-self-end me-4" [routerLink]="['/report/film-info']">Learn More</button>
+          <button class="btn btn-action align-self-end me-2 me-sm-4" [routerLink]="['/report/film-info']">Learn More</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="card ms-auto me-4 mb-4 mt-4">
+<div class="card ms-auto me-md-4 mb-4 mt-4">
   <div class="card-body container">
-    <h3 class="ms-4 mt-3">Low-E Storm Windows</h3>
+    <h3 class="ms-md-4 mt-3">Low-E Storm Windows</h3>
     <div class="row mt-2 mb-3">
-      <div class="col-sm-8 ms-4">
+      <div class="col-sm-8 ms-md-4">
         <img class="img-fluid" style="max-height:450px;" src="assets/report/treeeeeeees/{{treePic[retrofitWindowTypes.STORM]}} Trees.jpg" alt="{{treePic[retrofitWindowTypes.STORM]}} Trees" />
         <div class="mt-2">
           Low-e storm windows achieve similar annual energy savings to replacement windows with a similar or lower embodied carbon, and no waste from removing old windows. They can lower your home’s carbon footprint as much as 10-15% during their 20-year lifespan.        </div>
@@ -70,34 +70,34 @@
             <div>
               <span class="fs-5 fw-bold text-primary">{{embodiedCarbon[retrofitWindowTypes.STORM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Embodied Carbon <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number is a representation of the greenhouse gas emissions required to manufacture a product and transport it to your home."></fa-icon></div>
+            <div>Embodied Carbon <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number is a representation of the greenhouse gas emissions required to manufacture a product and transport it to your home."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
               <span class="fs-5 fw-bold text-primary">{{annualCarbonSavings[retrofitWindowTypes.STORM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Embodied Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
+            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
               <span class="fs-5 fw-bold text-primary">{{lifetimeCarbonImpact[retrofitWindowTypes.STORM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Lifetime Carbon Impact <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the impact that each upgrade option will have on mitigating climate change in terms of a reduction in greenhouse gas emissions, based on the embodied carbon, annual energy savings, and lifetime of the product."></fa-icon></div>
+            <div>Lifetime Carbon Impact <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the impact that each upgrade option will have on mitigating climate change in terms of a reduction in greenhouse gas emissions, based on the embodied carbon, annual energy savings, and lifetime of the product."></fa-icon></div>
           </div>
           <div class="mt-3">This is like planting <span class="fw-bold fs-5 text-success">{{numTrees[retrofitWindowTypes.STORM] | number: '1.0-0'}}</span> trees!</div>
         </div>
         <div class="d-flex justify-content-end">
-          <button class="btn btn-action align-self-end me-4" [routerLink]="['/report/storm-info']">Learn More</button>
+          <button class="btn btn-action align-self-end me-2 me-sm-4" [routerLink]="['/report/storm-info']">Learn More</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="card ms-auto me-4 mb-4 mt-4">
+<div class="card ms-auto me-md-4 mb-4 mt-4">
   <div class="card-body container">
-    <h3 class="ms-4 mt-3">ENERGY STAR Replacement Windows</h3>
+    <h3 class="ms-md-4 mt-3">ENERGY STAR Replacement Windows</h3>
     <div class="row mt-2 mb-3">
-      <div class="col-sm-8 ms-4">
+      <div class="col-sm-8 ms-md-4">
         <img class="img-fluid" style="max-height:450px;" src="assets/report/treeeeeeees/{{treePic[retrofitWindowTypes.ENERGY_STAR]}} Trees.jpg" alt="{{treePic[retrofitWindowTypes.ENERGY_STAR]}} Trees" />
         <div class="mt-2">
           ENERGY STAR replacement windows vary in environmental impact based on the selected frame material. Aluminum, for example, requires a lot of energy to produce, so aluminum frames have embodied carbon more than twenty times higher than wood frames. While all frame materials can achieve the same great energy savings each year, the lifetime energy savings vary because some frame materials, like vinyl, don’t last as long as others.
@@ -109,24 +109,24 @@
             <div>
               <span class="fs-5 fw-bold text-primary">{{embodiedCarbon[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Embodied Carbon <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number is a representation of the greenhouse gas emissions required to manufacture a product and transport it to your home."></fa-icon></div>
+            <div>Embodied Carbon <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number is a representation of the greenhouse gas emissions required to manufacture a product and transport it to your home."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
               <span class="fs-5 fw-bold text-primary">{{annualCarbonSavings[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Embodied Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
+            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
               <span class="fs-5 fw-bold text-primary">{{lifetimeCarbonImpact[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Lifetime Carbon Impact <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="bottom" ngbTooltip="This number represents the impact that each upgrade option will have on mitigating climate change in terms of a reduction in greenhouse gas emissions, based on the embodied carbon, annual energy savings, and lifetime of the product."></fa-icon></div>
+            <div>Lifetime Carbon Impact <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the impact that each upgrade option will have on mitigating climate change in terms of a reduction in greenhouse gas emissions, based on the embodied carbon, annual energy savings, and lifetime of the product."></fa-icon></div>
           </div>
-          <div class="mt-3">This is like planting <span class="fw-bold fs-5 text-success">{{numTrees[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span> trees!</div>
+          <div class="mt-3">This is like planting <span class="fw-bold fs-5 text-success">{{numTrees[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}}</span> trees!</div>
         </div>
         <div class="d-flex justify-content-end">
-          <button class="btn btn-action align-self-end me-4" [routerLink]="['/report/energy-star-info']">Learn More</button>
+          <button class="btn btn-action align-self-end me-2 me-sm-4" [routerLink]="['/report/energy-star-info']">Learn More</button>
         </div>
       </div>
     </div>

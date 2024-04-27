@@ -141,7 +141,8 @@ export class ReportComponent implements OnInit {
           console.log(this.lifetimeTreeImpact[key])
           this.treePic[key] = Math.round(this.lifetimeTreeImpact[key] / 100);
           this.treePic[key] = this.treePic[key] > 10 ? 10 : this.treePic[key]; // 10 is upper bound for pics
-      }
+          this.treePic[key] = this.treePic[key] < 1 ? 1 : this.treePic[key]; // 1 is lower bound for pics
+        }
       console.log(this.lifetimeTreeImpact, this.treePic)
       component.numTrees = this.lifetimeTreeImpact;
       component.treePic = this.treePic;
