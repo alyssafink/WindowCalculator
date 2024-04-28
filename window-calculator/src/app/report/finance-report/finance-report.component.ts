@@ -47,17 +47,9 @@ export class FinanceReportComponent {
   }
 
   updateESLifespan() {
-    this.calculateProductLifespan(this.userInputFrameMaterial, RetrofitWindowType.ENERGY_STAR);
-    this.calculateLifetimeSavings(RetrofitWindowType.ENERGY_STAR);
+    this.calculationService.calculateProductLifespan(this.userInputFrameMaterial, RetrofitWindowType.ENERGY_STAR);
+    this.calculationService.calculateLifetimeSavings(RetrofitWindowType.ENERGY_STAR);
     this.createUserInputESChart();
-  }
-
-  calculateProductLifespan(frame: NewFrameType, retrofitWindowType: RetrofitWindowType) {
-    this.lifespan[retrofitWindowType] = this.calculationService.getProductLifespan(frame, retrofitWindowType)
-  }
-
-  calculateLifetimeSavings(retrofitWindowType: RetrofitWindowType) {
-    this.lifetimeSavings[retrofitWindowType] = this.yearlySavings[retrofitWindowType] * this.lifespan[retrofitWindowType];
   }
 
   createUserInputFilmChart() {
@@ -190,7 +182,6 @@ export class FinanceReportComponent {
   }
 
   createFilmChart() {
-    console.log(this.initialCosts_high, this.initialCosts_low)
     let startingYear = new Date().getFullYear();
     let endingYear = startingYear + this.YEAR_SPAN;
     let productEndYear = startingYear + this.lifespan[this.retrofitWindowTypes.WINDOW_FILM];

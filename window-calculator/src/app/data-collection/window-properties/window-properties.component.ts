@@ -67,7 +67,6 @@ export class WindowPropertiesComponent {
     this.newWindow.height = this.windowHeight;
     this.newWindow.area = heightFt * widthFt;
     this.newWindow.perimeter = heightFt + heightFt + widthFt + widthFt;
-    console.log(this.newWindow.area, this.newWindow.perimeter);
   }
 
   editWindow(index: number) {
@@ -97,7 +96,6 @@ export class WindowPropertiesComponent {
     this.newWindow.name = this.windowName;
     this.newWindow.height = this.windowHeight;
     this.newWindow.width = this.windowWidth;
-    console.log(this.newWindow);
 
     if (this.editing == -1) {
       this.windows.push(this.newWindow);
@@ -167,7 +165,6 @@ export class WindowPropertiesComponent {
 
   selectDetailedOrientationOption(value: string, index: number) {
     this.currentlyClickedOrientationCardIndex = index;
-    console.log(value, OrientationTypeEnum[value])
     this.newWindow.orientation = value as OrientationTypeEnum;
   }
 

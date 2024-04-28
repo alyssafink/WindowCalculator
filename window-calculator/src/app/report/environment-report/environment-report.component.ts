@@ -10,6 +10,7 @@ import { UserDataService } from '../../data-collection/user-data/user-data.servi
 import { WindowDataModel } from '../../data-collection/user-data/window-data-model';
 import { WindowPropertiesModel } from '../../data-collection/user-data/window-properties-model';
 import { FormsModule } from '@angular/forms';
+import { DataService } from '../services/data.service';
 
 
 @Component({
@@ -24,24 +25,30 @@ export class EnvironmentReportComponent {
   retrofitWindowTypes = RetrofitWindowType;
   newFrameMaterial = NewFrameType;
   public embodiedCarbon;
-  public annualCarbonSavings;
+  public lifetimeCarbonSavings;
   public lifetimeCarbonImpact;
   public numTrees = {};
   public treePic = {};
   loaded = true;
 
+  public esLifespan;
+
   userInputFrameMaterial = this.newFrameMaterial.METAL;
 
-  constructor(private userDataService: UserDataService, private calculationService: CalculationService) {}
+  constructor(private userDataService: UserDataService, private dataService: DataService, private calculationService: CalculationService) {}
 
   recalculateEmbodiedCarbon() {
     let userData = this.userDataService.getUserWindowData();
-    this.calculateUpfrontCarbonImpact(userData)
+    this.calculateProductLifespan(this.userInputFrameMaterial, RetrofitWindowType.ENERGY_STAR);
+    this.calculateUpfrontCarbonImpact(userData, RetrofitWindowType.ENERGY_STAR);
+    this.calculateLifetimeEnergySavings(userData, RetrofitWindowType.ENERGY_STAR);
+    this.calculateLifetimeEnergyImpact(RetrofitWindowType.ENERGY_STAR);
     this.recalculateTrees();
   }
 
   recalculateTrees() {
     this.calculateLifetimeTreeImpact(RetrofitWindowType.ENERGY_STAR);
+
     let key = RetrofitWindowType.ENERGY_STAR;
     this.numTrees[RetrofitWindowType.ENERGY_STAR] = Math.round(this.numTrees[RetrofitWindowType.ENERGY_STAR]);
     this.treePic[key] = Math.round(this.numTrees[key] / 100);
@@ -49,20 +56,14 @@ export class EnvironmentReportComponent {
     this.treePic[key] = this.treePic[key] < 1 ? 1 : this.treePic[key]; // 1 is lower bound for pics
   }
 
-  calculateLifetimeTreeImpact(retrofitWindowType: RetrofitWindowType) {
-    const EPA_TREE_FACTOR = 60;
-    this.numTrees[retrofitWindowType] = this.lifetimeCarbonImpact[retrofitWindowType] / EPA_TREE_FACTOR;
-  }
-
-  calculateUpfrontCarbonImpact(homeData: WindowDataModel) {
-    let frameGWP = this.calculateFrameGWP(homeData.windowProperties, RetrofitWindowType.ENERGY_STAR);
-    let glazeGWP = this.calculateGlazeGWP(homeData.windowProperties, RetrofitWindowType.ENERGY_STAR);
-    this.embodiedCarbon[RetrofitWindowType.ENERGY_STAR] = frameGWP + glazeGWP;
-    this.lifetimeCarbonImpact[RetrofitWindowType.ENERGY_STAR] = this.annualCarbonSavings[RetrofitWindowType.ENERGY_STAR] - this.embodiedCarbon[RetrofitWindowType.ENERGY_STAR];
+  calculateUpfrontCarbonImpact(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
+    let frameGWP = this.calculateFrameGWP(homeData.windowProperties, retrofitWindowType);
+    let glazeGWP = this.calculationService.calculateGlazeGWP(homeData.windowProperties, retrofitWindowType);
+    this.embodiedCarbon[retrofitWindowType] = frameGWP + glazeGWP;
   }
 
   calculateFrameGWP(windowData: WindowPropertiesModel[], retrofitWindowType: RetrofitWindowType) {
-    let Mf = this.calculationService.getRetrofitFrameGWP(this.userInputFrameMaterial, retrofitWindowType);
+    let Mf = this.dataService.getRetrofitFrameGWP(this.userInputFrameMaterial, retrofitWindowType);
     let Pt = 0;
     for (let window of windowData) {
       Pt += window.perimeter;
@@ -71,13 +72,22 @@ export class EnvironmentReportComponent {
     return Mf * Pt;
   }
 
-  calculateGlazeGWP(windowData: WindowPropertiesModel[], retrofitWindowType: RetrofitWindowType) {
-    let Mg = this.calculationService.getRetrofitGlazeGWP(retrofitWindowType);
-    let At = 0;
-    for (let window of windowData) {
-      At += window.area;
-    }
+  calculateLifetimeEnergySavings(homeData: WindowDataModel, retrofitWindowType: RetrofitWindowType) {
+    let heatingSavings = this.calculationService.calculateLifetimeOperationalHeatingSavings_noLifespan(homeData.heatingSystem, retrofitWindowType) * this.esLifespan;
+    let coolingSavings = this.calculationService.calculateLifetimeOperationalCoolingSavings_noLifespan(homeData.coolingSystem, retrofitWindowType) * this.esLifespan;
+    this.lifetimeCarbonSavings[retrofitWindowType] = heatingSavings + coolingSavings;
+  }
 
-    return Mg * At;
+  calculateLifetimeEnergyImpact(retrofitWindowType: RetrofitWindowType) {
+    this.lifetimeCarbonImpact[retrofitWindowType] = this.lifetimeCarbonSavings[retrofitWindowType] - this.embodiedCarbon[retrofitWindowType];
+  }
+
+  calculateLifetimeTreeImpact(retrofitWindowType: RetrofitWindowType) {
+    const EPA_TREE_FACTOR = 60;
+    this.numTrees[retrofitWindowType] = this.lifetimeCarbonImpact[retrofitWindowType] / EPA_TREE_FACTOR;
+  }
+
+  calculateProductLifespan(frame: NewFrameType, retrofitWindowType: RetrofitWindowType) {
+    this.esLifespan = this.dataService.getProductLifespan(frame, retrofitWindowType)
   }
 }

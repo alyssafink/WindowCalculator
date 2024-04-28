@@ -29,8 +29,6 @@ export class HvacSystemsComponent {
 
   ngOnInit() {
     this.userData = this.userDataService.getUserWindowData();
-    console.log(Object.values(HeatingSystemEnum))
-    console.log(Object.values(CoolingSystemEnum))
     this.currentlyClickedHeatingCardIndex = this.userData.heatingSystem ? Object.values(HeatingSystemEnum).sort().indexOf(this.userData.heatingSystem) : -1;
     this.currentlyClickedCoolingCardIndex = this.userData.coolingSystem ? Object.values(CoolingSystemEnum).sort().indexOf(this.userData.coolingSystem) : -1;
   }
@@ -38,14 +36,12 @@ export class HvacSystemsComponent {
   selectHeatingOption(value: HeatingSystemEnum, index: number) {
     this.currentlyClickedHeatingCardIndex = index;
     this.userData.heatingSystem = value;
-    console.log(this.userData)
     this.userDataService.setUserWindowData(this.userData);
   }
 
   selectCoolingOption(value: CoolingSystemEnum, index: number) {
     this.currentlyClickedCoolingCardIndex = index;
     this.userData.coolingSystem = value;
-    console.log(this.userData)
     this.userDataService.setUserWindowData(this.userData);
   }
 
