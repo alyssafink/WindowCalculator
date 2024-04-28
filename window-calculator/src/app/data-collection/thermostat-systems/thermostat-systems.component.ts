@@ -29,6 +29,8 @@ export class ThermostatSystemsComponent {
     this.coolingSetPoint = 77;
 
     this.userData = this.userDataService.getUserWindowData();
+    this.heatingSetPoint = this.userData.heatingSetPoint ? this.userData.heatingSetPoint : this.heatingSetPoint;
+    this.coolingSetPoint = this.userData.coolingSetPoint ? this.userData.coolingSetPoint : this.coolingSetPoint;
 
     this.userData.heatingSetPoint = this.heatingSetPoint;
     this.userData.coolingSetPoint = this.coolingSetPoint;

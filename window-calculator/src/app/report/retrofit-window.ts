@@ -5,7 +5,7 @@ export enum RetrofitWindowType {
 }
 
 export enum NewFrameType {
-  ALUMINUM,
+  METAL,
   VINYL,
   FIBERGLASS,
   WOOD

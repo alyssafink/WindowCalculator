@@ -3,11 +3,12 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { RetrofitWindowType } from '../retrofit-window';
+import { NewFrameType, RetrofitWindowType } from '../retrofit-window';
 import { RouterLink } from '@angular/router';
 import * as Plot from '@observablehq/plot';
 import * as d3 from 'd3';
 import { FormsModule } from '@angular/forms';
+import { CalculationService } from '../services/calculation.service';
 
 @Component({
   selector: 'app-finance-report',
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 export class FinanceReportComponent {
   faQuestion = faQuestionCircle;
   retrofitWindowTypes = RetrofitWindowType;
+  newFrameMaterial = NewFrameType;
   public initialCosts_low;
   public initialCosts_high;
   public lifespan;
@@ -30,6 +32,13 @@ export class FinanceReportComponent {
   userInputUpfrontCost_energyStar: number;
   userInputUpfrontCost_storm: number;
   userInputUpfrontCost_film: number;
+  userInputRebate_film: number;
+  userInputRebate_storm: number;
+  userInputRebate_energyStar: number;
+
+  userInputFrameMaterial: NewFrameType = NewFrameType.METAL;
+
+  constructor(private calculationService: CalculationService) {}
 
   ngAfterViewInit() {
     this.createFilmChart();
@@ -37,10 +46,28 @@ export class FinanceReportComponent {
     this.createEnergyStarChart();
   }
 
+  updateESLifespan() {
+    this.calculateProductLifespan(this.userInputFrameMaterial, RetrofitWindowType.ENERGY_STAR);
+    this.calculateLifetimeSavings(RetrofitWindowType.ENERGY_STAR);
+    this.createUserInputESChart();
+  }
+
+  calculateProductLifespan(frame: NewFrameType, retrofitWindowType: RetrofitWindowType) {
+    this.lifespan[retrofitWindowType] = this.calculationService.getProductLifespan(frame, retrofitWindowType)
+  }
+
+  calculateLifetimeSavings(retrofitWindowType: RetrofitWindowType) {
+    this.lifetimeSavings[retrofitWindowType] = this.yearlySavings[retrofitWindowType] * this.lifespan[retrofitWindowType];
+  }
+
   createUserInputFilmChart() {
     if (this.userInputUpfrontCost_film) {
       let currentYear = new Date().getFullYear();
       let upfrontCost = this.userInputUpfrontCost_film;
+      if (this.userInputRebate_film) {
+        upfrontCost -= this.userInputRebate_film;
+      }
+
       let endingYear = currentYear + this.YEAR_SPAN;
       let productEndYear = currentYear + this.lifespan[this.retrofitWindowTypes.WINDOW_FILM];
       let data = [];
@@ -80,6 +107,10 @@ export class FinanceReportComponent {
     if (this.userInputUpfrontCost_storm) {
       let currentYear = new Date().getFullYear();
       let upfrontCost = this.userInputUpfrontCost_storm;
+      if (this.userInputRebate_storm) {
+        upfrontCost -= this.userInputRebate_storm;
+      }
+
       let endingYear = currentYear + this.YEAR_SPAN;
       let productEndYear = currentYear + this.lifespan[this.retrofitWindowTypes.STORM];
       let data = [];
@@ -119,6 +150,10 @@ export class FinanceReportComponent {
     if (this.userInputUpfrontCost_energyStar) {
       let currentYear = new Date().getFullYear();
       let upfrontCost = this.userInputUpfrontCost_energyStar;
+      if (this.userInputRebate_energyStar) {
+        upfrontCost -= this.userInputRebate_energyStar;
+      }
+
       let endingYear = currentYear + this.YEAR_SPAN;
       let productEndYear = currentYear + this.lifespan[this.retrofitWindowTypes.ENERGY_STAR];
       let data = [];

@@ -33,6 +33,7 @@ export class HomeHeightComponent {
 
   ngOnInit() {
     this.userData = this.userDataService.getUserWindowData();
+    this.currentlyClickedCardIndex = this.userData.homeHeight ? this.userData.homeHeight : -1;
   }
 
   originalOrder = (a: KeyValue<string,number>, b: KeyValue<string,number>): number => {

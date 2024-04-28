@@ -108,7 +108,7 @@ export class CalculationService {
       this.httpClient.get('assets/data-tables/GlazingMaterialEmbodiedCarbon.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/OperationalCarbonConversionFactor.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/EnergyStarUpfrontCost.csv', { responseType: 'text' }),
-      //this.httpClient.get('assets/data-tables/StormUpfrontCost.csv', { responseType: 'text' }),
+      this.httpClient.get('assets/data-tables/StormUpfrontCostData.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/FilmUpfrontCost.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/ExistingWindowOperativeTempIncrease.csv', { responseType: 'text' }),
       this.httpClient.get('assets/data-tables/FilmOperativeTempIncrease.csv', { responseType: 'text' }),
@@ -144,7 +144,7 @@ export class CalculationService {
       glazeMaterialGWPDataString,
       operationalCarbonConversionDataString,
       energyStarUpfrontCostDataString,
-      //stormUpfrontCostDataString,
+      stormUpfrontCostDataString,
       filmUpfrontCostDataString,
       existingWindowOperativeTempIncreaseDataString,
       filmOperativeTempIncreaseDataString,
@@ -180,7 +180,7 @@ export class CalculationService {
       this.retrofitGlazeGWPData = d3.csvParse(glazeMaterialGWPDataString);
       this.operationalCarbonConversionData = d3.csvParse(operationalCarbonConversionDataString);
       this.energyStarUpfrontCostData = d3.csvParse(energyStarUpfrontCostDataString);
-      //this.stormUpfrontData = d3.csvParse(stormUpfrontCostDataString);
+      this.stormUpfrontCostData = d3.csvParse(stormUpfrontCostDataString);
       this.filmUpfrontCostData = d3.csvParse(filmUpfrontCostDataString);
       this.existingWindowOperativeTempIncreaseData = d3.csvParse(existingWindowOperativeTempIncreaseDataString);
       this.filmOperativeTempIncreaseData = d3.csvParse(filmOperativeTempIncreaseDataString);
@@ -471,12 +471,15 @@ export class CalculationService {
     }
   }
 
-  // TODO: Update
   getStormUpfrontCost(low: boolean): number {
     if (low) {
-      return 1;
+      return +this.stormUpfrontCostData.find(function(item) {
+        return item["Range"] == "Low";
+      })["Cost"];
     } else {
-      return 1;
+      return +this.stormUpfrontCostData.find(function(item) {
+        return item["Range"] == "High";
+      })["Cost"];
     }
   }
 

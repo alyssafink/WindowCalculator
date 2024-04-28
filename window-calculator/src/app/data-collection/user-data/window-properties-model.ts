@@ -32,8 +32,8 @@ export enum GlassTypeEnum {
 }
 
 export enum FrameTypeEnum {
-  ALUMINUM = "Aluminum",
-  ALUMINUM_TB = "Aluminum with Thermal Break",
+  METAL = "Metal",
+  METAL_TB = "Metal with Thermal Break",
   WOOD = "Wood",
   VINYL = "Vinyl"
 }

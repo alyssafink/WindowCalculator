@@ -31,6 +31,7 @@ $custom-colors: (
 .footer-style {
   background-color: $primary;
   width: 100vw;
+  /* Set the fixed height of the footer here */
 }
 
 .option-text {
@@ -133,7 +134,8 @@ ol>li:before {
 }
 
 body {
-  background-color: $background !important
+  background-color: $background !important;
+  padding-bottom: 70px;
 }
 
 /* Importing Bootstrap SCSS file. */

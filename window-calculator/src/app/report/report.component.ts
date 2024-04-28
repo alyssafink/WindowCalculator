@@ -29,7 +29,7 @@ export class ReportComponent implements OnInit {
 // user can input a quote from window business and it should factor into financial calculation
   public homeData: WindowDataModel;
   loaded = false;
-  userInputFrameMaterial: NewFrameType = NewFrameType.FIBERGLASS;
+  userInputFrameMaterial: NewFrameType = NewFrameType.METAL;
   userInputUpfrontCost_energyStar: number = 0;
   userInputUpfrontCost_storm: number = 0;
   userInputUpfrontCost_film: number = 0;
@@ -77,13 +77,14 @@ export class ReportComponent implements OnInit {
           area: 247, // set to 247 ft2 if simplified
           perimeter: 256, // set to 256 ft if simplified
           glass: GlassTypeEnum.CLEAR,
-          frame: FrameTypeEnum.ALUMINUM,
+          frame: FrameTypeEnum.METAL,
           operability: OperabilityTypeEnum.AWNING_MULTI,
           orientation: OrientationTypeEnum.EVEN,
           simplified: true
         }
       ]
     }
+    this.userDataService.setUserWindowData(this.homeData)
 
     this.calculationService.observableLock.subscribe((x) => {
       if (x == "Data Tables Loaded") {
@@ -169,13 +170,15 @@ export class ReportComponent implements OnInit {
       // TODO: idk
       let pricePerLow = this.calculationService.getStormUpfrontCost(true);
       let pricePerHigh = this.calculationService.getStormUpfrontCost(false);
+      let numWindows = windowData[0].simplified ? 16 : windowData.length; // If using simplified data, default to 16 windows
+
       let totalArea = 0;
       for (let window of windowData) {
         totalArea += window.area;
       }
 
-      this.upfrontCost_low[windowType] = pricePerLow * totalArea;
-      this.upfrontCost_high[windowType] = pricePerHigh * totalArea;
+      this.upfrontCost_low[windowType] = (pricePerLow * totalArea) + (100 * numWindows);
+      this.upfrontCost_high[windowType] = (pricePerHigh * totalArea) + (100 * numWindows);
     } else {
       // Low: total area * price per (low)
       // High: total area * price per (high)

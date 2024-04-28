@@ -78,9 +78,9 @@ export class WindowPropertiesComponent {
     this.windowName = w.name;
     this.windowHeight = w.height;
     this.windowWidth = w.width;
-    this.currentlyClickedFrameCardIndex = Object.values(FrameTypeEnum).indexOf(w.frame);
-    this.currentlyClickedGlassCardIndex = Object.values(GlassTypeEnum).indexOf(w.glass);
-    this.currentlyClickedOperabilityCardIndex = Object.values(OperabilityTypeEnum).indexOf(w.operability);
+    this.currentlyClickedFrameCardIndex = Object.values(FrameTypeEnum).sort().indexOf(w.frame);
+    this.currentlyClickedGlassCardIndex = Object.values(GlassTypeEnum).sort().indexOf(w.glass);
+    this.currentlyClickedOperabilityCardIndex = Object.values(OperabilityTypeEnum).sort().indexOf(w.operability);
     this.currentlyClickedOrientationCardIndex = this.orientationList_Det.indexOf(w.orientation);
   }
 
