@@ -16,11 +16,13 @@ import { LowEInfoComponent } from './info/low-e-info/low-e-info.component';
 import { StormInfoComponent } from './info/storm-info/storm-info.component';
 import { EnergyStarInfoComponent } from './info/energy-star-info/energy-star-info.component';
 import { ReportHomeComponent } from './report/report-home/report-home.component';
+import { UserDataGuard } from './data-collection/user-data/user-data.guard';
 
 export const routes: Routes = [
     {
       path: 'report',
       component: ReportComponent,
+      canActivate: [UserDataGuard],
       children: [
         { path: '', component:  ReportHomeComponent },
         { path: 'finance', component: FinanceReportComponent },
@@ -35,6 +37,7 @@ export const routes: Routes = [
     {
       path: 'data-collection',
       component: DataCollectionComponent,
+      canActivate: [UserDataGuard],
       children: [
         { path: '0', redirectTo: '/data-collection', pathMatch: 'full' },
         { path: '1', component: HomeHeightComponent },

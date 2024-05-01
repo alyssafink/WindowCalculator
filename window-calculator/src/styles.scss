@@ -18,6 +18,18 @@ $custom-colors: (
   "darkblue": $darkblue
 );
 
+.carousel-item img {
+  max-height: 300px;
+  min-width: auto;
+}
+
+.carousel-item .carousel-caption {
+  position: static;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
 .btn-action {
   color: white !important;
 }
@@ -31,7 +43,6 @@ $custom-colors: (
 .footer-style {
   background-color: $primary;
   width: 100vw;
-  /* Set the fixed height of the footer here */
 }
 
 .option-text {
