@@ -36,9 +36,9 @@
           </div>
           <div class="mt-3">
             <div>
-              <span class="fs-5 fw-bold text-primary">{{annualCarbonSavings[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
+              <span class="fs-5 fw-bold text-primary">{{lifetimeCarbonSavings[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
+            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the total amount of greenhouse gas emissions avoided over the lifespan of the product as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
@@ -48,7 +48,7 @@
           </div>
           <div class="mt-3">This is like planting <span class="fw-bold fs-5 text-success">{{numTrees[retrofitWindowTypes.WINDOW_FILM] | number: '1.0-0'}}</span> trees!</div>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mt-2">
           <button class="btn btn-action align-self-end me-2 me-sm-4" [routerLink]="['/report/film-info']">Learn More</button>
         </div>
       </div>
@@ -74,9 +74,9 @@
           </div>
           <div class="mt-3">
             <div>
-              <span class="fs-5 fw-bold text-primary">{{annualCarbonSavings[retrofitWindowTypes.STORM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
+              <span class="fs-5 fw-bold text-primary">{{lifetimeCarbonSavings[retrofitWindowTypes.STORM] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
+            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the total amount of greenhouse gas emissions avoided over the lifespan of the product as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>
@@ -86,7 +86,7 @@
           </div>
           <div class="mt-3">This is like planting <span class="fw-bold fs-5 text-success">{{numTrees[retrofitWindowTypes.STORM] | number: '1.0-0'}}</span> trees!</div>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mt-2">
           <button class="btn btn-action align-self-end me-2 me-sm-4" [routerLink]="['/report/storm-info']">Learn More</button>
         </div>
       </div>
@@ -99,12 +99,24 @@
     <div class="row mt-2 mb-3">
       <div class="col-sm-8 ms-md-4">
         <img class="img-fluid" style="max-height:450px;" src="assets/report/treeeeeeees/{{treePic[retrofitWindowTypes.ENERGY_STAR]}} Trees.jpg" alt="{{treePic[retrofitWindowTypes.ENERGY_STAR]}} Trees" />
+        <div class="mt-2 row d-flex align-items-center">
+          <div class="col-sm col-md-3">Frame Material: </div>
+          <div class="col-sm">
+            <select class="form-select" (change)="recalculateEmbodiedCarbon()" [(ngModel)]="userInputFrameMaterial">
+              <option [ngValue]="newFrameMaterial.METAL" selected>Aluminum</option>
+              <option [ngValue]="newFrameMaterial.WOOD">Wood</option>
+              <option [ngValue]="newFrameMaterial.VINYL">Vinyl</option>
+              <option [ngValue]="newFrameMaterial.FIBERGLASS">Fiberglass</option>
+            </select>
+          </div>
+        </div>
         <div class="mt-2">
           ENERGY STAR replacement windows vary in environmental impact based on the selected frame material. Aluminum, for example, requires a lot of energy to produce, so aluminum frames have embodied carbon more than twenty times higher than wood frames. While all frame materials can achieve the same great energy savings each year, the lifetime energy savings vary because some frame materials, like vinyl, don’t last as long as others.
         </div>
       </div>
       <div class="col d-flex flex-column justify-content-between mt-4">
         <div>
+
           <div>
             <div>
               <span class="fs-5 fw-bold text-primary">{{embodiedCarbon[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
@@ -113,9 +125,9 @@
           </div>
           <div class="mt-3">
             <div>
-              <span class="fs-5 fw-bold text-primary">{{annualCarbonSavings[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
+              <span class="fs-5 fw-bold text-primary">{{lifetimeCarbonSavings[retrofitWindowTypes.ENERGY_STAR] | number: '1.0-0'}}</span><span class="fw-bold text-primary"> kg CO2 eq</span>
             </div>
-            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the amount of greenhouse gas emissions avoided each year as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
+            <div>Operational Carbon Savings <fa-icon class="ms-1" style="font-size:small" [icon]="faQuestion" placement="auto" ngbTooltip="This number represents the total amount of greenhouse gas emissions avoided over the lifespan of the product as a result of saving energy by upgrading your single-pane windows."></fa-icon></div>
           </div>
           <div class="mt-3">
             <div>

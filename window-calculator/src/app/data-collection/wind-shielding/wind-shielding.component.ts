@@ -25,6 +25,7 @@ export class WindShieldingComponent {
 
   ngOnInit() {
     this.userData = this.userDataService.getUserWindowData();
+    this.currentlyClickedCardIndex = this.userData.windShielding ? Object.values(WindShieldingEnum).sort().indexOf(this.userData.windShielding) : -1;
   }
 
   selectOption(value: WindShieldingEnum, index: number) {

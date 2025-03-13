@@ -186,8 +186,11 @@
         </ng-container>
       </div>
       <div class="modal-footer">
+        <div *ngIf="hover && (!windowName || !windowHeight || !windowWidth || currentlyClickedFrameCardIndex == -1 || currentlyClickedGlassCardIndex == -1 || currentlyClickedOperabilityCardIndex == -1 || currentlyClickedOrientationCardIndex == -1)" class="d-flex justify-content-end text-danger me-2 mb-2">Enter window data to continue</div>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-action" data-bs-dismiss="modal" (click)="saveWindow()">Save</button>
+        <div class="d-flex justify-content-end" (mouseenter)="hover=true"  (mouseleave)="hover=false">
+          <button type="button" class="btn btn-action" data-bs-dismiss="modal" [ngClass]="{'disabled': !windowName || !windowWidth || !windowHeight || currentlyClickedFrameCardIndex == -1 || currentlyClickedGlassCardIndex == -1 || currentlyClickedOperabilityCardIndex == -1 || currentlyClickedOrientationCardIndex == -1}" (click)="saveWindow()" (mouseenter)="hover=true"  (mouseleave)="hover=false">Save</button>
+        </div>
       </div>
     </div>
   </div>

@@ -18,6 +18,18 @@ $custom-colors: (
   "darkblue": $darkblue
 );
 
+.carousel-item img {
+  max-height: 300px;
+  min-width: auto;
+}
+
+.carousel-item .carousel-caption {
+  position: static;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
 .btn-action {
   color: white !important;
 }
@@ -133,7 +145,8 @@ ol>li:before {
 }
 
 body {
-  background-color: $background !important
+  background-color: $background !important;
+  padding-bottom: 70px;
 }
 
 /* Importing Bootstrap SCSS file. */

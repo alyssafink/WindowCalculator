@@ -54,7 +54,47 @@
       </h2>
       <div id="dropdown1" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          Stuff
+          <div id="carouselExampleIndicators" class="carousel carousel-dark slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="d-flex justify-content-center">
+                  <img src="assets/info/energy-star/EnergyEfficiencyDiagram.png" class="img-fluid d-block" alt="Energy Efficiency Diagram">
+                </div>
+                <div class="carousel-caption d-block">
+                  <p class="figure-caption">What makes a window energy efficient? Source: ENERGY STAR.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                  <img src="assets/info/energy-star/EnergyStarLabel.png" class="img-fluid d-block" alt="ENERGY STAR Label">
+                </div>
+                <div class="carousel-caption d-block">
+                  <p class="figure-caption">Wood window with ENERGY STAR label. Source: Comfort Windows and Doors.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                  <img src="assets/info/energy-star/EnergyStarWindow.png" class="img-fluid d-block" alt="ENERGY STAR Windows">
+                </div>
+                <div class="carousel-caption d-block">
+                  <p class="figure-caption">ENERGY STAR windows in a variety of finishes. Source: Energy Shield Arizona.</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -78,11 +118,11 @@
               <div class="mt-2">
                 ENERGY STAR replacement windows have a better u-value than single-pane windows for a few reasons. First, the addition of an insulating air gap between the two panes of glass acts like the thick wall of a cooler to add insulating capability. Second, they typically have one or two low-emissivity (low-e) coatings, which help reflect heat, keeping it out in the summer and in during the winter.              </div>
             </div>
-            <div class="col-sm">
+            <!-- <div class="col-sm">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid" style="max-height:100px;" [src]="''" alt="U-Value" />
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row mt-4">
             <div class="col-sm">
@@ -94,11 +134,11 @@
                 The coatings included in ENERGY STAR replacement windows are spectrally selective, which means that they let in solar radiation that you want (daylight) and reflect solar radiation that you don’t want (infrared radiation / solar heat).
               </div>
             </div>
-            <div class="col-sm">
+            <!-- <div class="col-sm">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid" style="max-height:100px;" [src]="''" alt="SHGC" />
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row mt-4">
             <div class="col-sm">
@@ -106,15 +146,12 @@
               <div class="mt-2">
                 Visible transmittance is the fraction of sunlight visible to the human eye that passes through a window into your home. The visible transmittance needs of every home are different - some need a lower number to reduce glare, some need to maximize daylighting, and some are somewhere in the middle. The best way to figure out if the visible transmittance of a product is right for your home is to ask the manufacturer or distributor for images of past projects where it has been installed.
               </div>
-              <div class="mt-2">
-                INSERT INFO HERE
-              </div>
             </div>
-            <div class="col-sm">
+            <!-- <div class="col-sm">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid" style="max-height:100px;" [src]="''" alt="U-Value" />
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row mt-4">
             <div class="col-sm">
@@ -134,8 +171,10 @@
       </h2>
       <div id="dropdown3" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
-          <div class="col-md-6 embed-responsive embed-responsive-4by3">
-            <iframe style="max-width:100%" width="560" height="315" src="https://www.youtube.com/embed/2YQAqWXXkUA?si=XQ-w4SdEniPOeiNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="d-flex justify-content-center">
+            <div class="col-md-6 embed-responsive embed-responsive-4by3">
+              <iframe style="max-width:100%" width="560" height="315" src="https://www.youtube.com/embed/2YQAqWXXkUA?si=XQ-w4SdEniPOeiNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
           </div>
           <div class="mt-2">
             The <a class="link-action" href="https://basc.pnnl.gov/resource-guides/complete-window-and-frame-replacement" target="_blank">Building America Solution Center</a> and <a class="link-action" href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank">U.S. Department of Energy - Energy Saver program</a> both have excellent resources on the process of selecting and installing replacement windows in your home. Here are the key takeaways:
@@ -375,16 +414,15 @@
       <div id="dropdown8" class="accordion-collapse collapse" data-bs-parent="#faq">
         <div class="accordion-body">
           <div class="">
-            If you live in a historic home or in one of Tucson’s Historic Preservation Zones, replacing windows can be tricky. Generally, the goal is to maintain the exterior appearance of such homes as much as possible. Historically-accurate replicas of custom wood or steel windows can be expensive or hard to find, and it is often more cost-effective to pursue other window upgrade options unless your existing windows are beyond repair.
+            If you live in a historic home or in one of Tucson’s Historic Preservation Zones, replacing windows can be tricky. Generally, the goal is to maintain the exterior appearance of such homes as much as possible. Historically-accurate replicas of custom wood or steel windows can be expensive or hard to find, and it is often more cost-effective to pursue other window upgrade options unless your existing windows are beyond repair. Always contact state and local officials before making changes.
           </div>
           <div class="mt-4">
             <span class="fw-bold">Historic Properties:</span>
-            If your home is listed on the National Register of Historic Places, window replacements should be approached with caution. Reach out to the Arizona State Historic Preservation Office to discuss whether replacements that aren’t identical would compromise your eligibility for the State Historic Property Tax Program. They may recommend storm windows as an alternative or only replacing windows that aren’t visible from the street, especially if historically-accurate replicas are unavailable or outside of your budget.
+            If your home is listed on the National Register of Historic Places, window replacements should be approached with caution. Reach out to the <a class="link-action" href="https://azstateparks.com/shpo" target="_blank">Arizona State Historic Preservation Office</a> to discuss whether replacements that aren’t identical would compromise your eligibility for the State Historic Property Tax Program. They may recommend storm windows as an alternative or only replacing windows that aren’t visible from the street, especially if historically-accurate replicas are unavailable or outside of your budget.
           </div>
           <div class="mt-4">
             <span class="fw-bold">Historic Preservation Zones:</span>
-            If you live in one of Tucson’s Historic Preservation Zones, replacing your windows will require a minor review process involving your local advisory board, the TPCHC Plans Review Subcommittee, city staff, and the PDSD director. Exact requirements vary by neighborhood, but projects that retain the same frame material, window divisions, and operability are most likely to be approved. Aluminum, vinyl, and fiberglass windows are often prohibited. If your windows are beyond repair and historically-accurate replicas are unavailable or outside of your budget, replacement windows may be more likely approved for locations that are not visible from the street. Otherwise, interior-mounted low-e storm windows are a great upgrade option because they can match the color/style/operation of your existing windows and are permanent, but still easily removable.
-          </div>
+            If you live in one of Tucson’s Historic Preservation Zones, replacing your windows will require a minor review process involving your local advisory board, the TPCHC Plans Review Subcommittee, city staff, and the PDSD director. Exact requirements vary by neighborhood, but projects that retain the same frame material, window divisions, and operability are most likely to be approved. Aluminum, vinyl, and fiberglass windows are often prohibited. If your windows are beyond repair and historically-accurate replicas are unavailable or outside of your budget, replacement windows may be more likely approved for locations that are not visible from the street. Otherwise, interior-mounted low-e storm windows are a great upgrade option because they can match the color/style/operation of your existing windows and are permanent, but still easily removable. Always contact the <a class="link-action" href="https://www.tucsonaz.gov/Shared-Contact-Content/Historic-Preservation-contact" target="_blank">Tucson Historic Preservation Office</a> before pursuing any changes.          </div>
         </div>
       </div>
     </div>

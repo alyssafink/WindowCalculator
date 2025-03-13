@@ -1,13 +1,13 @@
 Glazing Type,Frame Material,Operative Temperature Increase
-Clear,Aluminum,4
-Clear,Aluminum with Thermal Break,3.6
+Clear,Metal,4
+Clear,Metal with Thermal Break,3.6
 Clear,Wood,3.2
 Clear,Vinyl,3.1
-Tinted,Aluminum,3.1
-Tinted,Aluminum with Thermal Break,2.7
+Tinted,Metal,3.1
+Tinted,Metal with Thermal Break,2.7
 Tinted,Wood,2.4
 Tinted,Vinyl,2.3
-Low-E,Aluminum,2.3
-Low-E,Aluminum with Thermal Break,1.9
+Low-E,Metal,2.3
+Low-E,Metal with Thermal Break,1.9
 Low-E,Wood,1.7
 Low-E,Vinyl,1.6
