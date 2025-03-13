@@ -1,0 +1,13 @@
+Glazing Type,Frame Material,U-value
+Clear,Metal,1.24
+Clear,Metal with Thermal Break,1.07
+Clear,Wood,0.93
+Clear,Vinyl,0.91
+Tinted,Akuminum,1.24
+Tinted,Metal with Thermal Break,1.07
+Tinted,Wood,0.93
+Tinted,Vinyl,0.91
+Low-E,Metal,0.97
+Low-E,Metal with Thermal Break,0.8
+Low-E,Wood,0.67
+Low-E,Vinyl,0.65

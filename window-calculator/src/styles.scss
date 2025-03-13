@@ -1,0 +1,160 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary: rgb(119,202,218);
+$secondary: silver;
+$danger: rgb(197,89,63);
+$success: rgb(0,163,118);
+$action: rgb(244,121,44);
+$background: rgb(220, 220, 220);
+$lightprimary: rgb(184,244,255);
+$border: rgb(153, 153, 153);
+$darkblue: rgb(4,76,88);
+
+$custom-colors: (
+  "action": $action,
+  "background": $background,
+  "lightprimary": $lightprimary,
+  "border": $border,
+  "darkblue": $darkblue
+);
+
+.carousel-item img {
+  max-height: 300px;
+  min-width: auto;
+}
+
+.carousel-item .carousel-caption {
+  position: static;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.btn-action {
+  color: white !important;
+}
+
+.header-style {
+  background-color: white;
+  border-bottom: 1px solid $border;
+  width: 100vw;
+}
+
+.footer-style {
+  background-color: $primary;
+  width: 100vw;
+}
+
+.option-text {
+  background-color: $primary;
+  color: black !important;
+}
+
+.highlight {
+  box-shadow: 10px 5px 5px gray;
+}
+
+.pointable {
+  cursor: pointer;
+}
+
+.badge {
+  font-size: large !important;
+  font-weight: 600 !important;
+  opacity: 0.75 !important;
+}
+
+.nav-link {
+  font-size: 14px !important;
+}
+
+.nav-item {
+  border-left: 1px solid $border;
+
+  &-last {
+    @media (min-width: 768px) {
+      border-right: 1px solid $border;
+    }
+  }
+}
+
+.accordion-button {
+  border: 1px solid $border !important;
+}
+
+.thermal-left {
+  background-image: url("/assets/report/comfort/ThermalComfort_Thermostat.png");
+  background-origin: content-box;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sb-icon {
+  box-shadow: none !important;
+}
+
+.text-outline {
+  &-action {
+    text-shadow: -1px 0 $action, 0 1px $action, 1px 0 $action, 0 -1px $action;
+  }
+}
+
+.form-control {
+  border: 1px solid $border !important;
+}
+
+.card {
+  border: 1px solid $border !important;
+
+  &-btn {
+    border-radius: 0 !important;
+  }
+}
+
+.review-card {
+  border-radius: 5px !important;
+}
+
+ol {
+  margin:0 0 1.5em;
+  padding:0;
+  counter-reset:item;
+}
+
+ol>li {
+  margin:0;
+  padding:0 0 0 2em;
+  list-style-type:none;
+  counter-increment:item;
+}
+
+ol>li:before {
+  display:inline-block;
+  width:1.5em;
+  padding-right:0.5em;
+  font-weight:bold;
+  text-align:right;
+  content:counter(item) ".";
+}
+
+.blockquote {
+  font-style: italic !important;
+  font-size: medium !important;
+  padding: 1rem;
+}
+
+body {
+  background-color: $background !important;
+  padding-bottom: 70px;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import 'bootstrap/scss/bootstrap';
+.fs-6 {
+  font-size: 0.75rem !important;
+}

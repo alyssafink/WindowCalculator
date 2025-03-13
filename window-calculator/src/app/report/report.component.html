@@ -1,0 +1,73 @@
+<app-header></app-header>
+<app-report-header></app-report-header>
+<div class="container-sm-fluid">
+  <div class="row">
+    <div class="col-sm-3 order-last order-md-first">
+      <div class="d-none d-sm-block card ms-md-4 me-md-auto mb-4 mt-4">
+        <div class="card-body">
+          <div class="container">
+            <div class="row d-flex align-items-center">
+              <div class="col">
+                <img class="img-fluid" style="max-height:50px" [src]="'assets/report/home/HomeIcon.png'" alt="Home Icon" />
+              </div>
+              <div role="button" class="col stretched-link fw-bold align-bottom" [routerLink]="['/report']">{{homeData.homeName}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card ms-md-4 me-md-auto mb-4 mt-4">
+        <div class="card-body">
+          <div>
+            <div class="fw-bold">What's the Best Investment?</div>
+            <div class="mt-2">A professional energy assessor can help you prioritize changes to save money and make your home more comfortable.</div>
+            <a href="https://www.energy.gov/energysaver/home-energy-assessments" target="_blank" class="btn btn-action w-100 mt-3">Energy Assessments</a>
+          </div>
+          <div class="mt-5">
+            <div class="fw-bold">Save Money on Upgrades</div>
+            <div class="mt-2">Several programs offer rebates for qualifying purchases, including energy assessments, window upgrades, and much more. These can add up to thousands of dollars in savings.</div>
+            <a href="https://www.energystar.gov/about/federal-tax-credits" target="_blank" class="btn btn-action w-100 mt-2">Federal Tax Credits</a>
+            <a href="https://www.tep.com/rebates/" target="_blank" class="btn btn-action w-100 mt-3">TEP Rebates</a>
+            <a href="https://www.swgas.com/en/rebates-and-promotions-search-residential-arizona" target="_blank" class="btn btn-action w-100 mt-3">Southwest Gas Rebates</a>
+          </div>
+          <div class="mt-2">
+            <div>Income-eligible households can apply for the state Weatherization Assistance Program, which funds the full cost of energy efficiency improvements.</div>
+            <a href="https://housing.az.gov/general-public/weatherization-assistance-program" target="_blank" class="btn btn-action w-100 mt-3">Find Out if You Qualify</a>
+          </div>
+          <div class="row mt-5">
+            <div class="fw-bold">Share with a friend:</div>
+            <share-buttons theme="circles-dark"
+              [include]="['copy', 'facebook', 'email', 'sms']"
+              [showIcon]="true"
+              [showText]="false"
+              [url]="'https://www.windowcalculator.org'"
+              description="Angular Share Buttons"
+              class="pt-1">
+            </share-buttons>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <router-outlet *ngIf="loaded" (activate)="onOutletLoaded($event)"></router-outlet>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<!-- <div *ngIf="loaded">
+  <h5>Data Dump:</h5>
+  <div>Upfront Cost, Low End: {{calculationService.upfrontCost_low | json}}</div>
+  <div>Upfront Cost, High End: {{calculationService.upfrontCost_high | json}}</div>
+  <div>Delta Qh: {{calculationService.deltaQh | json}}</div>
+  <div>Heat Savings: {{calculationService.heatSavings | json}}</div>
+  <div>deltaQc: {{calculationService.deltaQc | json}}</div>
+  <div>Cool Savings: {{calculationService.coolSavings | json}}</div>
+  <div style="font-weight: bolder;">Total Annual Financial Savings: {{calculationService.totalSavings | json}}</div>
+  <div>Product Lifespan: {{calculationService.productLifespan | json}}</div>
+  <div>Lifetime Financial Savings: {{calculationService.lifetimeSavings | json}}</div>
+  <div>Payback Dates: {{calculationService.paybackDates | json}}</div>
+  <div>Upfront Carbon Impact: {{calculationService.upfrontCarbonImpact | json}}</div>
+  <div>Lifetime Energy Savings: {{calculationService.lifetimeEnergySavings | json}}</div>
+  <div>Lifetime Energy Impact: {{calculationService.lifetimeEnergyImpact | json}}</div>
+  <div>Lifetime Tree Impact: {{calculationService.lifetimeTreeImpact | json}}</div>
+</div> -->
